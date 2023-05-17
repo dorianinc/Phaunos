@@ -4,15 +4,35 @@ from flask_login import UserMixin
 
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    first_name = db.Column(db.String(40), nullable=False)
+    last_name = db.Column(db.String(40), nullable=False)
+    profile_pic = db.Column(db.String(255), nullable=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    username = db.Column(db.String(40), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    bookmarks_list_rel = db.relationship("Bookmarks_List", back_populates="user_rel")
+    review_rel = db.relationship("Review", back_populates="user_rel")
+
+    # followers = db.relationship(
+    #     "User",
+    #     secondary="follows",
+    #     primaryjoin=follows.columns.followed == id,
+    #     secondaryjoin=follows.columns.followers == id,
+    #     back_populates="following",
+    # )
+    
+    # following = db.relationship(
+    #     "User",
+    #     secondary="followers",
+    #     primaryjoin=followers.column
+    # )
 
     @property
     def password(self):
@@ -26,8 +46,4 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        return {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email
-        }
+        return {"id": self.id, "username": self.username, "email": self.email}
