@@ -7,6 +7,7 @@ class Bookmark(db.Model):
         __table_args__ = {'schema': SCHEMA}
     
     id = db.Column(db.Integer, primary_key=True)
+    completed = db.Column(db.Boolean, default=False)
     trail_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("trails.id")), nullable=False)
     bookmarks_list_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("bookmarks_lists.id")), nullable=False)
     
@@ -17,6 +18,7 @@ class Bookmark(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
+            "completed": self.completed,
             "bookmarks_list_id": self.bookmarks_list_id,
             "trail": self.trail_rel.to_dict(includeImages=True),
         }
@@ -24,5 +26,6 @@ class Bookmark(db.Model):
     def to_dict_no_item(self):
         return {
             "id": self.id,
+            "completed": self.completed,
             "bookmarks_list_id": self.bookmarks_list_id,
         }

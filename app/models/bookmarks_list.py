@@ -7,7 +7,7 @@ class Bookmarks_List(db.Model):
         __table_args__ = {'schema': SCHEMA}
         
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
+    title = db.Column(db.String(50), nullable=False)
     cover = db.Column(db.String(50), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
         
@@ -17,7 +17,7 @@ class Bookmarks_List(db.Model):
     def to_dict(self, includeBookmarks=False):
         return {
             "id": self.id,
-            "name": self.name,
+            "title": self.title,
             "cover": self.cover,
             "bookmarks": [bookmark.to_dict() for bookmark in self.bookmark_rel] if includeBookmarks else "",
             "user_id": self.user_id
@@ -26,7 +26,7 @@ class Bookmarks_List(db.Model):
     def to_dict_no_item(self):
         return {
             "id": self.id,
-            "name": self.name,
+            "title": self.title,
             "cover": self.cover,
             "bookmarks": [bookmark.to_dict() for bookmark in self.bookmark_rel],
             "user_id": self.user_id

@@ -8,7 +8,7 @@ class Review_Image(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    src = db.Column(db.String(255), nullable=False)
+    img_src = db.Column(db.String(255), nullable=False)
     review_id = db.Column(
         db.Integer, db.ForeignKey(add_prefix_for_prod("reviews.id")), nullable=False
     )
@@ -17,12 +17,12 @@ class Review_Image(db.Model):
     
     def to_dict(self):
         return {
-            "src": self.src,
+            "img_src": self.img_src,
             "review_id": self.review_id
         }
 
     def to_dict_no_item(self):
         return {
-            "src": self.src,
+            "img_src": self.img_src,
             "review_id": self.review_id
         }

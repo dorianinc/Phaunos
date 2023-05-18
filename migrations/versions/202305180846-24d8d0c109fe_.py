@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 6a56c4c2eb6d
+Revision ID: 24d8d0c109fe
 Revises: 
-Create Date: 2023-05-18 05:55:15.335268
+Create Date: 2023-05-18 08:46:05.751431
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '6a56c4c2eb6d'
+revision = '24d8d0c109fe'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -51,7 +51,7 @@ def upgrade():
     )
     op.create_table('bookmarks_lists',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=50), nullable=False),
+    sa.Column('title', sa.String(length=50), nullable=False),
     sa.Column('cover', sa.String(length=50), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
@@ -63,19 +63,21 @@ def upgrade():
     sa.Column('rating', sa.Float(), nullable=False),
     sa.Column('trail_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('date_submitted', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['trail_id'], ['trails.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('trail_images',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('src', sa.String(length=255), nullable=False),
+    sa.Column('img_src', sa.String(length=255), nullable=False),
     sa.Column('trail_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['trail_id'], ['trails.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('bookmarks',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('completed', sa.Boolean(), nullable=True),
     sa.Column('trail_id', sa.Integer(), nullable=False),
     sa.Column('bookmarks_list_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['bookmarks_list_id'], ['bookmarks_lists.id'], ),
@@ -84,7 +86,7 @@ def upgrade():
     )
     op.create_table('review_images',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('src', sa.String(length=255), nullable=False),
+    sa.Column('img_src', sa.String(length=255), nullable=False),
     sa.Column('review_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['review_id'], ['reviews.id'], ),
     sa.PrimaryKeyConstraint('id')
