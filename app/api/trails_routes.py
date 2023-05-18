@@ -16,8 +16,6 @@ def get_trail_by_id(trail_id):
     trail = Trail.query.get(trail_id)
     return trail.to_dict(includeReviews=True)
 
-# @trails_routes.route("/<int:trail_id>", methods=[POST])
-# def create_a_review(trail_id):
-#     """"Create a review for a trail"""
-#     trail = Trail.query.get(trail_id)
-#     return trail.to_dict(includeReviews=True)
+@trails_routes.route("/<int:trail_id>", methods=[POST])
+def create_a_review(trail_id):
+    """"Create a review for a trail"""
