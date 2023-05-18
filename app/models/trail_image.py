@@ -11,3 +11,17 @@ class Trail_Image(db.Model):
     trail_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("trails.id")), nullable=False)
     
     trail_rel = db.relationship('Trail', back_populates="trail_images_rel")
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "img_src": self.src,
+            "trail_id": self.trail_id
+        }
+        
+    def to_dict_no_dict(self):
+        return {
+            "id": self.id,
+            "img_src": self.src,
+            "trail_id": self.trail_id
+        }

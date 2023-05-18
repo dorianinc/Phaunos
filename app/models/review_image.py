@@ -14,3 +14,15 @@ class Review_Image(db.Model):
     )
 
     review_rel = db.relationship("Review", back_populates="review_images_rel")
+    
+    def to_dict(self):
+        return {
+            "src": self.src,
+            "review_id": self.review_id
+        }
+
+    def to_dict_no_item(self):
+        return {
+            "src": self.src,
+            "review_id": self.review_id
+        }

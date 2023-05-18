@@ -1,5 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField
 from wtforms.validators import DataRequired
-from flask_wtf.file import FileField, FileAllowed, FileRequired
-from 
+
+class ReviewForm(FlaskForm):
+    description = StringField("Description", validators=[DataRequired()])
+    rating = IntegerField("Rating", validators=[DataRequired()])
+    submit = SubmitField("Submit Review")

@@ -15,3 +15,23 @@ class Review(db.Model):
     user_rel = db.relationship("User", back_populates="review_rel")
     trail_rel = db.relationship("Trail", back_populates="review_rel")
     review_images_rel = db.relationship("Review_Image", back_populates="review_rel")
+    
+    
+    def to_dict(self, includeImages=False):
+        return {
+            "id": self.id,
+            "description": self.description,
+            "rating": self.rating,
+            "images": [review_image.to_dict() for review_image in self.review_images_rel] if includeImages else "",
+            "trail_id": self.trail_id,
+            "user_id": self.user_id
+        }
+        
+    def to_dict_no_item(self):
+        return {
+            "id": self.id,
+            "description": self.description,
+            "rating": self.rating,
+            "trail_id": self.trail_id,
+            "user_id": self.user_id
+        }
