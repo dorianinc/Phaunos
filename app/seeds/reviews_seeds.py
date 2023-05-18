@@ -2,7 +2,7 @@ from app.models import db, Review, environment, SCHEMA
 from sqlalchemy.sql import text
 
 seed_data = [
-    ##user 1
+    ## user 1
     {
         "description": "Beautiful trail with scenic views of mountains and lakes.",
         "rating": 4,
@@ -63,126 +63,126 @@ seed_data = [
         "trail_id": 10,
         "user_id": 1
     },
-    ##user 2
+    ## user 2
     {
         "description": "A challenging trail with rocky terrain and breathtaking summit views.",
         "rating": 5,
-        "trail_id": 11,
+        "trail_id": 1,
         "user_id": 2
     },
     {
         "description": "An adventurous trail with river crossings and dense forests.",
         "rating": 4,
-        "trail_id": 12,
+        "trail_id": 2,
         "user_id": 2
     },
     {
         "description": "A peaceful trail with gentle slopes and wildflower meadows.",
         "rating": 3,
-        "trail_id": 13,
+        "trail_id": 3,
         "user_id": 2
     },
     {
         "description": "A trail with ancient ruins and archaeological points of interest.",
         "rating": 4,
-        "trail_id": 14,
+        "trail_id": 4,
         "user_id": 2
     },
     {
         "description": "A picturesque trail along a river, ideal for birdwatching.",
         "rating": 5,
-        "trail_id": 15,
+        "trail_id": 5,
         "user_id": 2
     },
     {
         "description": "A scenic trail with panoramic views of valleys and distant peaks.",
         "rating": 4,
-        "trail_id": 16,
+        "trail_id": 6,
         "user_id": 2
     },
     {
         "description": "A family-friendly trail with interpretive signs and educational activities.",
         "rating": 3,
-        "trail_id": 17,
+        "trail_id": 7,
         "user_id": 2
     },
     {
         "description": "A challenging trail leading to a hidden waterfall in a lush forest.",
         "rating": 5,
-        "trail_id": 18,
+        "trail_id": 8,
         "user_id": 2
     },
     {
         "description": "A serene trail with a serene lake and opportunities for fishing.",
         "rating": 4,
-        "trail_id": 19,
+        "trail_id": 9,
         "user_id": 2
     },
     {
         "description": "A tranquil trail through a colorful autumn forest, perfect for relaxation.",
         "rating": 5,
-        "trail_id": 20,
+        "trail_id": 10,
         "user_id": 2
     },
-    ##user 3
+    ## user 3
     {
         "description": "A challenging trail with steep ascents and breathtaking ridge views.",
         "rating": 4,
-        "trail_id": 21,
+        "trail_id": 1,
         "user_id": 3
     },
     {
         "description": "A scenic trail with cascading waterfalls and lush greenery.",
         "rating": 5,
-        "trail_id": 22,
+        "trail_id": 2,
         "user_id": 3
     },
     {
         "description": "A peaceful trail along a tranquil river, ideal for meditation.",
         "rating": 3,
-        "trail_id": 23,
+        "trail_id": 3,
         "user_id": 3
     },
     {
         "description": "A trail with historical landmarks and significant cultural sites.",
         "rating": 4,
-        "trail_id": 24,
+        "trail_id": 4,
         "user_id": 3
     },
     {
         "description": "A picturesque trail with panoramic mountain views and alpine meadows.",
         "rating": 5,
-        "trail_id": 25,
+        "trail_id": 5,
         "user_id": 3
     },
     {
         "description": "A moderate trail with scenic overlooks and diverse wildlife sightings.",
         "rating": 4,
-        "trail_id": 26,
+        "trail_id": 6,
         "user_id": 3
     },
     {
         "description": "A family-friendly trail with picnic spots and interactive nature exhibits.",
         "rating": 3,
-        "trail_id": 27,
+        "trail_id": 7,
         "user_id": 3
     },
     {
         "description": "A challenging trail with boulder fields and breathtaking summit vistas.",
         "rating": 5,
-        "trail_id": 28,
+        "trail_id": 8,
         "user_id": 3
     },
     {
         "description": "A serene trail around a serene lake, perfect for birdwatching.",
         "rating": 4,
-        "trail_id": 29,
+        "trail_id": 9,
         "user_id": 3
     },
     {
         "description": "A tranquil trail through a vibrant spring forest, perfect for photography.",
         "rating": 5,
-        "trail_id": 30,
+        "trail_id": 10,
         "user_id": 3
     }   
     ]

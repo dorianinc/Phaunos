@@ -9,9 +9,7 @@ class Review_Image(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     img_src = db.Column(db.String(255), nullable=False)
-    review_id = db.Column(
-        db.Integer, db.ForeignKey(add_prefix_for_prod("reviews.id")), nullable=False
-    )
+    review_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("reviews.id")), nullable=False)
 
     review_rel = db.relationship("Review", back_populates="review_images_rel")
     
