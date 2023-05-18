@@ -17,13 +17,14 @@ class Review(db.Model):
     review_images_rel = db.relationship("Review_Image", back_populates="review_rel")
     
     
-    def to_dict(self):
+    def to_dict(self, includeImages=False):
         return {
             "id": self.id,
             "description": self.description,
             "rating": self.rating,
+            "images": [review_image.to_dict() for review_image in self.review_images_rel] if includeImages else "",
             "trail_id": self.trail_id,
-            "user_id": self.trail_id
+            "user_id": self.user_id
         }
         
     def to_dict_no_item(self):
@@ -32,5 +33,5 @@ class Review(db.Model):
             "description": self.description,
             "rating": self.rating,
             "trail_id": self.trail_id,
-            "user_id": self.trail_id
+            "user_id": self.user_id
         }
