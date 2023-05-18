@@ -115,4 +115,3 @@ def delete_review(list_id):
     db.session.delete(list)    
     db.session.commit()
     return (f"Successfully deleted bookmarks list #: {list_dict['id']}")
-    

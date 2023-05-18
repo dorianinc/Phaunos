@@ -17,10 +17,12 @@ class Bookmark(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
+            "bookmarks_list_id": self.bookmarks_list_id,
             "trail": self.trail_rel.to_dict(includeImages=True),
         }
         
     def to_dict_no_item(self):
         return {
             "id": self.id,
+            "bookmarks_list_id": self.bookmarks_list_id,
         }
