@@ -1,6 +1,6 @@
 from flask import Blueprint, request, make_response
 from flask_login import login_required, current_user
-from app.models import db, Trail, Review
+from app.models import db, Trail, Review, Bookmark
 from app.forms import ReviewForm
 
 trails_routes = Blueprint("trails", __name__)
@@ -70,3 +70,19 @@ def create_a_review(trail_id):
         error = make_response(form_errors)
         error.status_code = 400
         return error
+
+@trails_routes.route("/<int:trail_id>/bookmarks", methods=["POST"])
+@login_required
+def create_a_bookmark(trail_id):
+    """ Create a bookmark for bookmarks list """
+    user = current_user.to_dict()
+    data = request.get_json()
+    
+    new_bookmark = Bookmark(
+      trail_id=trail_id,
+      bookmarks_list_id=data["bookmarks_list_id"]  
+    )
+    db.session.add(new_bookmark)
+    db.session.commit()
+    
+    return new_bookmark.to_dict()
