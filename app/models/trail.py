@@ -26,3 +26,42 @@ class Trail(db.Model):
     trail_images_rel = db.relationship("Trail_Image", back_populates="trail_rel", cascade="all, delete-orphan")
     review_rel = db.relationship("Review", back_populates="trail_rel")
     bookmark_rel = db.relationship("Bookmark", back_populates="trail_rel")
+    
+    def to_dict(self, includeReviews=False):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "park": self.park,
+            "city": self.city,
+            "state": self.state,
+            "lat": self.lat,
+            "long": self.long,
+            "difficulty": self.difficulty,
+            "length": self.length,
+            "elevation": self.elevation,
+            "route_type": self.route_type,
+            "description": self.description,
+            "attractions": self.attractions.split(","),
+            "activities": self.activities.split(","),
+            "suitability": self.suitability.split(","),
+            "reviews": [review.to_dict() for review in self.review_rel] if includeReviews else ""
+        }
+
+    def to_dict_no_item(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "park": self.park,
+            "city": self.city,
+            "state": self.state,
+            "lat": self.lat,
+            "long": self.long,
+            "difficulty": self.difficulty,
+            "length": self.length,
+            "elevation": self.elevation,
+            "route_type": self.route_type,
+            "description": self.description,
+            "attractions": self.attractions.split(","),
+            "activities": self.activities.split(","),
+            "suitability": self.suitability.split(",")
+        }
