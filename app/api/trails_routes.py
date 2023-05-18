@@ -52,7 +52,7 @@ def create_a_review(trail_id):
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
-        print("🥳🥳🥳🥳 FORM IS VALID")
+        print("🥳🥳🥳🥳 REVIEW FORM IS VALID")
         
         data = form.data
         new_review = Review(

@@ -13,3 +13,21 @@ class Bookmarks_List(db.Model):
         
     user_rel = db.relationship("User", back_populates=("bookmarks_list_rel"))
     bookmark_rel = db.relationship("Bookmark", back_populates="bookmarks_list_rel")
+    
+    def to_dict(self, includeBookmarks=False):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "cover": self.cover,
+            "bookmarks": [bookmark.to_dict() for bookmark in self.bookmark_rel] if includeBookmarks else "",
+            "user_id": self.user_id
+        }
+    
+    def to_dict_no_item(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "cover": self.cover,
+            "bookmarks": [bookmark.to_dict() for bookmark in self.bookmark_rel],
+            "user_id": self.user_id
+        }
