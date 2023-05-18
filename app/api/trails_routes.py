@@ -19,7 +19,7 @@ def get_trail_by_id(trail_id):
         error = make_response("Trail does not exist")
         error.status_code = 404
         return error
-    return trail.to_dict(includeReviews=True)
+    return trail.to_dict(includesImages=True, includeReviews=True)
 
 @trails_routes.route("/<int:trail_id>/reviews")
 def get_reviews_by_trail_id(trail_id):
@@ -41,7 +41,7 @@ def create_a_review(trail_id):
         error.status_code = 404
         return error
     
-    trail_dict = trail.to_dict(includeReviews=True)
+    trail_dict = trail.to_dict(includesImages=True, includeReviews=True)
     for review in trail_dict["reviews"]:
         if int(review["user_id"]) == user["id"]:
             error = make_response("User has already reviewed this trail")
