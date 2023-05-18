@@ -41,7 +41,6 @@ def edit_review(review_id):
         data = form.data
         review.description = data["description"]
         review.rating = data["rating"]
-        
         db.session.commit()
         
         return review.to_dict(includeImages=True)
@@ -51,13 +50,10 @@ def edit_review(review_id):
         error = make_response(form_errors)
         error.status_code = 400
         return error
-         
-        
-    return review.to_dict(includeImages=True)
 
 @reviews_routes.route("/<int:review_id>", methods=["DELETE"])
 def delete_review(review_id):
-    """ Edit a single review """
+    """ Delete a single review """
     user = current_user.to_dict()
 
     #------------ validation -------------#    
@@ -67,7 +63,7 @@ def delete_review(review_id):
         error.status_code = 404
         return error
     
-    review_dict = review.to_dict(includeImages=True)
+    review_dict = review.to_dict()
     if int(review_dict["user_id"]) != user["id"]:
         error = make_response("Only the creator of a review can delete a review")
         error.status_code = 401

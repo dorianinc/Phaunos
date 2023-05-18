@@ -27,7 +27,7 @@ class Trail(db.Model):
     review_rel = db.relationship("Review", back_populates="trail_rel")
     bookmark_rel = db.relationship("Bookmark", back_populates="trail_rel")
     
-    def to_dict(self, includesImages=False, includeReviews=False):
+    def to_dict(self, includeImages=False, includeReviews=False):
         return {
             "id": self.id,
             "name": self.name,
@@ -44,7 +44,7 @@ class Trail(db.Model):
             "attractions": self.attractions.split(","),
             "activities": self.activities.split(","),
             "suitability": self.suitability.split(","),
-            "images": [image.to_dict() for image in self.trail_images_rel] if includesImages else "",
+            "images": [image.to_dict() for image in self.trail_images_rel] if includeImages else "",
             "reviews": [review.to_dict() for review in self.review_rel] if includeReviews else ""
         }
 

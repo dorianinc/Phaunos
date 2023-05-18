@@ -30,7 +30,7 @@ def get_bookmarks_list_by_id(list_id):
         error.status_code = 401
         return error 
     #--------------------------------------#  
-    
+   
     return list_dict
 
 @bookmarks_lists_routes.route("", methods=["POST"])
@@ -57,3 +57,62 @@ def create_bookmarks_list():
         error = make_response(form_errors)
         error.status_code = 400
         return error
+
+@bookmarks_lists_routes.route("/<int:list_id>", methods=["PUT"])
+def edit_bookmarks_list(list_id):
+    """ Edit a single bookmarks list """
+    user = current_user.to_dict()
+
+    #------------ validation -------------#    
+    list = Bookmarks_List.query.get(list_id)
+    if not list:
+        error = make_response("Bookmarks list does not exist")
+        error.status_code = 404
+        return error
+    
+    list_dict = list.to_dict(includeBookmarks=True)
+    if int(list_dict["user_id"]) != user["id"]:
+        error = make_response("Only the creator of a booksmark list can edit a list")
+        error.status_code = 401
+        return error
+    #--------------------------------------#  
+    form = BookmarksListForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        print("🥳🥳🥳🥳 BOOKMARKS LIST IS VALID")
+        
+        data = form.data
+        list.name = data["name"]
+        db.session.commit()
+        
+        return list.to_dict()
+    
+    else:
+        form_errors = {key: val[0] for (key, val) in form.errors.items()}
+        error = make_response(form_errors)
+        error.status_code = 400
+        return error
+    
+@bookmarks_lists_routes.route("/<int:list_id>", methods=["DELETE"])
+def delete_review(list_id):
+    """ Delete a single bookmarks list """
+    user = current_user.to_dict()
+
+    #------------ validation -------------#    
+    list = Bookmarks_List.query.get(list_id)
+    if not list:
+        error = make_response("Bookmarks list does not exist")
+        error.status_code = 404
+        return error
+    
+    list_dict = list.to_dict()
+    if int(list_dict["user_id"]) != user["id"]:
+        error = make_response("Only the creator of a booksmark list can edit a list")
+        error.status_code = 401
+        return error
+    #--------------------------------------#  
+    
+    db.session.delete(list)    
+    db.session.commit()
+    return (f"Successfully deleted bookmarks list #: {list_dict['id']}")
+    

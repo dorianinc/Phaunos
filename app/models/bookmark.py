@@ -18,14 +18,9 @@ class Bookmark(db.Model):
         return {
             "id": self.id,
             "trail": self.trail_rel.to_dict(includeImages=True),
-            "bookmarks_list_id": self.bookmarks_list_id,
-            "trail": self.trail_id
         }
         
     def to_dict_no_item(self):
         return {
             "id": self.id,
-            "trail": self.trail_rel.to_dict(includeImages=True),
-            "bookmarks_list_id": self.bookmarks_list_id,
-            "trail": self.trail_id
         }

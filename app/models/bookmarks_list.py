@@ -12,7 +12,7 @@ class Bookmarks_List(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
         
     user_rel = db.relationship("User", back_populates=("bookmarks_list_rel"))
-    bookmark_rel = db.relationship("Bookmark", back_populates="bookmarks_list_rel")
+    bookmark_rel = db.relationship("Bookmark", back_populates="bookmarks_list_rel", cascade="all, delete-orphan")
     
     def to_dict(self, includeBookmarks=False):
         return {
