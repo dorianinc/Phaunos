@@ -1,1 +1,15 @@
-/* TODO Add site wide styles */
+html{
+    font-family: 'Cabin', sans-serif;
+    width:100%;
+}
+
+body{
+    margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4{
+    margin: 0px;
+}

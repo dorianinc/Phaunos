@@ -1,0 +1,21 @@
+.logoContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    height: 60px;
+    width: 70px;
+    margin: 0px;
+  }
+  
+  .title {
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0;
+    text-decoration: none;
+  }
+
+  a:link {
+    text-decoration: none;
+  }
