@@ -2,6 +2,7 @@
   position: relative;
   height: 77vh;
   width: 100%;
+  margin-bottom: 40px;
 }
 .splash-image {
   position: absolute;
@@ -20,7 +21,6 @@
   left: 25%;
   z-index: 1;
   min-width: 700px;
-  margin: 0 auto;
 }
 
 .centerpiece-content > h1 {

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
-import LoginFormPage from "./components/LoginFormPage";
-import Banner from "./components/SplashPage/Banner/Banner";
+import SignupFormPage from "./components/AuthPages/SignupFormPage";
+import LoginFormPage from "./components/AuthPages/LoginFormPage";
+import SplashPage from "./components/SplashPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -26,7 +26,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path="/">
-            <Banner/>
+            <SplashPage/>
           </Route>
         </Switch>
       )}

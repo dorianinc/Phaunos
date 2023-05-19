@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
-import LogoButton from "./LogoButton/LogoButton";
+import LogoButton from "./LogoButton";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
