@@ -14,7 +14,7 @@
     margin: 5px 0;
 }
 
-.bookmark{
+.bookmark-icon{
     display: flex;
     justify-content: end;
     position:absolute;

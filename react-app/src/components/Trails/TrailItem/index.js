@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
-import OpenModal from "../../Modals/OpenModal";
-import BookmarkTrailModal from "../../Modals/BookmarkTrailModal";
+import ModalButton from "../../ModalButton";
+import BookmarkList from "../../BookMarkList";
 import "./TrailItem.css";
 
 function TrailItem({ trail }) {
@@ -22,11 +22,11 @@ function TrailItem({ trail }) {
           <p className="trail-name">{trail.name}</p>
           <p className="trail-park">{trail.park}</p>
         </div>
-        <div className="bookmark">
-          <OpenModal
+        <div className="bookmark-icon">
+          <ModalButton
             buttonText="Delete"
             type="bookmark"
-            modalComponent={<BookmarkTrailModal trailId={trail.id} />}
+            modalComponent={<BookmarkList trailId={trail.id} />}
           />
         </div>
       </div>

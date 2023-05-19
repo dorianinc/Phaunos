@@ -1,10 +1,10 @@
 
 ////////////// Action Creators ///////////////
 export const GET_TRAILS = "trails/GET_TRAILS";
-// export const GET_SINGLE_PLAYLIST = "playlists/GET_SINGLE_PLAYLIST";
-// export const UPDATE_PLAYLIST = "playlists/UPDATE_PLAYLIST";
-// export const DELETE_PLAYLIST = "playlists/DELETE_PLAYLIST";
-// export const CLEAR_PLAYLISTS = "playlists/CLEAR_PLAYLISTS";
+// export const GET_SINGLE_TRAIL = "trails/GET_SINGLE_TRAIL";
+// export const UPDATE_TRAIL = "trails/UPDATE_TRAIL";
+// export const DELETE_TRAIL = "trails/DELETE_TRAIL";
+// export const CLEAR_TRAILS = "trails/CLEAR_TRAILS";
 
 ///////////// Action Creators ///////////////
 
@@ -13,119 +13,119 @@ export const getTrails = (trails) => ({
   type: GET_TRAILS,
   trails,
 });
-// // get single playlist
-// export const getSinglePlaylist = (playlist) => ({
-//   type: GET_SINGLE_PLAYLIST,
-//   playlist,
+// // get single trail
+// export const getSingleTrail = (trail) => ({
+//   type: GET_SINGLE_TRAIL,
+//   trail,
 // });
 
-// // update single playlist
-// export const updatePlaylist = (playlist) => ({
-//   type: UPDATE_PLAYLIST,
-//   playlist,
+// // update single trail
+// export const updateTrail = (trail) => ({
+//   type: UPDATE_TRAIL,
+//   trail,
 // });
 
-// //// delete single playlist
-// export const deletePlaylist = (playlistId) => ({
-//   type: DELETE_PLAYLIST,
-//   playlistId,
+// //// delete single trail
+// export const deleteTrail = (trailId) => ({
+//   type: DELETE_TRAIL,
+//   trailId,
 // });
 
-// // clear playlists state
-// export const clearPlaylists = () => ({
-//   type: CLEAR_PLAYLISTS,
+// // clear trails state
+// export const clearTrails = () => ({
+//   type: CLEAR_TRAILS,
 // });
 
 /////////////////// Thunks ///////////////////
 
-// get all playlists
+// get all trails
 export const getTrailsThunk = () => async (dispatch) => {
   const res = await fetch("/api/trails");
   if (res.ok) {
     const data = await res.json();
-    console.log("getPlaylistThunk data 👉", data)
+    console.log("getTrailThunk data 👉", data)
     dispatch(getTrails(data));
     return data;
   }
 };
 
-// // get user's playlists
-// export const getUserPlaylistsThunk = () => async (dispatch) => {
-//   const res = await fetch("/api/playlists/current");
+// // get user's trails
+// export const getUserTrailsThunk = () => async (dispatch) => {
+//   const res = await fetch("/api/trails/current");
 //   if (res.ok) {
 //     const data = await res.json();
-//     dispatch(getPlaylists(data));
+//     dispatch(getTrails(data));
 //     return data
 //   }
 // };
 
-// // get playlist details of single playlist
-// export const getSinglePlaylistThunk = (playlistId) => async (dispatch) => {
-//   const res = await fetch(`/api/playlists/${playlistId}`);
+// // get trail details of single trail
+// export const getSingleTrailThunk = (trailId) => async (dispatch) => {
+//   const res = await fetch(`/api/trails/${trailId}`);
 //   if (res.ok) {
 //     const data = await res.json();
-//     console.log("getSinglePlaylistThunk 👉", data)
-//     dispatch(getSinglePlaylist(data));
+//     console.log("getSingleTrailThunk 👉", data)
+//     dispatch(getSingleTrail(data));
 //     return data;
 //   }
 // };
 
-// // post a playlist
-// export const createPlaylistThunk = (playlist) => async (dispatch) => {
-//   const res = await fetch("/api/playlists", {
+// // post a trail
+// export const createTrailThunk = (trail) => async (dispatch) => {
+//   const res = await fetch("/api/trails", {
 //     method: "POST",
 //     headers: {
 //       "Content-Type": "application/json",
 //     },
-//     body: JSON.stringify(playlist),
+//     body: JSON.stringify(trail),
 //   });
 //   if (res.ok) {
 //     const data = await res.json();
-//     console.log("createPlaylistThunk 👉", data)
+//     console.log("createTrailThunk 👉", data)
 //     return data;
 //   }
 // };
 
-// // update a playlist
-// export const updatePlaylistThunk = (playlist, playlistEdits) => async (dispatch) => {
-//   const res = await fetch(`/api/playlists/${playlist.id}`, {
+// // update a trail
+// export const updateTrailThunk = (trail, trailEdits) => async (dispatch) => {
+//   const res = await fetch(`/api/trails/${trail.id}`, {
 //     method: "PUT",
 //     headers: {
 //       "Content-Type": "application/json",
 //     },
-//     body: JSON.stringify(playlistEdits),
+//     body: JSON.stringify(trailEdits),
 //   });
 //   if (res.ok) {
 //     const data = await res.json();
-//     console.log("updatePlaylistThunk 👉", data)
+//     console.log("updateTrailThunk 👉", data)
 //     return data;
 //   }
 // };
 
-// // delete a playlist
-// export const deletePlaylistThunk = (playlistId) => async (dispatch) => {
-//   const res = await fetch(`/api/playlists/${playlistId}`, {
+// // delete a trail
+// export const deleteTrailThunk = (trailId) => async (dispatch) => {
+//   const res = await fetch(`/api/trails/${trailId}`, {
 //     method: "DELETE",
 //   });
 //   if (res.ok) {
-//     console.log("👉 successful in deletePlaylistThunk")
-//     dispatch(getUserPlaylistsThunk());
+//     console.log("👉 successful in deleteTrailThunk")
+//     dispatch(getUserTrailsThunk());
 //   }
 // };
 
-// export const addSongPlaylist = (playlist) => async(dispatch) => {
-//   console.log(playlist.playlist_id,' we in the add song playlist')
-//   const playlistId = playlist.playlist_id
+// export const addSongTrail = (trail) => async(dispatch) => {
+//   console.log(trail.trail_id,' we in the add song trail')
+//   const trailId = trail.trail_id
 //   // const history = useHistory()
-//   const response = await fetch(`/api/playlists/${playlistId}/song`,{
+//   const response = await fetch(`/api/trails/${trailId}/song`,{
 //       method:"POST",
 //       headers: {
 //         "Content-Type": 'application/json'
 //       },
-//     body: JSON.stringify(playlist)
+//     body: JSON.stringify(trail)
 //   })
 //   if (response.ok){
-//     console.log('add song playlist worked!!!!!!')
+//     console.log('add song trail worked!!!!!!')
 //   }
 // }
 const trailsReducer = (state = {}, action) => {
@@ -139,11 +139,11 @@ const trailsReducer = (state = {}, action) => {
       });
       console.log(" new state 👉👉👉👉",  newState)
       return newState;
-    // case GET_SINGLE_PLAYLIST:
+    // case GET_SINGLE_TRAIL:
     //   newState = {}
-    //   newState = {...action.playlist}
+    //   newState = {...action.trail}
     //   return newState
-    // case CLEAR_PLAYLISTS:
+    // case CLEAR_TRAILS:
     //   return {};
     default:
       return state;

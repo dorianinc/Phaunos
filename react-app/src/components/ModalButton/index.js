@@ -1,7 +1,7 @@
 import React from "react";
-import { useModal } from "../../../context/Modal";
+import { useModal } from "../../context/Modal";
 
-function OpenModal({
+function ModalButton({
   type,
   modalComponent, // component to render inside the modal
   buttonText, // text of the button that opens the modal
@@ -27,4 +27,4 @@ function OpenModal({
   );
 }
 
-export default OpenModal;
+export default ModalButton;

@@ -43,3 +43,25 @@
   border-radius: 30px;
   background-color: #efefec;
 }
+
+.bookmark-item{
+  display: flex;
+  gap: 20px;
+}
+
+.bookmark-tab{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  padding: 12px;
+  border-radius: 30px;
+  color: #000;
+  background-color: #efefec;
+}
+
+.bookmark-checkbox{
+  align-self: center;
+  margin-left: auto;
+}
