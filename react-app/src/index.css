@@ -14,3 +14,8 @@ h4,
 p{
     margin: 0px;
 }
+
+hr{
+    margin: 17px 0;
+    border: 1px solid #e2e1db;
+}

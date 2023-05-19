@@ -21,8 +21,7 @@ def get_bookmark_by_id(bookmark_id):
         error = make_response("Only the creator can view their Bookmark")
         error.status_code = 401
         return error
-    #--------------------------------------#  
-    
+    #--------------------------------------#   
     return bookmark.to_dict()
 
 @bookmarks_routes.route("/<int:bookmark_id>", methods=["PUT"])
@@ -43,11 +42,9 @@ def edit_review(bookmark_id):
         error = make_response("Only the creator of a Bookmark can delete a bookmark")
         error.status_code = 401
         return error 
-    #--------------------------------------#  
-    
+    #--------------------------------------#   
     bookmark.completed = data["completed"]
-    db.session.commit()
-        
+    db.session.commit()     
     return bookmark.to_dict()
 
 
@@ -68,7 +65,8 @@ def delete_bookmark(bookmark_id):
         error = make_response("Only the creator of a Bookmark can delete a bookmark")
         error.status_code = 401
         return error 
-    # #--------------------------------------#      
+    # #--------------------------------------#
+          
     db.session.delete(bookmark)    
     db.session.commit()
     return (f"Successfully deleted bookmark #: {bookmark.id}")

@@ -1,15 +1,15 @@
-import "./TrailItem.css";
 import { useHistory } from "react-router-dom";
-
+import OpenModal from "../../Modals/OpenModal";
+import BookmarkTrailModal from "../../Modals/BookmarkTrailModal";
+import "./TrailItem.css";
 
 function TrailItem({ trail }) {
-  const history = useHistory()
+  const history = useHistory();
 
-  const handleClick = (e, val) => {
+  const handleClick = (e, trailId) => {
     e.preventDefault();
-    e.stopPropagation()
-    if(val === "bookmark") alert(val)
-    else history.push(`/${val}`)
+    history.push(`/${trailId}`);
+    alert("Nuggets in 5");
   };
 
   return (
@@ -22,8 +22,12 @@ function TrailItem({ trail }) {
           <p className="trail-name">{trail.name}</p>
           <p className="trail-park">{trail.park}</p>
         </div>
-        <div className="bookmark" onClick={(e) => handleClick(e, "bookmark")}>
-          <i className="fa-regular fa-bookmark fa-xl" />
+        <div className="bookmark">
+          <OpenModal
+            buttonText="Delete"
+            type="bookmark"
+            modalComponent={<BookmarkTrailModal trailId={trail.id} />}
+          />
         </div>
       </div>
     </>

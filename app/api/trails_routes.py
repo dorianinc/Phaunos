@@ -9,7 +9,7 @@ trails_routes = Blueprint("trails", __name__)
 def get_all_trails():
     """"Get all trails"""
     trails = Trail.query.all()
-    return [trail.to_dict() for trail in trails]
+    return [trail.to_dict(includeImages=True, includeReviews=True) for trail in trails]
 
 @trails_routes.route("/<int:trail_id>")
 def get_trail_by_id(trail_id):
