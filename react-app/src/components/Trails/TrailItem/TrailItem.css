@@ -16,7 +16,7 @@
 
 .bookmark-icon{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     position:absolute;
     top: 10%;
     right:5%;

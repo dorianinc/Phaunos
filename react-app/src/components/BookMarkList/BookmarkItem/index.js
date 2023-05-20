@@ -1,8 +1,16 @@
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addBookmarkThunk } from "../../../store/lists";
 
-function BookmarkItem({ bookmark }) {
-  const history = useHistory();
+function BookmarkItem({ list, trailId }) {
+  const dispatch = useDispatch();
 
+  const handleClick = async (e, listId) => {
+    e.preventDefault();
+    const newBookmark = {trailId, listId}
+    dispatch(addBookmarkThunk(newBookmark))
+  };
+
+  if(!list) return null;
   return (
     <>
       <div className="bookmark-item">
@@ -10,14 +18,17 @@ function BookmarkItem({ bookmark }) {
           <i className="fa-regular fa-bookmark fa-lg" />
         </div>
         <div className="bookmark-summary">
-          <p>My Favorites</p>
-          <p>0 items</p>
+          <p>{list.title}</p>
+          <p>{list.length} items</p>
         </div>
         <div className="bookmark-checkbox">
-          <input type="checkbox" />
+          <input 
+          onClick={(e) => handleClick(e, list.id)}
+          type="checkbox"
+           />
         </div>
       </div>
-      <hr />
+      <hr className="item-divider"/>
     </>
   );
 }

@@ -1,13 +1,17 @@
 .bookmark-modal {
   color: #1A4314;
-  height: 425px;
+  min-width: 300px;
+  max-height: 700px;
   width: 400px;
   padding: 20px;
   border-radius: 20px;
-  background-color: white;
+  background-color: #fff;
 }
 
 .x-mark{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 25px;
   width: 25px;
   padding: 5px;
@@ -21,7 +25,6 @@
 
 .bookmark-modal>h1{
   font-weight: 200;
-  margin-bottom: 40px;
 }
 
 .create-list{
@@ -29,11 +32,35 @@
   align-items: center;
   gap: 10px;
   vertical-align: bottom;
+  cursor: pointer;
+  padding: 10px;
 }
 
 .create-list>p{
-  cursor: pointer;
   font-size: 1.2rem;
+}
+
+.list-container{
+  overflow-y: auto;
+  padding: 10px;
+  margin-bottom: 5px;
+  max-height: 400px;
+}
+
+.list-container::-webkit-scrollbar {
+  width: .1em;
+  padding: 5px;
+}
+ 
+.list-container::-webkit-scrollbar-track {
+  padding: 5px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.list-container::-webkit-scrollbar-thumb {
+  padding: 5px;
+  background-color: #efefeb;
+  outline: 1px solid #5a5a5a;
 }
 
 .plus-sign{

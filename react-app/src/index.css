@@ -1,21 +1,61 @@
-html{
-    font-family: 'Cabin', sans-serif;
-    width:100%;
+html {
+  font-family: "Cabin", sans-serif;
+  width: 100%;
 }
 
-body{
-    margin: 0px;
+body {
+  margin: 0px;
 }
 
 h1,
 h2,
 h3,
 h4,
-p{
-    margin: 0px;
+p {
+  margin: 0px;
 }
 
-hr{
-    margin: 17px 0;
-    border: 1px solid #e2e1db;
+.header-divider {
+  border: 1px solid #e2e1db;
+}
+
+.item-divider {
+  margin: 17px 0;
+  border: 1px solid #e2e1db;
+}
+
+.white-button {
+  height: 50px;
+  width: 100px;
+  border: 1px solid #faf9f6;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  background-color: #fff;
+}
+
+.white-button:hover {
+  border: none;
+  background-color: #efefec;
+  cursor: pointer;
+}
+
+.green-button {
+  height: 50px;
+  width: 100px;
+  border: 1px solid #faf9f6;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #2c5e1a;
+  cursor: pointer;
+}
+
+.green-button.disabled {
+  height: 50px;
+  width: 100px;
+  border: 1px solid #faf9f6;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  color: #efefeb;
+  background-color: #fafaf9;
 }

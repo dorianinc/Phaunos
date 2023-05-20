@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTrailsThunk } from "../../store/trails";
-import { Link } from "react-router-dom";
 import Banner from "./Banner/Banner";
 import TrailItem from "../Trails/TrailItem";
 import "./SplashPage.css";

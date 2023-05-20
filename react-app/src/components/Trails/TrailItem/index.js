@@ -16,7 +16,7 @@ function TrailItem({ trail }) {
     <>
       <div className="trail-item" onClick={(e) => handleClick(e, trail.id)}>
         <div>
-          <img className="trail-image" src={trail.images[0].img_src} />
+          <img className="trail-image" alt="cover" src={trail.images[0].img_src} />
         </div>
         <div className="trail-text">
           <p className="trail-name">{trail.name}</p>
@@ -24,7 +24,6 @@ function TrailItem({ trail }) {
         </div>
         <div className="bookmark-icon">
           <ModalButton
-            buttonText="Delete"
             type="bookmark"
             modalComponent={<BookmarkList trailId={trail.id} />}
           />

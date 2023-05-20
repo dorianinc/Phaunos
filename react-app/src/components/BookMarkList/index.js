@@ -1,43 +1,54 @@
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { useModal } from "../../context/Modal";
-import BookmarkItem from "./BookmarkItem"
+import { useDispatch, useSelector } from "react-redux";
+import { getUserListsThunk } from "../../store/lists";
+import BookmarkItem from "./BookmarkItem";
+import NewList from "./NewList";
+import ModalButton from "../ModalButton";
 import "./BookmarkList.css";
 
 function BookmarkList({ trailId }) {
+  console.log("trailId  in BookmarkList 👉", trailId);
   const { closeModal } = useModal();
+
+  const getLists = useSelector((state) => state.lists);
+  const lists = Object.values(getLists);
+  
   const dispatch = useDispatch();
 
-  const handleClick = (e, trailId) => {
-    e.preventDefault();
-    alert("id =>", trailId);
-    closeModal();
-  };
+  useEffect(() => {
+    dispatch(getUserListsThunk());
+  }, [dispatch]);
 
   return (
     <div className="bookmark-modal">
-      <img className="x-mark" onClick={closeModal} src="/images/mark.png" />
+      <img className="x-mark" alt="close" onClick={closeModal} src="/images/mark.png" />
       <h1>Save to list</h1>
-      <div className="create-list">
-        <img className="plus-sign" src="/images/plus.png" />
-        <p>Create New List</p>
+      <hr className="header-divider" />
+      <ModalButton
+        modalComponent={<NewList trailId={trailId} />}
+        buttonContent={
+          <div className="create-list">
+            <img className="plus-sign" alt="add" src="/images/plus.png" />
+            <p>Create New List</p>
+          </div>
+        }
+      />
+      <hr className="item-divider" />
+      <div className="list-container">
+        {lists.map((list) => (
+          <BookmarkItem trailId={trailId} list={list} />
+        ))}
       </div>
-      <hr />
-      <div className="bookmark-item">
-        <div className="bookmark-tab">
-          <i className="fa-regular fa-bookmark fa-lg" />
-        </div>
-        <div className="bookmark-summary">
-          <p>My Favorites</p>
-          <p>0 items</p>
-        </div>
-        <div className="bookmark-checkbox">
-          <input type="checkbox"/>
-        </div>
+      <div className="buttons">
+        <button id="done-button" className="green-button">
+          Done
+        </button>
       </div>
-      <hr/>
-      <BookmarkItem bookmark={test}/>
     </div>
   );
 }
 
 export default BookmarkList;
+
+// onClick={(e) => handleClick(e)}
