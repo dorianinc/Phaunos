@@ -71,18 +71,20 @@ def create_a_review(trail_id):
         error.status_code = 400
         return error
 
-@trails_routes.route("/<int:trail_id>/bookmarks", methods=["POST"])
-@login_required
-def create_a_bookmark(trail_id):
-    """ Create a bookmark for bookmarks list """
-    user = current_user.to_dict()
-    data = request.get_json()
+# @trails_routes.route("/bookmarks", methods=["POST"])
+# @login_required
+# def create_a_bookmark(trail_id):
+#     print("👉👉👉👉👉👉👉👉👉 In ADD BOOK MARK")
+#     """ Add a bookmark  to a list """
+#     user = current_user.to_dict()
+#     data = request.get_json()
     
-    new_bookmark = Bookmark(
-      trail_id=trail_id,
-      bookmarks_list_id=data["bookmarks_list_id"]  
-    )
-    db.session.add(new_bookmark)
-    db.session.commit()
+#     new_bookmark = Bookmark(
+#       trail_id=trail_id,
+#       bookmarks_list_id=data["bookmarks_list_id"]  
+#     )
+#     db.session.add(new_bookmark)
+#     db.session.commit()
+#     print(f"new_bookmark.to_dict() 👉 {new_bookmark.to_dict()}")
     
-    return new_bookmark.to_dict()
+#     return new_bookmark.to_dict()

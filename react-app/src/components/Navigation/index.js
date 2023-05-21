@@ -21,7 +21,7 @@ function Navigation({ isLoaded }) {
         <Link exact to="/">
           Community
         </Link>
-        <Link exact to="/">
+        <Link exact to="/profile">
           Saved
         </Link>
         <Link exact to="/">

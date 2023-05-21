@@ -10,6 +10,7 @@ export const getLists = (lists) => ({
 });
 /////////////////// Thunks ///////////////////
 
+// get all users lists
 export const getUserListsThunk = () => async (dispatch) => {
   const res = await fetch("/api/bookmarksLists");
   if (res.ok) {
@@ -35,6 +36,25 @@ export const createListThunk = (list) => async (dispatch) => {
   }
 };
 
+// delete a list
+export const deleteListThunk = (listId) => async (dispatch) => {
+  console.log("listId  in deleteListThunk 👉", listId);
+
+  const res = await fetch("/api/bookmarksLists", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(listId),
+  });
+  if (res.ok) {
+    
+    console.log("👉 successfully Deleted!");
+    dispatch(getUserListsThunk());
+    return true
+  }
+};
+
 // add bookmark to list
 export const addBookmarkThunk = (bookmark) => async (dispatch) => {
   const res = await fetch("/api/bookmarksLists/bookmark", {
@@ -44,11 +64,10 @@ export const addBookmarkThunk = (bookmark) => async (dispatch) => {
     },
     body: JSON.stringify(bookmark),
   });
-  if (res.ok){
-
+  if (res.ok) {
     const data = await res.json();
     await dispatch(getUserListsThunk());
-    return data;   
+    return data;
   }
 };
 

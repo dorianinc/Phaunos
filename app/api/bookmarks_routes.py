@@ -24,9 +24,10 @@ def get_bookmark_by_id(bookmark_id):
     #--------------------------------------#   
     return bookmark.to_dict()
 
+
 @bookmarks_routes.route("/<int:bookmark_id>", methods=["PUT"])
 def edit_review(bookmark_id):
-    """ Edit a bookmark """
+    """ Edit a bookmark's completion status """
     user = current_user.to_dict()
     data = request.get_json()
 

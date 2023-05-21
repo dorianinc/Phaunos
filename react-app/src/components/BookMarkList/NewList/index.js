@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { createListThunk } from "../../../store/lists";
 import BookmarkList from "..";
 import ModalButton from "../../ModalButton";
 import "./NewList.css";
 
 function NewList({ trailId }) {
-  console.log("trailIdin NewList 👉", trailId);
-
   const [title, setTitle] = useState("");
   const [buttonClass, setButtonClass] = useState("green-button disabled");
 
   const dispatch = useDispatch();
+  const location = useLocation();
+  const pathName = location.pathname;
 
   useEffect(() => {
     if (title.length >= 5) {
@@ -32,7 +33,7 @@ function NewList({ trailId }) {
     <>
       <div className="new-list-container">
         <ModalButton
-          modalComponent={<BookmarkList trailId={trailId} />}
+          modalComponent={pathName === "/profile" ? null : <BookmarkList trailId={trailId} />}
           buttonContent={
             <div className="back-arrow">
               <i class="fa-solid fa-arrow-left fa-xl" />
@@ -49,12 +50,12 @@ function NewList({ trailId }) {
           <hr className="header-divider" />
           <div className="buttons">
             <ModalButton
-              modalComponent={<BookmarkList trailId={trailId} />}
+              modalComponent={pathName === "/profile" ? null : <BookmarkList trailId={trailId} />}
               buttonContent={<button className="white-button">Cancel</button>}
             />
 
             <ModalButton
-              modalComponent={<BookmarkList trailId={trailId} />}
+              modalComponent={pathName === "/profile" ? null : <BookmarkList trailId={trailId} />}
               buttonContent={
                 <button
                   className={buttonClass}

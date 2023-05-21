@@ -35,7 +35,7 @@ function BookmarkList({ trailId }) {
         }
       />
       <hr className="item-divider" />
-      <div className="list-container">
+      <div className="list-container modal">
         {lists.map((list) => (
           <BookmarkItem trailId={trailId} list={list} />
         ))}

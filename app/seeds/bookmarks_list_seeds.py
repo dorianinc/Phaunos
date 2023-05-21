@@ -4,19 +4,19 @@ from sqlalchemy.sql import text
 seed_data = [
    ## user 1
     {
-        "title": "User 1's List",
+        "title": "My Favorites",
         "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
         "user_id": 1
     },
    ## user 2
     {
-        "title": "User 2's List",
+        "title": "My Favorites",
         "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
         "user_id": 2
     },
    ## user 3
     {
-        "title": "User 3's List",
+        "title": "My Favorites",
         "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
         "user_id": 3
     },
