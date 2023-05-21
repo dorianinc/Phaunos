@@ -33,3 +33,9 @@
 .white-button.delete:hover{
     background-color: #efefec;
 }
+
+.edit-button{
+    border: none;
+    margin-left: 5px;
+    background-color: #fff;
+}

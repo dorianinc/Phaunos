@@ -92,3 +92,7 @@
   align-self: center;
   margin-left: auto;
 }
+
+.title-field{
+  display: flex;
+}
