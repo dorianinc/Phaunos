@@ -6,7 +6,8 @@ import SignupFormPage from "./components/AuthPages/SignupFormPage";
 import LoginFormPage from "./components/AuthPages/LoginFormPage";
 import SplashPage from "./components/SplashPage";
 import Navigation from "./components/Navigation";
-import UserProfile from "./components/ProfilePage";
+import ProfilePage from "./components/ProfilePage";
+import TrailDetails from "./components/Trails/TrailDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,18 +21,11 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login" >
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path="/profile">
-            <UserProfile/>
-          </Route>
-          <Route path="/">
-            <SplashPage/>
-          </Route>
+          <Route path="/login" component={LoginFormPage} />
+          <Route path="/signup" component={SignupFormPage} />
+          <Route path="/profile" component={ProfilePage} />
+          <Route path="/trails/:trailId" component={TrailDetails} />
+          <Route path="/" component={SplashPage} />
         </Switch>
       )}
     </>

@@ -1,7 +1,6 @@
-
 ////////////// Action Creators ///////////////
 export const GET_TRAILS = "trails/GET_TRAILS";
-// export const GET_SINGLE_TRAIL = "trails/GET_SINGLE_TRAIL";
+export const GET_SINGLE_TRAIL = "trails/GET_SINGLE_TRAIL";
 // export const UPDATE_TRAIL = "trails/UPDATE_TRAIL";
 // export const DELETE_TRAIL = "trails/DELETE_TRAIL";
 // export const CLEAR_TRAILS = "trails/CLEAR_TRAILS";
@@ -13,11 +12,11 @@ export const getTrails = (trails) => ({
   type: GET_TRAILS,
   trails,
 });
-// // get single trail
-// export const getSingleTrail = (trail) => ({
-//   type: GET_SINGLE_TRAIL,
-//   trail,
-// });
+// get single trail
+export const getSingleTrail = (trail) => ({
+  type: GET_SINGLE_TRAIL,
+  trail,
+});
 
 // // update single trail
 // export const updateTrail = (trail) => ({
@@ -43,7 +42,7 @@ export const getTrailsThunk = () => async (dispatch) => {
   const res = await fetch("/api/trails");
   if (res.ok) {
     const data = await res.json();
-    console.log("getTrailThunk data 👉", data)
+    console.log("getTrailThunk data 👉", data);
     dispatch(getTrails(data));
     return data;
   }
@@ -59,16 +58,16 @@ export const getTrailsThunk = () => async (dispatch) => {
 //   }
 // };
 
-// // get trail details of single trail
-// export const getSingleTrailThunk = (trailId) => async (dispatch) => {
-//   const res = await fetch(`/api/trails/${trailId}`);
-//   if (res.ok) {
-//     const data = await res.json();
-//     console.log("getSingleTrailThunk 👉", data)
-//     dispatch(getSingleTrail(data));
-//     return data;
-//   }
-// };
+// get trail details of single trail
+export const getSingleTrailThunk = (trailId) => async (dispatch) => {
+  const res = await fetch(`/api/trails/${trailId}`);
+  if (res.ok) {
+    const data = await res.json();
+    console.log("getSingleTrailThunk 👉", data);
+    dispatch(getSingleTrail(data));
+    return data;
+  }
+};
 
 // // post a trail
 // export const createTrailThunk = (trail) => async (dispatch) => {
@@ -133,16 +132,16 @@ const trailsReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_TRAILS:
       newState = {};
-      console.log(" action.trails 👉👉👉👉",  action.trails)
+      console.log(" action.trails 👉👉👉👉", action.trails);
       action.trails.forEach((trail) => {
         newState[trail.id] = trail;
       });
-      console.log(" new state 👉👉👉👉",  newState)
+      console.log(" new state 👉👉👉👉", newState);
       return newState;
-    // case GET_SINGLE_TRAIL:
-    //   newState = {}
-    //   newState = {...action.trail}
-    //   return newState
+    case GET_SINGLE_TRAIL:
+      newState = {};
+      newState = { ...action.trail };
+      return newState;
     // case CLEAR_TRAILS:
     //   return {};
     default:

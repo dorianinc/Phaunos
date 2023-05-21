@@ -8,10 +8,9 @@ function TrailItem({ trail }) {
 
   const handleClick = (e, trailId) => {
     e.preventDefault();
-    history.push(`/${trailId}`);
-    alert("Nuggets in 5");
+    history.push(`trails/${trailId}`);
   };
-
+  if (!trail.id) return null;
   return (
     <>
       <div className="trail-item" onClick={(e) => handleClick(e, trail.id)}>
@@ -23,10 +22,7 @@ function TrailItem({ trail }) {
           <p className="trail-park">{trail.park}</p>
         </div>
         <div className="bookmark-icon">
-          <ModalButton
-            type="bookmark"
-            modalComponent={<BookmarkList trailId={trail.id} />}
-          />
+          <ModalButton type="bookmark" modalComponent={<BookmarkList trailId={trail.id} />} />
         </div>
       </div>
     </>

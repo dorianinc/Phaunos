@@ -6,7 +6,7 @@ import NewList from "../BookMarkList/NewList";
 import BookmarkItem from "../BookMarkList/BookmarkItem";
 import "./ProfilePage.css";
 
-const UserProfile = () => {
+const ProfilePage = () => {
   const user = useSelector((state) => state.session.user);
   const getLists = useSelector((state) => state.lists);
   const lists = Object.values(getLists);
@@ -68,4 +68,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default ProfilePage;

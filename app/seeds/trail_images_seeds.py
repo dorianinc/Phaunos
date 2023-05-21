@@ -4,65 +4,101 @@ from sqlalchemy.sql import text
 seed_data = [
     ## trail 1
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694373/Phaunos/mist%20trail/mist-trail-01.jpg",
        "trail_id": 1
     },
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694373/Phaunos/mist%20trail/mist-trail-02.jpg",
        "trail_id": 1
     },
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694373/Phaunos/mist%20trail/mist-trail-03.jpg",
        "trail_id": 1
     },
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694373/Phaunos/mist%20trail/mist-trail-04.jpg",
        "trail_id": 1
     },
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694373/Phaunos/mist%20trail/mist-trail-05.jpg",
+       "trail_id": 1
+    },
+    {
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694373/Phaunos/mist%20trail/mist-trail-06.jpg",
+       "trail_id": 1
+    },
+    {
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694373/Phaunos/mist%20trail/mist-trail-07.jpg",
+       "trail_id": 1
+    },
+    {
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694373/Phaunos/mist%20trail/mist-trail-08.jpg",
        "trail_id": 1
     },
     ## trail 2
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694370/Phaunos/half%20dome%20trail/half-dome-01.jpg",
        "trail_id": 2
     },
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694370/Phaunos/half%20dome%20trail/half-dome-02.jpg",
        "trail_id": 2
     },
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694370/Phaunos/half%20dome%20trail/half-dome-03.jpg",
        "trail_id": 2
     },
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694370/Phaunos/half%20dome%20trail/half-dome-04.jpg",
        "trail_id": 2
     },
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694370/Phaunos/half%20dome%20trail/half-dome-05.jpg",
+       "trail_id": 2
+    },
+    {
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694370/Phaunos/half%20dome%20trail/half-dome-06.jpg",
+       "trail_id": 2
+    },
+    {
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694370/Phaunos/half%20dome%20trail/half-dome-07.jpg",
+       "trail_id": 2
+    },
+    {
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694370/Phaunos/half%20dome%20trail/half-dome-08.jpg",
        "trail_id": 2
     },
     ## trail 3
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694368/Phaunos/glacier%20point%20trail/glacier-point-01.jpg",
        "trail_id": 3
     },
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694368/Phaunos/glacier%20point%20trail/glacier-point-02.jpg",
        "trail_id": 3
     },
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694368/Phaunos/glacier%20point%20trail/glacier-point-03.jpg",
        "trail_id": 3
     },
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694368/Phaunos/glacier%20point%20trail/glacier-point-04.jpg",
        "trail_id": 3
     },
     {
-       "img_src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Atlas_forrest.jpg/1200px-Atlas_forrest.jpg",
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694368/Phaunos/glacier%20point%20trail/glacier-point-05.jpg",
+       "trail_id": 3
+    },
+    {
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694368/Phaunos/glacier%20point%20trail/glacier-point-06.jpg",
+       "trail_id": 3
+    },
+    {
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694368/Phaunos/glacier%20point%20trail/glacier-point-07.jpg",
+       "trail_id": 3
+    },
+    {
+       "img_src": "https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684694368/Phaunos/glacier%20point%20trail/glacier-point-08.jpg",
        "trail_id": 3
     },
     ## trail 4
