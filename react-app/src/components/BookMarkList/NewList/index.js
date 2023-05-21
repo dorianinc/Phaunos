@@ -49,14 +49,15 @@ function NewList({ trailId }) {
           </label>
           <hr className="header-divider" />
           <div className="buttons">
-            <ModalButton
+            {/* <ModalButton
               modalComponent={pathName === "/profile" ? null : <BookmarkList trailId={trailId} />}
               buttonContent={<button className="white-button">Cancel</button>}
-            />
-
+            /> */}
             <ModalButton
               modalComponent={pathName === "/profile" ? null : <BookmarkList trailId={trailId} />}
               buttonContent={
+                <>
+                <button className="white-button">Cancel</button>
                 <button
                   className={buttonClass}
                   onClick={handleSubmit}
@@ -64,6 +65,7 @@ function NewList({ trailId }) {
                 >
                   Create
                 </button>
+                </>
               }
             />
           </div>
