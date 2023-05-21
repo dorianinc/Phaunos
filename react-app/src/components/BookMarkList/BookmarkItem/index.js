@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useModal } from "../../../context/Modal";
 import { useLocation } from "react-router-dom";
-import { addBookmarkThunk, deleteListThunk } from "../../../store/lists";
+import { addBookmarkThunk, editListThunk } from "../../../store/lists";
 import ModalButton from "../../ModalButton";
 import DeleteList from "../DeleteList";
 
 function BookmarkItem({ list, trailId }) {
-  const [newTitle, setNewTitle] = useState(list.title);
+  const [title, setTitle] = useState(list.title);
   const [hoveredList, setHoveredList] = useState("");
   const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
@@ -20,33 +19,25 @@ function BookmarkItem({ list, trailId }) {
     dispatch(addBookmarkThunk(newBookmark));
   };
 
-  const handleKeyDown = (event, listId) => {
-    if (event.key === "Enter" || event.key === "Escape") {
-      console.log("listId 👉", listId)
-      console.log("IN THE KEYDOWN FUNCTION");
+  const handleKeyDown = async (e, listId) => {
+    if (e.key === "Enter" || e.key === "Escape") {
+      if(title !== list.title) await dispatch(editListThunk({title, listId}))
       setEdit(false);
-      console.log("state ==>", edit);
     }
   };
 
-  const handleBlur = (event, listId) => {
-    console.log("listId 👉", listId)
-    console.log("IN THE BLUR FUNCTION");
+  const handleBlur = async (listId) => {
+    if(title !== list.title)  await dispatch(editListThunk({title, listId}))
     setEdit(false);
-    console.log("state ==>", edit);
   };
-
-  useEffect(() => {
-    console.log(newTitle);
-  });
 
   if (!list) return null;
   return (
     <>
-      <div 
-      className="bookmark-item"
-      onMouseEnter={() => setHoveredList(list.id)}
-      onMouseLeave={() => setHoveredList("")}
+      <div
+        className="bookmark-item"
+        onMouseEnter={() => setHoveredList(list.id)}
+        onMouseLeave={() => setHoveredList("")}
       >
         <div className="bookmark-tab">
           <i className="fa-regular fa-bookmark fa-lg" />
@@ -55,16 +46,16 @@ function BookmarkItem({ list, trailId }) {
           <div className="title-field">
             {edit === true ? (
               <input
-                value={newTitle}
-                onBlur={(e) => handleBlur(e, list.id)}
+                value={title}
+                onBlur={(e) => handleBlur(list.id)}
                 onKeyDown={(e) => handleKeyDown(e, list.id)}
-                onChange={(e) => setNewTitle(e.target.value)}
+                onChange={(e) => setTitle(e.target.value)}
               />
             ) : (
               <p>{list.title}</p>
             )}
             {list.title === "My Favorites" && pathName === "/profile" ? null : pathName ===
-              "/profile" && list.id === hoveredList ? (
+                "/profile" && list.id === hoveredList ? (
               <button onClick={() => setEdit(!edit)} className="edit-button">
                 <i class="fa-regular fa-pen-to-square" />
               </button>

@@ -58,13 +58,15 @@ def create_bookmarks_list():
         error.status_code = 400
         return error
 
-@bookmarks_lists_routes.route("/<int:list_id>", methods=["PUT"])
-def edit_bookmarks_list(list_id):
+@bookmarks_lists_routes.route("", methods=["PUT"])
+def edit_bookmarks_list():
     """ Edit a single bookmarks list """
     user = current_user.to_dict()
+    data = request.get_json()
+    print(f"data 👉 {data}")
 
     #------------ validation -------------#    
-    list = Bookmarks_List.query.get(list_id)
+    list = Bookmarks_List.query.get(data["listId"])
     if not list:
         error = make_response("Bookmarks list does not exist")
         error.status_code = 404
@@ -82,7 +84,7 @@ def edit_bookmarks_list(list_id):
         print("🥳🥳🥳🥳 BOOKMARKS LIST IS VALID")
         
         data = form.data
-        list.name = data["name"]
+        list.title = data["title"]
         db.session.commit()
         
         return list.to_dict()

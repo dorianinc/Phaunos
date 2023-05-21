@@ -48,10 +48,23 @@ export const deleteListThunk = (listId) => async (dispatch) => {
     body: JSON.stringify(listId),
   });
   if (res.ok) {
-    
-    console.log("👉 successfully Deleted!");
     dispatch(getUserListsThunk());
-    return true
+  }
+};
+
+// change list title
+export const editListThunk = (list) => async (dispatch) => {
+  console.log("list  in editListThunk 👉", list);
+
+  const res = await fetch("/api/bookmarksLists", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(list),
+  });
+  if (res.ok) {
+    dispatch(getUserListsThunk());
   }
 };
 

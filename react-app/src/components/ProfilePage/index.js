@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useModal } from "../../context/Modal";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserListsThunk } from "../../store/lists";
 import ModalButton from "../ModalButton";
@@ -12,7 +11,6 @@ const UserProfile = () => {
   const getLists = useSelector((state) => state.lists);
   const lists = Object.values(getLists);
 
-  const { closeModal } = useModal();
   const dispatch = useDispatch();
 
   useEffect(() => {
