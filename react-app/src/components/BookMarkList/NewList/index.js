@@ -24,7 +24,6 @@ function NewList({ trailId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("HANDLING SUBMIT");
     const newList = { title };
     dispatch(createListThunk(newList));
   };

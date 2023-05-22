@@ -1,4 +1,4 @@
-html {
+html, textarea {
   font-family: "Cabin", sans-serif;
   width: 100%;
 }
@@ -59,3 +59,9 @@ p {
   color: #efefeb;
   background-color: #fafaf9;
 }
+
+
+.fa-star {
+  color: #5de372;
+}
+

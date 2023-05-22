@@ -38,7 +38,6 @@ export const createListThunk = (list) => async (dispatch) => {
 
 // delete a list
 export const deleteListThunk = (listId) => async (dispatch) => {
-  console.log("listId  in deleteListThunk 👉", listId);
 
   const res = await fetch("/api/bookmarksLists", {
     method: "DELETE",
@@ -54,7 +53,6 @@ export const deleteListThunk = (listId) => async (dispatch) => {
 
 // change list title
 export const editListThunk = (list) => async (dispatch) => {
-  console.log("list  in editListThunk 👉", list);
 
   const res = await fetch("/api/bookmarksLists", {
     method: "PUT",

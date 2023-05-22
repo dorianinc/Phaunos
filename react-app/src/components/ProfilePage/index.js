@@ -28,7 +28,7 @@ const ProfilePage = () => {
     <div className="profile-container">
       <div className="user-info">
         <div>
-          <img className="profile-pic" alt="profile-pic" src="/images/animal-icons/turtle.png" />
+          <img className="profile-pic profile" alt="profile-pic" src="https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684768954/Phaunos/animal-icons/wolf.png" />
         </div>
         <h2 id="user-name">
           {user.first_name} {user.last_name}

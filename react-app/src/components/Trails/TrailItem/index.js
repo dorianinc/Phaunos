@@ -10,12 +10,12 @@ function TrailItem({ trail }) {
     e.preventDefault();
     history.push(`trails/${trailId}`);
   };
-  if (!trail.id) return null;
+  if (!trail.id || !trail.cover) return null;
   return (
     <>
       <div className="trail-item" onClick={(e) => handleClick(e, trail.id)}>
         <div>
-          <img className="trail-image" alt="cover" src={trail.images[0].img_src} />
+          <img className="trail-image" alt="cover" src={trail.cover.img_src} />
         </div>
         <div className="trail-text">
           <p className="trail-name">{trail.name}</p>

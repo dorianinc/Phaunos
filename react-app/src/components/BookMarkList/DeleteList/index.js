@@ -9,7 +9,6 @@ function DeleteList({ listId }) {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    console.log("-----> list id", listId);
     await dispatch(deleteListThunk({ listId }));
     closeModal();
   };

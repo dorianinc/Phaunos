@@ -22,7 +22,7 @@ function Navigation({ isLoaded }) {
           Community
         </Link> */}
           <Link exact to="/profile">
-            Saved
+            My Lists
           </Link>
           {/* <Link exact to="/">
           Shop

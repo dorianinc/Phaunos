@@ -8,7 +8,6 @@ import ModalButton from "../ModalButton";
 import "./BookmarkList.css";
 
 function BookmarkList({ trailId }) {
-  console.log("trailId  in BookmarkList 👉", trailId);
   const { closeModal } = useModal();
 
   const getLists = useSelector((state) => state.lists);

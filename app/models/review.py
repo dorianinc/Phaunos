@@ -26,6 +26,7 @@ class Review(db.Model):
             "rating": self.rating,
             "images": [review_image.to_dict() for review_image in self.review_images_rel] if includeImages else "",
             "date_submitted": self.date_submitted,
+            "user": self.user_rel.to_dict(),
             "trail_id": self.trail_id,
             "user_id": self.user_id
         }

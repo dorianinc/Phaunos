@@ -42,8 +42,7 @@ export const getTrailsThunk = () => async (dispatch) => {
   const res = await fetch("/api/trails");
   if (res.ok) {
     const data = await res.json();
-    console.log("getTrailThunk data 👉", data);
-    dispatch(getTrails(data));
+    await dispatch(getTrails(data));
     return data;
   }
 };
@@ -63,27 +62,26 @@ export const getSingleTrailThunk = (trailId) => async (dispatch) => {
   const res = await fetch(`/api/trails/${trailId}`);
   if (res.ok) {
     const data = await res.json();
-    console.log("getSingleTrailThunk 👉", data);
-    dispatch(getSingleTrail(data));
+    await dispatch(getSingleTrail(data));
     return data;
   }
 };
 
-// // post a trail
-// export const createTrailThunk = (trail) => async (dispatch) => {
-//   const res = await fetch("/api/trails", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(trail),
-//   });
-//   if (res.ok) {
-//     const data = await res.json();
-//     console.log("createTrailThunk 👉", data)
-//     return data;
-//   }
-// };
+// add review to a trail
+export const addTrailReviewThunk = (trailId, review) => async (dispatch) => {
+  const res = await fetch(`/api/trails/${trailId}/reviews`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(review),
+  });
+  if (res.ok) {
+    const data = await res.json();
+    await dispatch(getSingleTrailThunk(trailId));
+    return data;
+  }
+};
 
 // // update a trail
 // export const updateTrailThunk = (trail, trailEdits) => async (dispatch) => {
@@ -96,7 +94,6 @@ export const getSingleTrailThunk = (trailId) => async (dispatch) => {
 //   });
 //   if (res.ok) {
 //     const data = await res.json();
-//     console.log("updateTrailThunk 👉", data)
 //     return data;
 //   }
 // };
@@ -107,13 +104,11 @@ export const getSingleTrailThunk = (trailId) => async (dispatch) => {
 //     method: "DELETE",
 //   });
 //   if (res.ok) {
-//     console.log("👉 successful in deleteTrailThunk")
 //     dispatch(getUserTrailsThunk());
 //   }
 // };
 
 // export const addSongTrail = (trail) => async(dispatch) => {
-//   console.log(trail.trail_id,' we in the add song trail')
 //   const trailId = trail.trail_id
 //   // const history = useHistory()
 //   const response = await fetch(`/api/trails/${trailId}/song`,{
@@ -124,7 +119,6 @@ export const getSingleTrailThunk = (trailId) => async (dispatch) => {
 //     body: JSON.stringify(trail)
 //   })
 //   if (response.ok){
-//     console.log('add song trail worked!!!!!!')
 //   }
 // }
 const trailsReducer = (state = {}, action) => {
@@ -132,11 +126,9 @@ const trailsReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_TRAILS:
       newState = {};
-      console.log(" action.trails 👉👉👉👉", action.trails);
       action.trails.forEach((trail) => {
         newState[trail.id] = trail;
       });
-      console.log(" new state 👉👉👉👉", newState);
       return newState;
     case GET_SINGLE_TRAIL:
       newState = {};

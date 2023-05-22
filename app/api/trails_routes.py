@@ -45,7 +45,7 @@ def create_a_review(trail_id):
     for review in trail_dict["reviews"]:
         if int(review["user_id"]) == user["id"]:
             error = make_response("User has already reviewed this trail")
-            error.status_code = 404
+            error.status_code = 400
             return error    
     #--------------------------------------#  
            

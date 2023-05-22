@@ -1,0 +1,35 @@
+.new-review-modal{
+    color: #2B381F;
+    min-width: 300px;
+    max-height: 700px;
+    width: 400px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.new-review-header{
+    color:  #2B381F
+}
+
+.new-review-trail-name{
+    color:   #6D7667
+}
+
+.new-review-rating-input {
+    display: flex;
+    align-content: center;
+    gap: 5px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+
+  .text-area {
+    resize: none;
+    height: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
