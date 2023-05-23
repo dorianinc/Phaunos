@@ -5,7 +5,7 @@ import { addBookmarkThunk, editListThunk } from "../../../store/lists";
 import ModalButton from "../../ModalButton";
 import DeleteList from "../DeleteList";
 
-function BookmarkItem({ list, trailId }) {
+function ListItem({ list, trailId }) {
   const [title, setTitle] = useState(() => {
     if (list) return list.title;
   });
@@ -43,7 +43,7 @@ function BookmarkItem({ list, trailId }) {
 
   const handleClick = async (e, listId) => {
     e.preventDefault();
-    if(!edit) history.push(`lists/${listId}`);
+    if(!edit && pathName !== "/") history.push(`lists/${listId}`);
   };
 
   if (!list) return null;
@@ -106,4 +106,4 @@ function BookmarkItem({ list, trailId }) {
   );
 }
 
-export default BookmarkItem;
+export default ListItem;

@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserListsThunk } from "../../store/lists";
-import BookmarkItem from "./BookmarkItem";
+import ListItem from "./ListItem";
 import NewList from "./NewList";
 import ModalButton from "../ModalButton";
-import "./BookmarkList.css";
+import "./List.css";
 
-function BookmarkList({ trailId }) {
+function List({ trailId }) {
   const { closeModal } = useModal();
 
   const getLists = useSelector((state) => state.lists);
@@ -36,7 +36,7 @@ function BookmarkList({ trailId }) {
       <hr className="item-divider" />
       <div className="list-container modal">
         {lists.map((list) => (
-          <BookmarkItem trailId={trailId} list={list} />
+          <ListItem trailId={trailId} list={list} />
         ))}
       </div>
       <div className="buttons">
@@ -48,6 +48,6 @@ function BookmarkList({ trailId }) {
   );
 }
 
-export default BookmarkList;
+export default List;
 
 // onClick={(e) => handleClick(e)}

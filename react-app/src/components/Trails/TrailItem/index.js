@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ModalButton from "../../ModalButton";
-import BookmarkList from "../../BookMarkList";
+import List from "../../Lists";
 import "./TrailItem.css";
 
 function TrailItem({ trail }) {
@@ -25,7 +25,7 @@ function TrailItem({ trail }) {
         </div>
         {user && (
           <div className="bookmark-icon">
-            <ModalButton type="bookmark" modalComponent={<BookmarkList trailId={trail.id} />} />
+            <ModalButton type="bookmark" modalComponent={<List trailId={trail.id} />} />
           </div>
         )}
       </div>

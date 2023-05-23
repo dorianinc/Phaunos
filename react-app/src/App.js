@@ -8,7 +8,7 @@ import SplashPage from "./components/SplashPage";
 import Navigation from "./components/Navigation";
 import ProfilePage from "./components/ProfilePage";
 import TrailDetails from "./components/Trails/TrailDetails";
-import ListDetails from "./components/BookMarkList/ListDetails";
+import ListDetails from "./components/Lists/ListDetails";
 
 function App() {
   const dispatch = useDispatch();

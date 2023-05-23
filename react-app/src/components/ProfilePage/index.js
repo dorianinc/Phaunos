@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserListsThunk } from "../../store/lists";
 import ModalButton from "../ModalButton";
-import NewList from "../BookMarkList/NewList";
-import BookmarkItem from "../BookMarkList/BookmarkItem";
+import NewList from "../Lists/NewList";
+import ListItem from "../Lists/ListItem";
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
@@ -60,7 +60,7 @@ const ProfilePage = () => {
         <hr className="header-divider" />
         <div className="list-container profile">
           {lists.map((list) => (
-            <BookmarkItem list={list} />
+            <ListItem list={list} />
           ))}
         </div>
       </div>
