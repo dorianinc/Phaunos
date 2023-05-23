@@ -1,4 +1,4 @@
-.delete-list{
+.delete-review{
     color:  #2B381F;
     background-color: #fff;
     height: 290px;
@@ -8,8 +8,15 @@
     box-sizing: border-box;
 }
 
-.delete-list>h1{
+.delete-review>h1{
     font-weight: 200;
+    margin-bottom: 10px;
+}
+
+#delete-text{
+    font-size: 1.1rem;
+    font-weight: 100;
+    margin-bottom: 35px;
 }
 
 .buttons.delete{

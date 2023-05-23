@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-import datetime
+from datetime import date
 
 class Review(db.Model):
     __tablename__ = 'reviews'
@@ -12,11 +12,11 @@ class Review(db.Model):
     rating = db.Column(db.Float, nullable=False)
     trail_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("trails.id")), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-    date_submitted = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
+    date_submitted = db.Column(db.DateTime, nullable=False, default=date.today())
         
     user_rel = db.relationship("User", back_populates="review_rel")
     trail_rel = db.relationship("Trail", back_populates="review_rel")
-    review_images_rel = db.relationship("Review_Image", back_populates="review_rel")
+    review_images_rel = db.relationship("Review_Image", back_populates="review_rel", cascade="all, delete-orphan")
     
     
     def to_dict(self, includeImages=False):
@@ -27,6 +27,7 @@ class Review(db.Model):
             "images": [review_image.to_dict() for review_image in self.review_images_rel] if includeImages else "",
             "date_submitted": self.date_submitted,
             "user": self.user_rel.to_dict(),
+            "trail": self.trail_rel.to_dict_no_item(),
             "trail_id": self.trail_id,
             "user_id": self.user_id
         }

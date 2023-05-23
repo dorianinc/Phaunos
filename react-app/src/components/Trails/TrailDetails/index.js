@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleTrailThunk, getTrailsThunk } from "../../../store/trails";
+import { getSingleTrailThunk } from "../../../store/trails";
 import ModalButton from "../../ModalButton";
 import ReviewItem from "../../Reviews/ReviewItem";
 import ReviewForm from "../../Reviews/ReviewForm";
@@ -10,7 +10,6 @@ import "./TrailDetails.css";
 const TrailDetails = () => {
   const { trailId } = useParams();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
   const trail = useSelector((state) => state.trails);
 
   useEffect(() => {
@@ -23,9 +22,6 @@ const TrailDetails = () => {
   useEffect(() => {
     dispatch(getSingleTrailThunk(trailId));
 
-    // return () => {
-    //   dispatch(getTrailsThunk());
-    // };
   }, [dispatch, trailId]);
 
   if (!trail.id) return null;
@@ -34,7 +30,7 @@ const TrailDetails = () => {
   return (
     <div className="trail-details-container">
       <div className="trail-details-card">
-        <img alt="cover-image" className="cover-image" src={trail.cover.img_src} />
+        <img alt="cover" className="cover-image" src={trail.cover.img_src} />
         <div className="trail-details-summary">
           <h1 className="trail-details-name">{trail.name}</h1>
           <p>
@@ -96,7 +92,7 @@ const TrailDetails = () => {
             </div>
             <div className="trail-details-review-add">
               <ModalButton
-                modalComponent={<ReviewForm trail={trail}/>}
+                modalComponent={<ReviewForm trail={trail} method="create"/>}
                 buttonContent={<button className="green-button review">Write review</button>}
               />
             </div>

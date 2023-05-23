@@ -1,0 +1,12 @@
+.review-item-options{
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+#delete-option,#edit-option{
+    color: #2B381F;
+    font-size: 1.1rem;
+    text-decoration: underline;
+    cursor: pointer;
+}

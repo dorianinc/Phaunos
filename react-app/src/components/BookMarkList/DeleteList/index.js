@@ -20,8 +20,7 @@ function DeleteList({ listId }) {
       <div className="buttons delete">
         <div>
           <button className="green-button delete" onClick={closeModal}>
-            {" "}
-            Cancel{" "}
+            Cancel
           </button>
         </div>
         <div>

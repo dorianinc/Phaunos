@@ -1,37 +1,44 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
-import { addTrailReviewThunk } from "../../../store/trails";
+import { addReviewThunk, updateReviewThunk } from "../../../store/reviews";
 import StarsRatingInput from "./StarsRatingInput/StarsRatingInput";
 import "./ReviewForm.css";
 
-function ReviewForm({ trail }) {
+function ReviewForm({ trail, review, method }) {
   const [description, setDescription] = useState("");
   const [rating, setRating] = useState(0);
+  // const [errorsObj, setErrorsObj] = useState({});
   const [buttonClass, setButtonClass] = useState("green-button disabled");
   const { closeModal } = useModal();
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (review && review.id) {
+      setDescription(review.description);
+      setRating(review.rating);
+    }
+  }, []);
+
+  useEffect(() => {
     if (description.length >= 10 && rating >= 1) {
       setButtonClass("green-button");
-    }else{
-        setButtonClass("green-button disabled");
+    } else {
+      setButtonClass("green-button disabled");
     }
   }, [description, rating]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newReview = { description, rating };
-    await dispatch(addTrailReviewThunk(trail.id, newReview))
-    closeModal()
-    //   .then(closeModal)
-    //   .catch(async (res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) {
-    //       setErrorsObj(data.errors);
-    //     }
-    //   });
+    if (method === "create") {
+      const newReview = { description, rating };
+      await dispatch(addReviewThunk(trail.id, newReview));
+    } else {
+      const reviewId = review.id;
+      const updatedReview = { description, rating, reviewId };
+      await dispatch(updateReviewThunk(trail.id, updatedReview));
+    }
+    closeModal();
   };
 
   const onChange = (number) => {

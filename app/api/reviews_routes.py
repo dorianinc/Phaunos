@@ -1,4 +1,4 @@
-from flask import Blueprint, request, make_response
+from flask import Blueprint, request, make_response, jsonify
 from flask_login import login_required, current_user
 from app.models import db, Review
 from app.forms import ReviewForm
@@ -15,13 +15,16 @@ def get_review_by_id(review_id):
         return error
     return review.to_dict(includeImages=True)
 
-@reviews_routes.route("/<int:review_id>", methods=["PUT"])
-def edit_review(review_id):
+@reviews_routes.route("", methods=["PUT"])
+def edit_review():
     """ Edit a single review """
+    print("🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠")
     user = current_user.to_dict()
+    data = request.get_json()
+    print(f"data 👉 {data}")
 
     #------------ validation -------------#    
-    review = Review.query.get(review_id)
+    review = Review.query.get(data["reviewId"])
     if not review:
         error = make_response("Review does not exist")
         error.status_code = 404
@@ -51,13 +54,14 @@ def edit_review(review_id):
         error.status_code = 400
         return error
 
-@reviews_routes.route("/<int:review_id>", methods=["DELETE"])
-def delete_review(review_id):
+@reviews_routes.route("", methods=["DELETE"])
+def delete_review():
     """ Delete a single review """
     user = current_user.to_dict()
-
+    data = request.get_json()
+    print(f"data 👉 {data}")
     #------------ validation -------------#    
-    review = Review.query.get(review_id)
+    review = Review.query.get(data["reviewId"])
     if not review:
         error = make_response("Review does not exist")
         error.status_code = 404
@@ -72,5 +76,7 @@ def delete_review(review_id):
     
     db.session.delete(review)    
     db.session.commit()
-    return (f"Successfully deleted review #: {review_dict['id']}")
+    res = make_response({"message": "Successfully deleted"})
+    res.status_code = 200
+    return res
     

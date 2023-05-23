@@ -3,6 +3,7 @@ import { useModal } from "../../context/Modal";
 
 function ModalButton({
   type,
+  nameOfClass,
   modalComponent, // component to render inside the modal
   buttonContent,
   buttonText, // text of the button that opens the modal
@@ -23,7 +24,7 @@ function ModalButton({
       {type === "bookmark" ? (
         <i className="fa-regular fa-bookmark fa-xl" onClick={(e) => handleClick(e)} />
       ) : (
-        <div className="list-options" onClick={handleClick}>{buttonContent}</div>
+        <div className={nameOfClass} onClick={handleClick}>{buttonContent}</div>
       )}
     </>
   );
