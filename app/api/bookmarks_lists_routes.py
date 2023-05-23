@@ -1,6 +1,6 @@
 from flask import Blueprint, request, make_response
 from flask_login import login_required, current_user
-from app.models import db, Bookmarks_List
+from app.models import db, Bookmarks_List, Bookmark
 from app.forms import BookmarksListForm
 
 bookmarks_lists_routes = Blueprint("bookmarks_lists", __name__)
@@ -46,7 +46,7 @@ def create_bookmarks_list():
         
         data = form.data
         new_list = Bookmarks_List(
-            name=data["name"],
+            title=data["title"],
             user_id=user["id"]
         )
         db.session.add(new_list)
@@ -58,13 +58,15 @@ def create_bookmarks_list():
         error.status_code = 400
         return error
 
-@bookmarks_lists_routes.route("/<int:list_id>", methods=["PUT"])
-def edit_bookmarks_list(list_id):
+@bookmarks_lists_routes.route("", methods=["PUT"])
+def edit_bookmarks_list():
     """ Edit a single bookmarks list """
     user = current_user.to_dict()
+    data = request.get_json()
+    print(f"data 👉 {data}")
 
     #------------ validation -------------#    
-    list = Bookmarks_List.query.get(list_id)
+    list = Bookmarks_List.query.get(data["listId"])
     if not list:
         error = make_response("Bookmarks list does not exist")
         error.status_code = 404
@@ -82,7 +84,7 @@ def edit_bookmarks_list(list_id):
         print("🥳🥳🥳🥳 BOOKMARKS LIST IS VALID")
         
         data = form.data
-        list.name = data["name"]
+        list.title = data["title"]
         db.session.commit()
         
         return list.to_dict()
@@ -93,13 +95,14 @@ def edit_bookmarks_list(list_id):
         error.status_code = 400
         return error
     
-@bookmarks_lists_routes.route("/<int:list_id>", methods=["DELETE"])
-def delete_review(list_id):
+@bookmarks_lists_routes.route("", methods=["DELETE"])
+def delete_review():
     """ Delete a single bookmarks list """
     user = current_user.to_dict()
-
+    data = request.get_json()
+    print(f"data 👉👉👉👉👉 {data}")
     #------------ validation -------------#    
-    list = Bookmarks_List.query.get(list_id)
+    list = Bookmarks_List.query.get(data["listId"])
     if not list:
         error = make_response("Bookmarks list does not exist")
         error.status_code = 404
@@ -115,3 +118,23 @@ def delete_review(list_id):
     db.session.delete(list)    
     db.session.commit()
     return (f"Successfully deleted bookmarks list #: {list_dict['id']}")
+
+
+@bookmarks_lists_routes.route("/bookmark", methods=["POST"])
+@login_required
+def create_a_bookmark():
+    print("👉👉👉👉👉👉👉👉👉 IN ADD BOOKMARK")
+    """ Add a bookmark  to a list """
+    user = current_user.to_dict()
+    data = request.get_json()
+    print(f"data 👉 {data}")
+    
+    new_bookmark = Bookmark(
+      trail_id=data["trailId"],
+      bookmarks_list_id=data["listId"]  
+    )
+    db.session.add(new_bookmark)
+    db.session.commit()
+    print(f"new_bookmark.to_dict() 👉 {new_bookmark.to_dict()}")
+    
+    return new_bookmark.to_dict()

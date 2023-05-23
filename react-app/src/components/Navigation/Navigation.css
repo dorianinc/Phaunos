@@ -1,5 +1,55 @@
+.nav-container {
+  background-color: #fff;
+  border-bottom: 1px solid #deddd6;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  margin: 0px 15px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-left > a {
+  color: #2c5e1a;
+  text-decoration: none;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+#login-button {
+  background-color: #ededec;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+}
+
+#login-button > a {
+  color: #000;
+}
+
 .profile-dropdown {
   position: absolute;
+  list-style-type: none;
+  top: 35px;
+  right: 10px;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 24px 24px 24px 24px;
+  z-index: 2;
+  cursor: pointer;
 }
 
 .hidden {

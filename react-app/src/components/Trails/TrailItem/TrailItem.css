@@ -1,0 +1,30 @@
+.trail-item{
+    border: 2px solid black;
+    position:relative;
+    cursor: pointer;
+}
+
+.trail-image{
+    height: 175px;
+    width: 250px;
+    border-radius: 25px;
+}
+
+.trail-text>p{
+    margin: 5px 0;
+}
+
+.bookmark-icon{
+    display: flex;
+    justify-content: flex-end;
+    position:absolute;
+    top: 10%;
+    right:5%;
+    height: 10px;
+    width: 40px;
+}
+
+.fa-bookmark{
+    z-index:1;
+    /* color: white; */
+}

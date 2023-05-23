@@ -1,0 +1,43 @@
+.delete-review{
+    color:  #2B381F;
+    background-color: #fff;
+    height: 290px;
+    width: 350px;
+    padding: 25px;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.delete-review>h1{
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+
+#delete-text{
+    font-size: 1.1rem;
+    font-weight: 100;
+    margin-bottom: 35px;
+}
+
+.buttons.delete{
+    flex-direction: column;
+    gap: 10px;
+}
+
+.green-button.delete{
+    width: 100%;
+}
+
+.white-button.delete{
+    width: 100%;
+}
+
+.white-button.delete:hover{
+    background-color: #efefec;
+}
+
+.edit-button{
+    border: none;
+    margin-left: 5px;
+    background-color: #fff;
+}

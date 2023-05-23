@@ -37,15 +37,18 @@ class Trail(db.Model):
             "lat": self.lat,
             "long": self.long,
             "difficulty": self.difficulty,
-            "length": self.length,
+            "len": self.length,
             "elevation": self.elevation,
             "route_type": self.route_type,
             "description": self.description,
             "attractions": self.attractions.split(","),
             "activities": self.activities.split(","),
             "suitability": self.suitability.split(","),
+            "cover": (self.trail_images_rel[0]).to_dict(),
             "images": [image.to_dict() for image in self.trail_images_rel] if includeImages else "",
-            "reviews": [review.to_dict() for review in self.review_rel] if includeReviews else ""
+            "avg_rating": sum([review.to_dict()["rating"] for review in self.review_rel]) / len([review.to_dict()["rating"] for review in self.review_rel]),
+            "reviews": [review.to_dict() for review in self.review_rel] if includeReviews else "",
+            "num_reviews": len(self.review_rel)
         }
 
     def to_dict_no_item(self):

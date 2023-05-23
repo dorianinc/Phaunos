@@ -4,20 +4,20 @@ from sqlalchemy.sql import text
 seed_data = [
    ## user 1
     {
-        "name": "User 1's List",
-        "cover": "no cover available",
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
         "user_id": 1
     },
    ## user 2
     {
-        "name": "User 2's List",
-        "cover": "no cover available",
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
         "user_id": 2
     },
    ## user 3
     {
-        "name": "User 3's List",
-        "cover": "no cover available",
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
         "user_id": 3
     },
     ]

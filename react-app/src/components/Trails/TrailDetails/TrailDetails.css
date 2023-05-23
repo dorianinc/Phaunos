@@ -1,0 +1,170 @@
+.trail-details-container {
+  width: 1024px;
+  margin: 2% auto;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0px 10px 10px #b8b8b5;
+  overflow: hidden;
+}
+
+.trail-details-card {
+  height: 325px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 40px solid #437128;
+}
+
+.cover-image {
+  width: 100%;
+  filter: brightness(75%);
+  z-index: 0;
+}
+
+.trail-details-summary {
+  color: #fff;
+  position: absolute;
+  z-index: 1;
+  bottom: 9%;
+  left: 3%;
+}
+
+.trail-details-name {
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+.trail-details-info-container {
+  display: flex;
+}
+.trail-details-info {
+  background-color: #fff;
+  flex-grow: 3;
+  flex-basis: 65%;
+  padding: 20px 25px;
+  box-sizing: border-box;
+}
+
+.trail-details-sidebar {
+  background-color: #fff;
+  border-left: 1px solid #dddcd5;
+  flex-grow: 2;
+  flex-basis: 35%;
+}
+
+.trail-details-table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#length-th,
+#elevation-th,
+#route-type-th {
+  color: #6d7667;
+  font-weight: 200;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+#length-td,
+#elevation-td,
+#route-type-td {
+  color: #464e37;
+  font-weight: bold;
+}
+
+.trail-details-desc {
+  font-size: 1.1rem;
+  color: #464e37;
+  font-weight: 200;
+  line-height: 1.8rem;
+}
+
+.trail-details-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#tile {
+  color: #757766;
+  border: 1px solid #dddcd5;
+  padding: 10px;
+}
+
+.trail-details-weather {
+  background-color: lightgreen;
+  height: 150px;
+}
+
+.trail-details-reviews-summary {
+  display: flex;
+}
+
+.trail-details-review-graph {
+  background-color: aquamarine;
+  width: 25%;
+}
+
+.trail-details-review-avg {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  font-weight: 600;
+}
+
+#avg-rating {
+  color: #2b381f;
+  font-size: 3.5rem;
+}
+
+#stars {
+  display: flex;
+  justify-content: center;
+}
+
+#num-reviews {
+  margin: 10px 0;
+  font-weight: 200;
+}
+
+.trail-details-review-add {
+  display: flex;
+  justify-content: center;
+  width: 25%;
+  margin-bottom: auto;
+}
+.green-button.review {
+  width: 150px;
+}
+
+/* review container css*/
+
+.profile-pic.review {
+  height: 55px;
+  width: 55px;
+}
+
+.trail-details-reviews-container {
+  color: #464e37;
+}
+
+.trail-details-review-rating{
+  margin-bottom: 5px;
+}
+
+.trail-details-review-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#review-user-name {
+  font-family: 600;
+}
+
+#review-date {
+  color: #6d7667;
+  font-weight: 200;
+  font-size: 0.8rem;
+}
+

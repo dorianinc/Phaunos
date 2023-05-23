@@ -1,0 +1,9 @@
+.content-trails{
+    width: 45%;
+    margin: 0 auto;
+}
+
+.trail-item-container{
+    display: flex;
+    gap: 19px;
+}

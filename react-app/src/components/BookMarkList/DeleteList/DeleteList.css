@@ -1,0 +1,36 @@
+.delete-list{
+    color:  #2B381F;
+    background-color: #fff;
+    height: 290px;
+    width: 350px;
+    padding: 25px;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.delete-list>h1{
+    font-weight: 200;
+}
+
+.buttons.delete{
+    flex-direction: column;
+    gap: 10px;
+}
+
+.green-button.delete{
+    width: 100%;
+}
+
+.white-button.delete{
+    width: 100%;
+}
+
+.white-button.delete:hover{
+    background-color: #efefec;
+}
+
+.edit-button{
+    border: none;
+    margin-left: 5px;
+    background-color: #fff;
+}

@@ -1,0 +1,41 @@
+.new-list-container {
+  color: #2B381F;
+  height: 275px;
+  width: 400px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.back-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+
+.back-arrow:hover {
+  background-color: #efefec;
+}
+
+.new-list-container>h1{
+    font-weight: 400;
+    margin-bottom: 22px;
+}
+
+#new-list-input{
+    height:30px;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
