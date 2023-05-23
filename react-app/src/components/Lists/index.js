@@ -40,7 +40,7 @@ function List({ trailId }) {
         ))}
       </div>
       <div className="buttons">
-        <button id="done-button" className="green-button">
+        <button id="done-button" className="green-button" onClick={closeModal}>
           Done
         </button>
       </div>
