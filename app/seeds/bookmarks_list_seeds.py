@@ -5,25 +5,25 @@ seed_data = [
    ## user 1
     {
         "title": "My Favorites",
-        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "cover": "",
         "user_id": 1
     },
    ## user 2
     {
         "title": "My Favorites",
-        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "cover": "",
         "user_id": 2
     },
    ## user 3
     {
         "title": "My Favorites",
-        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "cover": "",
         "user_id": 3
     },
    ## demo user
     {
         "title": "My Favorites",
-        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "cover": "",
         "user_id": 4
     },
     ]
