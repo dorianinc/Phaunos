@@ -15,6 +15,7 @@ seed_data = [
         "elevation": "1,000 ft",
         "route_type": "Out and Back",
         "description": "Get to know this trail near Yosemite Valley, California. Generally considered a challenging route.",
+        "attractions": "Panoramic Views, Cables",
         "activities": "Hiking, Photography",
         "suitability": "Kid Friendly, Wheelchair Friendly",
       },
