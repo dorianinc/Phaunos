@@ -1,10 +1,12 @@
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ModalButton from "../../ModalButton";
 import BookmarkList from "../../BookMarkList";
 import "./TrailItem.css";
 
 function TrailItem({ trail }) {
   const history = useHistory();
+  const user = useSelector((state) => state.session.user);
 
   const handleClick = (e, trailId) => {
     e.preventDefault();
@@ -21,9 +23,11 @@ function TrailItem({ trail }) {
           <p className="trail-name">{trail.name}</p>
           <p className="trail-park">{trail.park}</p>
         </div>
-        <div className="bookmark-icon">
-          <ModalButton type="bookmark" modalComponent={<BookmarkList trailId={trail.id} />} />
-        </div>
+        {user && (
+          <div className="bookmark-icon">
+            <ModalButton type="bookmark" modalComponent={<BookmarkList trailId={trail.id} />} />
+          </div>
+        )}
       </div>
     </>
   );

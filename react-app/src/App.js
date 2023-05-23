@@ -8,6 +8,7 @@ import SplashPage from "./components/SplashPage";
 import Navigation from "./components/Navigation";
 import ProfilePage from "./components/ProfilePage";
 import TrailDetails from "./components/Trails/TrailDetails";
+import ListDetails from "./components/BookMarkList/ListDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
           <Route path="/signup" component={SignupFormPage} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/trails/:trailId" component={TrailDetails} />
+          <Route path="/lists/:listId" component={ListDetails} />
           <Route path="/" component={SplashPage} />
         </Switch>
       )}

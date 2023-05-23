@@ -1,9 +1,14 @@
+import { useSelector } from "react-redux";
 import ModalButton from "../../ModalButton";
 import ReviewForm from "../ReviewForm";
 import DeleteReview from "../DeleteReview";
 import "./ReviewItem.css";
 
 function ReviewItem({ review }) {
+  console.log("review 👉", review);
+  const user = useSelector((state) => state.session.user);
+  console.log("user 👉", user);
+
   if (!review) return null;
   return (
     <>
@@ -34,19 +39,24 @@ function ReviewItem({ review }) {
       <div className="trail-details-review-desc">
         <p>{review.description}</p>
       </div>
-      <div className="review-item-options">
-        <ModalButton
-          nameOfClass=""
-          modalComponent={<DeleteReview reviewId={review.id} trailId={review.trail.id}/>}
-          buttonContent={<p id="delete-option">Delete</p>}
-        />
-        <p>|</p>
-        <ModalButton
-          nameOfClass=""
-          modalComponent={<ReviewForm review={review} trail={review.trail} method="update" />}
-          buttonContent={<p id="edit-option">Edit</p>}
-        />
-      </div>
+      {/* {user.id === review.user_id ? (
+        
+      )} */}
+      {user && user.id === review.user_id ? (
+        <div className="review-item-options">
+          <ModalButton
+            nameOfClass=""
+            modalComponent={<DeleteReview reviewId={review.id} trailId={review.trail.id} />}
+            buttonContent={<p id="delete-option">Delete</p>}
+          />
+          <p>|</p>
+          <ModalButton
+            nameOfClass=""
+            modalComponent={<ReviewForm review={review} trail={review.trail} method="update" />}
+            buttonContent={<p id="edit-option">Edit</p>}
+          />
+        </div>
+      ) : null}
       <hr className="item-divider" />
     </>
   );

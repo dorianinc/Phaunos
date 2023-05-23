@@ -20,6 +20,12 @@ seed_data = [
         "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
         "user_id": 3
     },
+   ## demo user
+    {
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "user_id": 4
+    },
     ]
 
 

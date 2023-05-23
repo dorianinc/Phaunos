@@ -1,6 +1,6 @@
 ////////////// Action Creators ///////////////
 export const GET_LISTS = "lists/GET_LISTS";
-
+export const GET_SINGLE_LIST = "lists/GET_SINGLE_LIST";
 ///////////// Action Creators ///////////////
 
 // get all lists
@@ -8,6 +8,13 @@ export const getLists = (lists) => ({
   type: GET_LISTS,
   lists,
 });
+
+// get single trail
+export const getSingleList = (list) => ({
+  type: GET_SINGLE_LIST,
+  list,
+});
+
 /////////////////// Thunks ///////////////////
 
 // get all users lists
@@ -16,6 +23,16 @@ export const getUserListsThunk = () => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     dispatch(getLists(data));
+    return data;
+  }
+};
+
+// get list details of single list
+export const getSingleListThunk = (listId) => async (dispatch) => {
+  const res = await fetch(`/api/bookmarksLists/${listId}`);
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(getSingleList(data));
     return data;
   }
 };
@@ -90,6 +107,10 @@ const listsReducer = (state = {}, action) => {
       action.lists.forEach((list) => {
         newState[list.id] = list;
       });
+      return newState;
+    case GET_SINGLE_LIST:
+      newState = {};
+      newState = { ...action.list };
       return newState;
     default:
       return state;

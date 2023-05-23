@@ -6,7 +6,7 @@ import LogoButton from "./LogoButton";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
-  const sessionUser = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session.user);
 
   return (
     <div className="nav-container">
@@ -21,14 +21,16 @@ function Navigation({ isLoaded }) {
         <Link exact to="/">
           Community
         </Link> */}
-          <Link exact to="/profile">
-            My Lists
-          </Link>
+          {user && (
+            <Link exact to="/profile">
+              My Lists
+            </Link>
+          )}
           {/* <Link exact to="/">
           Shop
         </Link> */}
         </div>
-        <div className="nav-right">{isLoaded && <ProfileButton user={sessionUser} />}</div>
+        <div className="nav-right">{isLoaded && <ProfileButton user={user} />}</div>
       </div>
     </div>
   );

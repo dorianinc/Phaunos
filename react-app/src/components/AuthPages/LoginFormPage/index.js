@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { login } from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import './LoginForm.css';
+import "./LoginForm.css";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -21,6 +21,14 @@ function LoginFormPage() {
     }
   };
 
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login("demo@aa.io", "password"));
+    if (data) {
+      setErrors(data);
+    }
+  };
+
   return (
     <>
       <h1>Log In</h1>
@@ -32,12 +40,7 @@ function LoginFormPage() {
         </ul>
         <label>
           Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </label>
         <label>
           Password
@@ -49,6 +52,9 @@ function LoginFormPage() {
           />
         </label>
         <button type="submit">Log In</button>
+        <button onClick={(e) => handleClick(e)} className="green-button" style={{ margin: "10px" }}>
+          demo user
+        </button>
       </form>
     </>
   );

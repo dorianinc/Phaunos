@@ -1,34 +1,49 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { addBookmarkThunk, editListThunk } from "../../../store/lists";
 import ModalButton from "../../ModalButton";
 import DeleteList from "../DeleteList";
 
 function BookmarkItem({ list, trailId }) {
-  const [title, setTitle] = useState(list.title);
+  const [title, setTitle] = useState(() => {
+    if (list) return list.title;
+  });
   const [hoveredList, setHoveredList] = useState("");
   const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
+  const history = useHistory();
   const pathName = location.pathname;
 
-  const handleClick = async (e, listId) => {
+  const addBookmark = async (e, listId) => {
     e.preventDefault();
     const newBookmark = { trailId, listId };
     dispatch(addBookmarkThunk(newBookmark));
   };
 
+  const handleEdit = async (e) => {
+    e.stopPropagation()
+    setEdit(true)
+  }
+
   const handleKeyDown = async (e, listId) => {
+    e.stopPropagation()
     if (e.key === "Enter" || e.key === "Escape") {
-      if(title !== list.title) await dispatch(editListThunk({title, listId}))
+      if (title !== list.title) await dispatch(editListThunk({ title, listId }));
       setEdit(false);
     }
   };
 
-  const handleBlur = async (listId) => {
-    if(title !== list.title)  await dispatch(editListThunk({title, listId}))
+  const handleBlur = async (e, listId) => {
+    e.stopPropagation()
+    if (title !== list.title) await dispatch(editListThunk({ title, listId }));
     setEdit(false);
+  };
+
+  const handleClick = async (e, listId) => {
+    e.preventDefault();
+    if(!edit) history.push(`lists/${listId}`);
   };
 
   if (!list) return null;
@@ -36,6 +51,7 @@ function BookmarkItem({ list, trailId }) {
     <>
       <div
         className="bookmark-item"
+        onClick={(e) => handleClick(e, list.id)}
         onMouseEnter={() => setHoveredList(list.id)}
         onMouseLeave={() => setHoveredList("")}
       >
@@ -47,7 +63,8 @@ function BookmarkItem({ list, trailId }) {
             {edit === true ? (
               <input
                 value={title}
-                onBlur={(e) => handleBlur(list.id)}
+                onClick={(e) => e.stopPropagation()}
+                onBlur={(e) => handleBlur(e, list.id)}
                 onKeyDown={(e) => handleKeyDown(e, list.id)}
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -56,7 +73,7 @@ function BookmarkItem({ list, trailId }) {
             )}
             {list.title === "My Favorites" && pathName === "/profile" ? null : pathName ===
                 "/profile" && list.id === hoveredList ? (
-              <button onClick={() => setEdit(!edit)} className="edit-button">
+              <button onClick={(e) => handleEdit(e)} className="edit-button">
                 <i class="fa-regular fa-pen-to-square" />
               </button>
             ) : null}
@@ -68,6 +85,7 @@ function BookmarkItem({ list, trailId }) {
         {list.title === "My Favorites" && pathName === "/profile" ? null : pathName ===
           "/profile" ? (
           <ModalButton
+            nameOfClass={"list-options"}
             modalComponent={<DeleteList listId={list.id} />}
             buttonContent={
               <div className="list-options">
@@ -79,7 +97,7 @@ function BookmarkItem({ list, trailId }) {
           />
         ) : (
           <div className="list-options">
-            <input onClick={(e) => handleClick(e, list.id)} type="checkbox" />
+            <input onClick={(e) => addBookmark(e, list.id)} type="checkbox" />
           </div>
         )}
       </div>

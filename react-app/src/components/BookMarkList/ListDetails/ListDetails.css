@@ -1,0 +1,23 @@
+.list-details-container{
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.list-details-query-bar{
+    display: flex;
+    align-items: center;
+    background-color: aquamarine;
+    height: 40px;
+    padding-left: 10px;
+}
+
+.list-details-content{
+    display: flex;
+    height: 82vh;
+    width: 100%;
+}
+
+.list-details-content-left{
+    border-right: 2px solid #dddcd5;
+    width: 15%;
+}

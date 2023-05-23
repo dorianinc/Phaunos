@@ -11,6 +11,8 @@ const TrailDetails = () => {
   const { trailId } = useParams();
   const dispatch = useDispatch();
   const trail = useSelector((state) => state.trails);
+  const user = useSelector((state) => state.session.user);
+  console.log("user 👉", user);
 
   useEffect(() => {
     document.body.style.backgroundColor = "#efefec";
@@ -90,12 +92,14 @@ const TrailDetails = () => {
                 </p>
               </div>
             </div>
+            {user && (
             <div className="trail-details-review-add">
               <ModalButton
                 modalComponent={<ReviewForm trail={trail} method="create"/>}
                 buttonContent={<button className="green-button review">Write review</button>}
               />
             </div>
+            )}
           </div>
           <hr className="item-divider" />
           <div className="trail-details-reviews-container">

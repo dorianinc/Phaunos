@@ -18,7 +18,7 @@ function ReviewForm({ trail, review, method }) {
       setDescription(review.description);
       setRating(review.rating);
     }
-  }, []);
+  }, [review]);
 
   useEffect(() => {
     if (description.length >= 10 && rating >= 1) {
