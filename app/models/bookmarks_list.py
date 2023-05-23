@@ -8,7 +8,7 @@ class Bookmarks_List(db.Model):
         
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
-    cover = db.Column(db.String(50), nullable=True)
+    cover = db.Column(db.String(255), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
         
     user_rel = db.relationship("User", back_populates=("bookmarks_list_rel"))

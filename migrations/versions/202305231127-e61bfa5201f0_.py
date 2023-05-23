@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 34e0593ac094
+Revision ID: e61bfa5201f0
 Revises: 
-Create Date: 2023-05-23 10:35:34.819708
+Create Date: 2023-05-23 11:27:11.493747
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '34e0593ac094'
+revision = 'e61bfa5201f0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -33,13 +33,13 @@ def upgrade():
     sa.Column('length', sa.String(length=50), nullable=False),
     sa.Column('elevation', sa.String(length=50), nullable=True),
     sa.Column('route_type', sa.String(length=50), nullable=False),
-    sa.Column('description', sa.String(length=255), nullable=False),
+    sa.Column('description', sa.Text(), nullable=False),
     sa.Column('attractions', sa.String(length=255), nullable=False),
     sa.Column('activities', sa.String(length=255), nullable=False),
     sa.Column('suitability', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
-    )  
+    )
     if environment == "production":
         op.execute(f"ALTER TABLE trails SET SCHEMA {SCHEMA};")
         
@@ -61,7 +61,7 @@ def upgrade():
     op.create_table('bookmarks_lists',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=50), nullable=False),
-    sa.Column('cover', sa.String(length=50), nullable=True),
+    sa.Column('cover', sa.String(length=255), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -71,7 +71,7 @@ def upgrade():
         
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('description', sa.String(length=50), nullable=False),
+    sa.Column('description', sa.Text(), nullable=False),
     sa.Column('rating', sa.Float(), nullable=False),
     sa.Column('trail_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),

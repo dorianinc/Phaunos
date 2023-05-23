@@ -18,7 +18,7 @@ class Trail(db.Model):
     length = db.Column(db.String(50), nullable=False)
     elevation = db.Column(db.String(50), nullable=True)
     route_type = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.Text, nullable=False)
     attractions = db.Column(db.String(255), nullable=False)
     activities = db.Column(db.String(255), nullable=False)
     suitability = db.Column(db.String(255), nullable=False)
