@@ -55,6 +55,33 @@
   width: 40px;
 }
 
-.fa-bookmark {
+.trash-icon {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  height: 10px;
+  width: 40px;
+}
+
+.item-overlay{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   z-index: 1;
+  height: 175px;
+  width: 100%;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.fa-trash-can{
+  color: white;
+}
+
+.fa-bookmark,.fa-trash-can {
+  z-index: 2;
 }

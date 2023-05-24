@@ -98,7 +98,7 @@ export const addBookmarkThunk = (bookmark) => async (dispatch) => {
 };
 
 // delete bookmark from list
-export const deleteBookmarkThunk = (bookmarkId) => async (dispatch) => {
+export const deleteBookmarkThunk = (bookmarkId, listId) => async (dispatch) => {
   const res = await fetch("/api/bookmarks", {
     method: "DELETE",
     headers: {
@@ -108,7 +108,12 @@ export const deleteBookmarkThunk = (bookmarkId) => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json();
-    await dispatch(getUserListsThunk());
+    if (listId) {
+      console.log("the list id is", listId);
+      await dispatch(getSingleListThunk(listId));
+    } else {
+      await dispatch(getUserListsThunk());
+    }
     return data;
   }
 };

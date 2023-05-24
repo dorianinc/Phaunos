@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleListThunk } from "../../../store/lists";
@@ -8,6 +8,8 @@ import TrailItem from "../../Trails/TrailItem";
 import "./ListDetails.css";
 
 function ListDetails() {
+  const [edit, setEdit] = useState(false)
+  console.log("edit 👉", edit)
   const { listId } = useParams();
   const dispatch = useDispatch();
   const list = useSelector((state) => state.lists);
@@ -31,13 +33,20 @@ function ListDetails() {
         <div className="list-details-content-left">
           <div className="list-details-list-title">
             <h1 id="list-details-title">{list.title}</h1>
+            <div className="list-details-ptags">
             <p id="list-details-len">
               {list.len} {list.len === 1 ? "bookmark" : "bookmarks"}
             </p>
+            <p 
+            className="list-details-edit"
+            value={edit}
+            onClick={() => setEdit(!edit)}
+            >edit list</p>
+            </div>
           </div>
           <div className="list-details-bookmarks">
             {bookmarks.map((bookmark) => (
-              <TrailItem trail={bookmark.trail} nameOfClass="bookmark" />
+              <TrailItem trail={bookmark.trail} nameOfClass="bookmark" editing={edit} bookmarkId={bookmark.id} listId={listId} />
             ))}
           </div>
         </div>

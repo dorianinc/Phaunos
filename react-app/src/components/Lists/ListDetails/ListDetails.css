@@ -24,6 +24,7 @@
 .list-details-list-title{
     padding-top: 10px;
     padding-left: 20px;
+    padding-right: 20px;
     box-sizing: border-box;
     height: 70px;
     box-shadow: 0px 10px 10px #b8b8b5;
@@ -36,6 +37,11 @@
     font-weight: 400;
 }
 
+.list-details-ptags{
+    display: flex;
+    justify-content: space-between;
+}
+
 #list-details-len{
     margin-top: auto;
     vertical-align: bottom;
@@ -44,4 +50,10 @@
 .list-details-bookmarks{
     overflow-y: auto;
     height: 100%;
+}
+.list-details-edit{
+    cursor: pointer;
+}
+.list-details-edit:hover{
+    text-decoration: underline;
 }

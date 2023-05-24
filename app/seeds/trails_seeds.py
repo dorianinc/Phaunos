@@ -43,7 +43,7 @@ seed_data = [
         "lat": 37.7304,
         "long": -119.5740,
         "difficulty": "Easy",
-        "length": "0.5 miles",
+        "length": "1 mile",
         "elevation": "100 ft",
         "route_type": "Out and Back",
         "description": "A short trail leading to Glacier Point, offering stunning panoramic views of Yosemite Valley and its iconic landmarks.",

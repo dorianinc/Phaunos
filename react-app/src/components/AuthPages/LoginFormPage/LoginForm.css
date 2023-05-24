@@ -13,10 +13,10 @@
 .login-page-content{
     position: absolute;
     z-index: 1;
-    height: 450px;
+    height: auto;
     width:400px;
     top: 25%;
-    right: 41%;
+    right: 42.5%;
     background-color: #fff;
     box-sizing: border-box;
     padding: 20px;
