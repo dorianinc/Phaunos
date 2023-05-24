@@ -28,4 +28,10 @@ class LoginForm(FlaskForm):
         "email",
         validators=[DataRequired(), Email(message="Please provide a valid email.")],
     )
-    password = StringField("password", validators=[DataRequired(), Length(min=8, message="Password must be at least 8 characters long")])
+    password = StringField(
+        "password",
+        validators=[
+            DataRequired(),
+            Length(min=8, message="Please provide a valid password."),
+        ],
+    )
