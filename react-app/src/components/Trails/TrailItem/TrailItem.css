@@ -1,30 +1,60 @@
-.trail-item{
-    border: 2px solid black;
-    position:relative;
-    cursor: pointer;
+/* ---- Splash Page CSS ----- */
+.trail-item.splash {
+  position: relative;
+  cursor: pointer;
 }
 
-.trail-image{
-    height: 175px;
-    width: 250px;
-    border-radius: 25px;
+.trail-image.splash {
+  height: 175px;
+  width: 250px;
+  border-radius: 25px;
 }
 
-.trail-text>p{
-    margin: 5px 0;
+/* ---- Bookmark Page CSS ----- */
+.trail-item.bookmark {
+  margin: 15px auto;
+  position: relative;
+  width: 90%;
+  cursor: pointer;
 }
 
-.bookmark-icon{
-    display: flex;
-    justify-content: flex-end;
-    position:absolute;
-    top: 10%;
-    right:5%;
-    height: 10px;
-    width: 40px;
+.trail-image.bookmark {
+  height: 175px;
+  width: 100%;
+  border-radius: 25px;
 }
 
-.fa-bookmark{
-    z-index:1;
-    /* color: white; */
+/* ---- General CSS ----- */
+.trail-text {
+  margin: 5px 0;
+}
+
+#trail-name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #2b381f;
+}
+
+#trail-diff-review {
+  font-size: 0.9rem;
+  color: #6d7667;
+}
+#trail-park,
+#trail-len {
+  font-size: 0.9rem;
+  color: #6d7667;
+}
+
+.bookmark-icon {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  height: 10px;
+  width: 40px;
+}
+
+.fa-bookmark {
+  z-index: 1;
 }

@@ -23,7 +23,7 @@ function SplashPage() {
           <h2>Local Favorites</h2>
           <div className="trail-item-container">
           {trails.map((trail) => (
-            <TrailItem trail={trail}/>
+            <TrailItem trail={trail} nameOfClass="splash"/>
           ))}
           </div>
         </div>

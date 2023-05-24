@@ -1,5 +1,6 @@
 .content-trails{
-    width: 45%;
+    width: 42%;
+    overflow-x: auto;
     margin: 0 auto;
 }
 

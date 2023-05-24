@@ -20,7 +20,7 @@ class Bookmarks_List(db.Model):
             "title": self.title,
             "cover": self.cover,
             "bookmarks": [bookmark.to_dict() for bookmark in self.bookmark_rel] if includeBookmarks else "",
-            "length": len(self.bookmark_rel),
+            "len": len(self.bookmark_rel),
             "user_id": self.user_id
         }
     

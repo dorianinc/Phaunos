@@ -34,7 +34,7 @@ function ReviewItem({ review }) {
             stars.push(<i class="fa-solid fa-star fa-xs" />);
           }
           return stars;
-        })()}{" "}
+        })()}
       </div>
       <div className="trail-details-review-desc">
         <p>{review.description}</p>

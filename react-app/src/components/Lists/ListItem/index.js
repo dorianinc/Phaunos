@@ -11,7 +11,7 @@ function ListItem({ list, trailId }) {
   });
   const [hoveredList, setHoveredList] = useState("");
   const [edit, setEdit] = useState(false);
-  const [focus, setFocus] = useState(false)
+  const [focus, setFocus] = useState(false);
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
@@ -24,30 +24,30 @@ function ListItem({ list, trailId }) {
   };
 
   const handleEdit = async (e) => {
-    e.stopPropagation()
-    setEdit(true)
-    setFocus(true)
-  }
+    e.stopPropagation();
+    setEdit(true);
+    setFocus(true);
+  };
 
   const handleKeyDown = async (e, listId) => {
-    e.stopPropagation()
+    e.stopPropagation();
     if (e.key === "Enter" || e.key === "Escape") {
       if (title !== list.title) await dispatch(editListThunk({ title, listId }));
       setEdit(false);
-      setFocus(false)
+      setFocus(false);
     }
   };
 
   const handleBlur = async (e, listId) => {
-    e.stopPropagation()
+    e.stopPropagation();
     if (title !== list.title) await dispatch(editListThunk({ title, listId }));
     setEdit(false);
   };
 
   const handleClick = async (e, listId) => {
     e.preventDefault();
-    if(!focus && pathName !== "/") history.push(`lists/${listId}`);
-    setFocus(false)
+    if (!focus && pathName !== "/") history.push(`lists/${listId}`);
+    setFocus(false);
   };
 
   if (!list) return null;
@@ -83,7 +83,7 @@ function ListItem({ list, trailId }) {
             ) : null}
           </div>
           <p>
-            {list.length} {list.length === 1 ? "item" : "items"}
+            {list.len} {list.len === 1 ? "item" : "items"}
           </p>
         </div>
         {list.title === "My Favorites" && pathName === "/profile" ? null : pathName ===

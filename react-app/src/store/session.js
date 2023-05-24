@@ -51,7 +51,7 @@ export const login = (email, password) => async (dispatch) => {
 			return data.errors;
 		}
 	} else {
-		return ["An error occurred. Please try again."];
+		return ["Login failed. Please check your email and password."];
 	}
 };
 
@@ -90,7 +90,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 			return data.errors;
 		}
 	} else {
-		return ["An error occurred. Please try again."];
+		return ["Login failed. Please check your email and password."];
 	}
 };
 
