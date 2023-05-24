@@ -47,7 +47,7 @@ function ReviewForm({ trail, review, method }) {
 
   return (
     <div className="new-review-modal">
-      <img className="x-mark" alt="close" onClick={closeModal} src="/images/mark.png" />
+      <img className="x-mark" alt="close" onClick={closeModal} src="/images/icons/mark.png" />
       <h1 className="new-review-header"> Leave a Review</h1>
       <h2 className="new-review-trail-name">{trail.name}</h2>
       <hr className="item-divider" />

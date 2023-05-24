@@ -8,7 +8,7 @@ function Banner() {
         <img
           className="splash-image"
           alt="hiker-hills"
-          src="https://www.cbisland.com/content/uploads/2022/09/outdoor-adventure-31-1920x750.jpg"
+          src="/images/backgrounds/splash-page.jpg"
         />
         <div className="centerpiece-content">
           <h1>Find your outdoors</h1>

@@ -45,7 +45,8 @@ function ListItem({ list, trailId }) {
   };
 
   if (!list || !list.bookmarks) return null;
-  console.log("list.bookmarks 👉👉👉👉", list.bookmarks)
+  console.log("list from list items 👉👉👉", list)
+  console.log("bookmarks from list items 👉👉👉", list.bookmarks)
   const isBookmarked = !!list.bookmarks.filter((bookmark) => bookmark.trail_id === trailId).length;
 
   const handleBookmark = async (e, listId) => {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { login } from "../../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./LoginForm.css";
 
 function LoginFormPage() {
@@ -17,6 +18,7 @@ function LoginFormPage() {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
+      console.log("data 👉👉👉", data);
       setErrors(data);
     }
   };
@@ -30,33 +32,60 @@ function LoginFormPage() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-        <button onClick={(e) => handleClick(e)} className="green-button" style={{ margin: "10px" }}>
-          demo user
-        </button>
-      </form>
-    </>
+    <div className="login-page-container">
+      <img
+        className="login-page-image"
+        alt="city-forest"
+        src="/images/backgrounds/log-in-page.jpg"
+      />
+      <div className="login-page-content">
+        <h1 id="login-page-header">Log in and start exploring.</h1>
+        <form onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <div className="inputs-container">
+            <label>
+              Email
+              <br />
+              <input
+                className="auth-input"
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+
+            <label>
+              Password
+              <br />
+              <input
+                className="auth-input"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="buttons">
+            <button className="green-button login" type="submit">
+              Log In
+            </button>
+            <button className="green-button demo" onClick={(e) => handleClick(e)}>
+              demo user
+            </button>
+          </div>
+          <p className="signup-option">
+            Don't have an account?
+            <Link to="/signup"> Sign up here!</Link>
+          </p>
+        </form>
+      </div>
+    </div>
   );
 }
 

@@ -1,0 +1,41 @@
+.signup-page-container{
+    position: relative;
+    height: 95vh;
+}
+
+.signup-page-image {
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+.signup-page-content{
+    position: absolute;
+    z-index: 1;
+    height: auto;
+    width:500px;
+    top: 25%;
+    right: 38%;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 20px;
+    padding-bottom: 30px;
+    border-radius: 20px;
+}
+
+#signup-page-header{
+    color: #2B381F;
+    font-weight: 300;
+    margin-bottom: 50px;
+}
+
+.signup-button{
+    display: flex;
+    justify-content: center;
+}
+
+.green-button.signup{
+    margin-top: 20px;
+    width: 300px;
+}

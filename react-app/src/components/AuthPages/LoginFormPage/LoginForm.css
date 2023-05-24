@@ -1,0 +1,55 @@
+.login-page-container{
+    position: relative;
+    height: 95vh;
+}
+
+.login-page-image {
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+.login-page-content{
+    position: absolute;
+    z-index: 1;
+    height: 450px;
+    width:400px;
+    top: 25%;
+    right: 41%;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#login-page-header{
+    color: #2B381F;
+    font-weight: 300;
+    margin-bottom: 50px;
+}
+
+.inputs-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth-input{
+    width: 100%;
+    height: 30px;
+}
+
+.green-button.login{
+    margin-top: 10px;
+}
+
+.green-button.demo{
+    margin-top: 10px;
+    background-color:#5E2A1A;
+}
+
+.signup-option{
+ margin-top: 60px;
+ text-align: center;
+}

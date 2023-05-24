@@ -15,6 +15,7 @@ function SplashPage() {
     dispatch(getTrailsThunk());
   }, [dispatch]);
   if(!getTrails) return null
+  console.log("👉👉👉👉👉👉👉 I AM RENDERING");
   return (
     <>
       <Banner />

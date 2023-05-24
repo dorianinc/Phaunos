@@ -12,6 +12,7 @@ function List({ trailId }) {
 
   const getLists = useSelector((state) => state.lists);
   const lists = Object.values(getLists);
+  console.log("lists from List 👉👉👉", lists)
   
   const dispatch = useDispatch();
 
@@ -21,14 +22,14 @@ function List({ trailId }) {
 
   return (
     <div className="bookmark-modal">
-      <img className="x-mark" alt="close" onClick={closeModal} src="/images/mark.png" />
+      <img className="x-mark" alt="close" onClick={closeModal} src="/images/icons/mark.png" />
       <h1>Save to list</h1>
       <hr className="header-divider" />
       <ModalButton
         modalComponent={<NewList trailId={trailId} />}
         buttonContent={
           <div className="create-list">
-            <img className="plus-sign" alt="add" src="/images/plus.png" />
+            <img className="plus-sign" alt="add" src="/images/icons/plus.png" />
             <p>Create New List</p>
           </div>
         }

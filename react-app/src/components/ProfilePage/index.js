@@ -52,7 +52,7 @@ const ProfilePage = () => {
           modalComponent={<NewList />}
           buttonContent={
             <div className="create-list">
-              <img className="plus-sign" alt="add" src="/images/plus.png" />
+              <img className="plus-sign" alt="add" src="/images/icons/plus.png" />
               <p>Create New List</p>
             </div>
           }
