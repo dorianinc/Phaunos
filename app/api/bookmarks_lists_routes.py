@@ -10,7 +10,7 @@ def get_users_bookmarks_lists():
     """ Get all of users bookmarks lists """
     user = current_user.to_dict()
     lists = Bookmarks_List.query.filter(Bookmarks_List.user_id == user["id"]).all()
-    return [list.to_dict() for list in lists]
+    return [list.to_dict(includeBookmarks=True) for list in lists]
 
 @bookmarks_lists_routes.route("/<int:list_id>")
 def get_bookmarks_list_by_id(list_id):
@@ -117,7 +117,9 @@ def delete_review():
     
     db.session.delete(list)    
     db.session.commit()
-    return (f"Successfully deleted bookmarks list #: {list_dict['id']}")
+    res = make_response({"message": "Successfully deleted"})
+    res.status_code = 200
+    return res
 
 
 @bookmarks_lists_routes.route("/bookmark", methods=["POST"])
@@ -126,8 +128,17 @@ def create_a_bookmark():
     print("👉👉👉👉👉👉👉👉👉 IN ADD BOOKMARK")
     """ Add a bookmark  to a list """
     user = current_user.to_dict()
+    print(f"user 👉 {user}")
     data = request.get_json()
     print(f"data 👉 {data}")
+    list = Bookmarks_List.query.get(data["listId"])
+    bookmarks = list.to_dict(includeBookmarks=True)['bookmarks']
+    print(f"bookmarks 👉 {bookmarks}")
+    for bookmark in bookmarks:
+        if int(bookmark["trail_id"]) == int(data["trailId"]):
+            error = make_response("Trail is already bookmarked in this list")
+            error.status_code = 400
+            return error
     
     new_bookmark = Bookmark(
       trail_id=data["trailId"],

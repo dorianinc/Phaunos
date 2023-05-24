@@ -55,7 +55,6 @@ export const createListThunk = (list) => async (dispatch) => {
 
 // delete a list
 export const deleteListThunk = (listId) => async (dispatch) => {
-
   const res = await fetch("/api/bookmarksLists", {
     method: "DELETE",
     headers: {
@@ -70,7 +69,6 @@ export const deleteListThunk = (listId) => async (dispatch) => {
 
 // change list title
 export const editListThunk = (list) => async (dispatch) => {
-
   const res = await fetch("/api/bookmarksLists", {
     method: "PUT",
     headers: {
@@ -91,6 +89,22 @@ export const addBookmarkThunk = (bookmark) => async (dispatch) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(bookmark),
+  });
+  if (res.ok) {
+    const data = await res.json();
+    await dispatch(getUserListsThunk());
+    return data;
+  }
+};
+
+// delete bookmark from list
+export const deleteBookmarkThunk = (bookmarkId) => async (dispatch) => {
+  const res = await fetch("/api/bookmarks", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(bookmarkId),
   });
   if (res.ok) {
     const data = await res.json();

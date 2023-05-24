@@ -49,13 +49,15 @@ def edit_review(bookmark_id):
     return bookmark.to_dict()
 
 
-@bookmarks_routes.route("/<int:bookmark_id>", methods=["DELETE"])
-def delete_bookmark(bookmark_id):
+@bookmarks_routes.route("", methods=["DELETE"])
+def delete_bookmark():
+    print("👉👉👉👉👉 in delete bookmark")
     """ Delete a single bookmark """
     user = current_user.to_dict()
+    data = request.get_json()
 
     #------------ validation -------------#    
-    bookmark = Bookmark.query.get(bookmark_id)
+    bookmark = Bookmark.query.get(data["bookmarkId"])
     if not bookmark:
         error = make_response("Bookmark does not exist")
         error.status_code = 404
@@ -70,4 +72,6 @@ def delete_bookmark(bookmark_id):
           
     db.session.delete(bookmark)    
     db.session.commit()
-    return (f"Successfully deleted bookmark #: {bookmark.id}")
+    res = make_response({"message": "Successfully deleted"})
+    res.status_code = 200
+    return res

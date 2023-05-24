@@ -15,12 +15,13 @@ class Bookmark(db.Model):
     bookmarks_list_rel = db.relationship("Bookmarks_List", back_populates="bookmark_rel")
     
     
-    def to_dict(self):
+    def to_dict(self, includeTrail=True):
         return {
             "id": self.id,
             "completed": self.completed,
             "bookmarks_list_id": self.bookmarks_list_id,
-            "trail": self.trail_rel.to_dict(includeImages=True),
+            "trail_id": self.trail_id,
+            "trail": self.trail_rel.to_dict(includeImages=True) if includeTrail else "",
         }
         
     def to_dict_no_item(self):

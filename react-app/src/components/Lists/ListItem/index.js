@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
-import { addBookmarkThunk, editListThunk } from "../../../store/lists";
+import { addBookmarkThunk, editListThunk, deleteBookmarkThunk } from "../../../store/lists";
 import ModalButton from "../../ModalButton";
 import DeleteList from "../DeleteList";
 
@@ -16,12 +16,6 @@ function ListItem({ list, trailId }) {
   const location = useLocation();
   const history = useHistory();
   const pathName = location.pathname;
-
-  const addBookmark = async (e, listId) => {
-    e.preventDefault();
-    const newBookmark = { trailId, listId };
-    dispatch(addBookmarkThunk(newBookmark));
-  };
 
   const handleEdit = async (e) => {
     e.stopPropagation();
@@ -50,7 +44,22 @@ function ListItem({ list, trailId }) {
     setFocus(false);
   };
 
-  if (!list) return null;
+  if (!list || !list.bookmarks) return null;
+  console.log("list.bookmarks 👉👉👉👉", list.bookmarks)
+  const isBookmarked = !!list.bookmarks.filter((bookmark) => bookmark.trail_id === trailId).length;
+
+  const handleBookmark = async (e, listId) => {
+    if (!isBookmarked) {
+      const newBookmark = { trailId, listId };
+      dispatch(addBookmarkThunk(newBookmark));
+    } else {
+      const bookmark = list.bookmarks.filter((bookmark) => bookmark.trail_id === trailId);
+      console.log("bookmark ====>", bookmark[0].id);
+      const bookmarkId = bookmark[0].id;
+      dispatch(deleteBookmarkThunk({ bookmarkId }));
+    }
+  };
+
   return (
     <>
       <div
@@ -101,7 +110,11 @@ function ListItem({ list, trailId }) {
           />
         ) : (
           <div className="list-options">
-            <input onClick={(e) => addBookmark(e, list.id)} type="checkbox" />
+            <input
+              onClick={(e) => handleBookmark(e, list.id)}
+              type="checkbox"
+              checked={isBookmarked}
+            />
           </div>
         )}
       </div>
