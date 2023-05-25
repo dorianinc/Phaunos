@@ -43,8 +43,9 @@
 
 #signup-page-header {
   color: #2b381f;
-  font-weight: 300;
-  margin-bottom: 50px;
+  font-weight: 400;
+  font-size: 4rem;
+  margin-bottom: 30px;
 }
 
 .flex-inputs {

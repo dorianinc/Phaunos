@@ -17,32 +17,17 @@ function SignupFormPage() {
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const isValidEmail = (email) => {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(email);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const err = {};
-    if (firstName === null || firstName === "") err.firstName = "First name is required.";
-    if (lastName === null || lastName === "") err.lastName = "Last name is required.";
-    if (!isValidEmail(email)) err.email = "Please provide a valid email.";
-    if (username.length > 10 || username.length < 5)
-      err.username = "Username must between 5 and 10 characters long.";
-    if (password.length > 16 || password.length < 8)
-      err.password = "Password must be between 8 and 16 characters long.";
-    if (password !== confirmPassword)
-      err.confirmPassword = "Confirm Password field must be the same as the Password field.";
-
-    if (!!Object.values(err).length) {
-      setErrors(err);
-    } else {
-      console.log("YOUR FORM IS VALID!");
+    if (password === confirmPassword) {
       const data = await dispatch(signUp(firstName, lastName, username, email, password));
       if (data) {
         setErrors(data);
       }
+    } else {
+      setErrors({
+        confirmPassword: "Confirm Password field must be the same as the Password field.",
+      });
     }
   };
 
@@ -55,9 +40,11 @@ function SignupFormPage() {
       />
       <div className="signup-page-content">
         <div className="signup-page-left">
+          <div className="douglas">
           <img className="pine-tree" alt="kawaii-tree" src="/images/kawaii-tree.png" />
           <h1 id="signup-greeting">Your journey begins here</h1>
           <h2 id="signup-greeting">- Douglas the Fern</h2>
+          </div>
         </div>
         <div className="signup-page-right">
           <h1 id="signup-page-header">Sign up</h1>

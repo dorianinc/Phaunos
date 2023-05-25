@@ -38,7 +38,7 @@ class SignUpForm(FlaskForm):
         validators=[
             DataRequired(),
             Length(
-                min=5, max=10, message="Username must between 5 and 10 characters long"
+                min=5, max=15, message="Username must between 5 and 15 characters long"
             ),
             username_exists,
         ],
