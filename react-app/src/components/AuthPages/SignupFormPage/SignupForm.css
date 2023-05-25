@@ -28,6 +28,7 @@
   background-color: #2c5e1a;
   box-sizing: border-box;
   padding: 20px;
+  display: flex;
 }
 .pine-tree {
   height: 350px;
@@ -78,4 +79,8 @@
 .errors {
   color: red;
   font-weight: bold;
+}
+
+.douglas{
+  margin: auto;
 }
