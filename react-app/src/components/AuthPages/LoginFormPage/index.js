@@ -10,7 +10,7 @@ function LoginFormPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -41,34 +41,26 @@ function LoginFormPage() {
       <div className="login-page-content">
         <h1 id="login-page-header">Log in and start exploring.</h1>
         <form onSubmit={handleSubmit}>
-          <ul>
-            {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
-            ))}
-          </ul>
           <div className="inputs-container">
             <label>
               Email
-              <br />
               <input
-                className="auth-input"
+                className={`auth-input ${errors.email && "input-error"}`}
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
               />
+              <p className="errors">{errors.email}</p>
             </label>
-
             <label>
               Password
-              <br />
               <input
-                className="auth-input"
+                className={`auth-input ${errors.password && "input-error"}`}
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
               />
+              <p className="errors">{errors.password}</p>
             </label>
           </div>
           <div className="buttons">
