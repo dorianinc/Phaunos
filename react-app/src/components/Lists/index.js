@@ -7,12 +7,11 @@ import NewList from "./NewList";
 import ModalButton from "../ModalButton";
 import "./List.css";
 
-function List({ trailId }) {
+function List({ trail }) {
   const { closeModal } = useModal();
 
   const getLists = useSelector((state) => state.lists);
   const lists = Object.values(getLists);
-  console.log("lists from List 👉👉👉", lists)
   
   const dispatch = useDispatch();
 
@@ -23,10 +22,11 @@ function List({ trailId }) {
   return (
     <div className="bookmark-modal">
       <img className="x-mark" alt="close" onClick={closeModal} src="/images/icons/mark.png" />
-      <h1>Save to list</h1>
+      <h1 className="new-review-header">Save to list</h1>
+      <h2 className="new-review-trail-name">{trail.name}</h2>
       <hr className="header-divider" />
       <ModalButton
-        modalComponent={<NewList trailId={trailId} />}
+        modalComponent={<NewList trail={trail} />}
         buttonContent={
           <div className="create-list">
             <img className="plus-sign" alt="add" src="/images/icons/plus.png" />
@@ -37,7 +37,7 @@ function List({ trailId }) {
       <hr className="item-divider" />
       <div className="list-container modal">
         {lists.map((list) => (
-          <ListItem trailId={trailId} list={list} />
+          <ListItem trailId={trail.id} list={list} />
         ))}
       </div>
       <div className="buttons">

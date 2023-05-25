@@ -19,7 +19,7 @@
 }
 
 .trail-image.bookmark {
-  height: 175px;
+  height: 200px;
   width: 100%;
   border-radius: 25px;
 }
@@ -45,7 +45,7 @@
   color: #6d7667;
 }
 
-.bookmark-icon {
+.bookmark-icon.cards{
   display: flex;
   justify-content: flex-end;
   position: absolute;
@@ -72,13 +72,13 @@
   left: 0;
   bottom: 0;
   z-index: 1;
-  height: 175px;
+  height: 200px;
   width: 100%;
   border-radius: 25px;
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.fa-trash-can{
+.fa-trash-can.trail{
   color: white;
 }
 

@@ -1,6 +1,7 @@
 .trail-details-container {
-  width: 1024px;
-  margin: 2% auto;
+  width: 1150px;
+  margin: 1.5% auto;
+  margin-bottom: 1.5%;
   border-radius: 15px;
   background-color: #fff;
   box-shadow: 0px 10px 10px #b8b8b5;
@@ -38,17 +39,35 @@
 }
 .trail-details-info {
   background-color: #fff;
-  flex-grow: 3;
-  flex-basis: 65%;
+  width: 75%;
   padding: 20px 25px;
   box-sizing: border-box;
+}
+
+.bookmark-icon.single{
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 10%;
+  right: 2%;
+  height: 10px;
+  width: 40px;
+}
+
+.fa-bookmark.white{
+  color: #fff;
 }
 
 .trail-details-sidebar {
   background-color: #fff;
   border-left: 1px solid #dddcd5;
-  flex-grow: 2;
-  flex-basis: 35%;
+  width: 25%;
+}
+
+#sidebar-header{
+  color: #2B381F;
+  margin-left: 10px;
+  margin-top: 40px;;
 }
 
 .trail-details-table {

@@ -40,22 +40,20 @@ function ListItem({ list, trailId }) {
 
   const handleClick = async (e, listId) => {
     e.preventDefault();
-    if (!focus && pathName !== "/") history.push(`lists/${listId}`);
+    if (!focus && pathName.startsWith('/profile')) history.push(`lists/${listId}`);
     setFocus(false);
   };
 
   if (!list || !list.bookmarks) return null;
-  console.log("list from list items 👉👉👉", list)
-  console.log("bookmarks from list items 👉👉👉", list.bookmarks)
   const isBookmarked = !!list.bookmarks.filter((bookmark) => bookmark.trail_id === trailId).length;
 
   const handleBookmark = async (e, listId) => {
+    e.stopPropagation();
     if (!isBookmarked) {
       const newBookmark = { trailId, listId };
       dispatch(addBookmarkThunk(newBookmark));
     } else {
       const bookmark = list.bookmarks.filter((bookmark) => bookmark.trail_id === trailId);
-      console.log("bookmark ====>", bookmark[0].id);
       const bookmarkId = bookmark[0].id;
       dispatch(deleteBookmarkThunk({ bookmarkId }));
     }

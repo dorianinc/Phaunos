@@ -23,8 +23,12 @@ function ModalButton({
     <>
       {type === "bookmark" ? (
         <i className="fa-regular fa-bookmark fa-xl" onClick={(e) => handleClick(e)} />
+      ) : type === "trail" ? (
+        <i className="fa-regular fa-bookmark fa-2xl white" onClick={(e) => handleClick(e)} />
       ) : (
-        <div className={nameOfClass} onClick={handleClick}>{buttonContent}</div>
+        <div className={nameOfClass} onClick={handleClick}>
+          {buttonContent}
+        </div>
       )}
     </>
   );

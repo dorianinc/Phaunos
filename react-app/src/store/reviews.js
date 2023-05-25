@@ -1,4 +1,4 @@
-import { getSingleTrailThunk } from "./trails";
+import { getSingleTrailThunk, getTrailsThunk } from "./trails";
 
 // add review to a trail
 export const addReviewThunk = (trailId, review) => async (dispatch) => {
@@ -11,12 +11,13 @@ export const addReviewThunk = (trailId, review) => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json();
-    await dispatch(getSingleTrailThunk(trailId));
+    await dispatch(getTrailsThunk());
+    // await dispatch(getSingleTrailThunk(trailId));
+    return data;
   } else if (res.status < 500) {
     const data = await res.json();
-    console.log("data 👉", data);
     if (data.errors) {
-      return data.errors;
+      return data;
     }
   }
 };
@@ -32,8 +33,14 @@ export const updateReviewThunk = (trailId, review) => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json();
-    await dispatch(getSingleTrailThunk(trailId));
+    await dispatch(getTrailsThunk());
+    // await dispatch(getSingleTrailThunk(trailId));
     return data;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    if (data.errors) {
+      return data;
+    }
   }
 };
 
@@ -48,7 +55,8 @@ export const deleteReviewThunk = (reviewId, trailId) => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json();
-    await dispatch(getSingleTrailThunk(trailId));
+    await dispatch(getTrailsThunk());
+    // await dispatch(getSingleTrailThunk(trailId));
     return data;
   }
 };

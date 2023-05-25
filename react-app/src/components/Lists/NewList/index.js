@@ -6,7 +6,7 @@ import List from "..";
 import ModalButton from "../../ModalButton";
 import "./NewList.css";
 
-function NewList({ trailId }) {
+function NewList({ trail }) {
   const [title, setTitle] = useState("");
   const [buttonClass, setButtonClass] = useState("green-button disabled");
 
@@ -32,7 +32,7 @@ function NewList({ trailId }) {
     <>
       <div className="new-list-container">
         <ModalButton
-          modalComponent={pathName === "/profile" ? null : <List trailId={trailId} />}
+          modalComponent={pathName === "/profile" ? null : <List trail={trail} />}
           buttonContent={
             <div className="back-arrow">
               <i class="fa-solid fa-arrow-left fa-xl" />
@@ -48,12 +48,8 @@ function NewList({ trailId }) {
           </label>
           <hr className="header-divider" />
           <div className="buttons">
-            {/* <ModalButton
-              modalComponent={pathName === "/profile" ? null : <List trailId={trailId} />}
-              buttonContent={<button className="white-button">Cancel</button>}
-            /> */}
             <ModalButton
-              modalComponent={pathName === "/profile" ? null : <List trailId={trailId} />}
+              modalComponent={pathName === "/profile" ? null : <List trail={trail} />}
               buttonContent={
                 <>
                 <button className="white-button">Cancel</button>

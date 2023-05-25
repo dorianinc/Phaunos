@@ -24,8 +24,8 @@ function ReviewForm({ trail, review, method }) {
     if (method === "create") {
       const newReview = { description, rating };
       const data = await dispatch(addReviewThunk(trail.id, newReview));
-      if (data) {
-        setErrors(data); 
+      if (data.errors) {
+        setErrors(data.errors); 
       }else{
         closeModal()
       }
@@ -33,8 +33,8 @@ function ReviewForm({ trail, review, method }) {
       const reviewId = review.id;
       const updatedReview = { description, rating, reviewId };
       const data = await dispatch(updateReviewThunk(trail.id, updatedReview));
-      if (data) {
-        setErrors(data); 
+      if (data.errors) {
+        setErrors(data.errors); 
       }else{
         closeModal()
       }

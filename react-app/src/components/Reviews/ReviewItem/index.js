@@ -5,9 +5,7 @@ import DeleteReview from "../DeleteReview";
 import "./ReviewItem.css";
 
 function ReviewItem({ review }) {
-  console.log("review 👉", review);
   const user = useSelector((state) => state.session.user);
-  console.log("user 👉", user);
 
   if (!review) return null;
   return (

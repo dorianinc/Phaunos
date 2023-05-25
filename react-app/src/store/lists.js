@@ -52,7 +52,6 @@ export const createListThunk = (list) => async (dispatch) => {
     return data;
   } else if (res.status < 500) {
     const data = await res.json();
-    console.log("data 👉", data);
     if (data.errors) {
       return data;
     }
@@ -115,7 +114,6 @@ export const deleteBookmarkThunk = (bookmarkId, listId) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     if (listId) {
-      console.log("the list id is", listId);
       await dispatch(getSingleListThunk(listId));
     } else {
       await dispatch(getUserListsThunk());

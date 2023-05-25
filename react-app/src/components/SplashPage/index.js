@@ -9,13 +9,11 @@ function SplashPage() {
   const dispatch = useDispatch();
   const getTrails = useSelector((state) => state.trails);
   const trails = Object.values(getTrails);
-  console.log("trails 👉", trails.length)
 
   useEffect(() => {
     dispatch(getTrailsThunk());
   }, [dispatch]);
   if(!getTrails) return null
-  console.log("👉👉👉👉👉👉👉 I AM RENDERING");
   return (
     <>
       <Banner />

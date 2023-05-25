@@ -9,6 +9,7 @@ import Navigation from "./components/Navigation";
 import ProfilePage from "./components/ProfilePage";
 import TrailDetails from "./components/Trails/TrailDetails";
 import ListDetails from "./components/Lists/ListDetails";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,9 +25,17 @@ function App() {
         <Switch>
           <Route path="/login" component={LoginFormPage} />
           <Route path="/signup" component={SignupFormPage} />
-          <Route path="/profile" component={ProfilePage} />
+          <Route path="/profile">
+            <ProtectedRoute>
+              <ProfilePage/>
+            </ProtectedRoute>
+          </Route>
           <Route path="/trails/:trailId" component={TrailDetails} />
-          <Route path="/lists/:listId" component={ListDetails} />
+          <Route path="/lists/:listId">
+            <ProtectedRoute>
+              <ListDetails/>
+            </ProtectedRoute>
+          </Route>
           <Route path="/" component={SplashPage} />
         </Switch>
       )}

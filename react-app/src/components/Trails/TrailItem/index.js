@@ -39,15 +39,15 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
           <p id={`trail-park`}>{trail.park}</p>
           <p id={`trail-len`}>{trail.len}</p>
         </div>
-        {user && pathName === "/" ? (
-          <div className="bookmark-icon">
-            <ModalButton type="bookmark" modalComponent={<List trailId={trail.id} />} />
+        {user && !pathName.startsWith('/list') ? (
+          <div className="bookmark-icon cards">
+            <ModalButton type="bookmark" modalComponent={<List trail={trail} />} />
           </div>
         ) : editing ? (
           <>
           <div className="item-overlay"/>
           <div className="trash-icon" onClick={(e) => handleDelete(e, bookmarkId)}>
-            <i class="fa-regular fa-trash-can"/>
+            <i class="fa-regular fa-trash-can trail"/>
           </div>
           </>
         ) : null}

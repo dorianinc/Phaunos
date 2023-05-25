@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleTrailThunk, getTrailsThunk } from "../../../store/trails";
+import TrailItem from "../TrailItem";
+import List from "../../Lists";
 import ModalButton from "../../ModalButton";
 import ReviewItem from "../../Reviews/ReviewItem";
 import ReviewForm from "../../Reviews/ReviewForm";
@@ -10,27 +12,30 @@ import "./TrailDetails.css";
 const TrailDetails = () => {
   const { trailId } = useParams();
   const dispatch = useDispatch();
-  const allTrails = useSelector((state) => state.trails);
-  const trail = allTrails[`${trailId}`]
-  console.log("allTrails 👉", allTrails)
-  console.log("trail in trail details👉", trail)
+  const getTrails = useSelector((state) => state.trails);
+  console.log(" getTrails in trail details👉",  getTrails)
   const user = useSelector((state) => state.session.user);
+
+  const trail = getTrails[`${trailId}`];
+  const allTrails = Object.values(getTrails).filter((x) => x.id !== trail.id);
+  console.log("trail in trail details 👉", trail)
+  console.log("allTrails in trail details👉", allTrails);
 
   useEffect(() => {
     document.body.style.backgroundColor = "#efefec";
+    window.scrollTo(0, 0)
     return () => {
       document.body.style.backgroundColor = "#fff";
     };
   });
 
   useEffect(() => {
-    dispatch(getTrailsThunk())
+    dispatch(getTrailsThunk());
     // dispatch(getSingleTrailThunk(trailId));
-
   }, [dispatch, trailId]);
 
-  if (!trail.id) return null;
-  const reviews = [...trail.reviews].reverse()
+  if (!trail) return null;
+  const reviews = [...trail.reviews].reverse();
 
   return (
     <div className="trail-details-container">
@@ -43,6 +48,9 @@ const TrailDetails = () => {
           </p>
           <p>{trail.park}</p>
         </div>
+        <div className="bookmark-icon single">
+            <ModalButton type="trail" modalComponent={<List trail={trail} />} />
+          </div>
       </div>
       <div className="trail-details-info-container">
         <div className="trail-details-info">
@@ -96,22 +104,27 @@ const TrailDetails = () => {
               </div>
             </div>
             {user && (
-            <div className="trail-details-review-add">
-              <ModalButton
-                modalComponent={<ReviewForm trail={trail} method="create"/>}
-                buttonContent={<button className="green-button review">Write review</button>}
-              />
-            </div>
+              <div className="trail-details-review-add">
+                <ModalButton
+                  modalComponent={<ReviewForm trail={trail} method="create" />}
+                  buttonContent={<button className="green-button review">Write review</button>}
+                />
+              </div>
             )}
           </div>
           <hr className="item-divider" />
           <div className="trail-details-reviews-container">
             {reviews.map((review) => (
-                <ReviewItem review={review}/>
+              <ReviewItem review={review} />
             ))}
           </div>
         </div>
-        <div className="trail-details-sidebar">test</div>
+        <div className="trail-details-sidebar">
+          <h2 id="sidebar-header">Nearby Trails</h2>
+          {allTrails.map((trail) => (
+            <TrailItem trail={trail} nameOfClass="bookmark" />
+          ))}
+        </div>
       </div>
     </div>
   );

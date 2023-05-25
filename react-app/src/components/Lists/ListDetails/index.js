@@ -9,22 +9,16 @@ import "./ListDetails.css";
 
 function ListDetails() {
   const [edit, setEdit] = useState(false)
-  console.log("edit 👉", edit)
   const { listId } = useParams();
   const dispatch = useDispatch();
   const list = useSelector((state) => state.lists);
-  console.log("list from list detail 👉👉👉", list);
 
   useEffect(() => {
     dispatch(getSingleListThunk(listId));
   }, [dispatch, listId]);
 
-  // console.log("listId 👉👉👉👉👉👉👉", listId);
-
-  // console.log("👉👉👉👉👉👉👉 I AM RENDERING", !Object.values(list).length);
   if (!list.id) return null;
   const bookmarks = list.bookmarks;
-  console.log("bookmarks from list detail 👉👉👉", bookmarks);
 
   return (
     <div className="list-details-container">
