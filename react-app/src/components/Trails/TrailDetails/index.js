@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleTrailThunk } from "../../../store/trails";
+import { getSingleTrailThunk, getTrailsThunk } from "../../../store/trails";
 import ModalButton from "../../ModalButton";
 import ReviewItem from "../../Reviews/ReviewItem";
 import ReviewForm from "../../Reviews/ReviewForm";
@@ -10,9 +10,11 @@ import "./TrailDetails.css";
 const TrailDetails = () => {
   const { trailId } = useParams();
   const dispatch = useDispatch();
-  const trail = useSelector((state) => state.trails);
+  const allTrails = useSelector((state) => state.trails);
+  const trail = allTrails[`${trailId}`]
+  console.log("allTrails 👉", allTrails)
+  console.log("trail in trail details👉", trail)
   const user = useSelector((state) => state.session.user);
-  console.log("user 👉", user);
 
   useEffect(() => {
     document.body.style.backgroundColor = "#efefec";
@@ -22,7 +24,8 @@ const TrailDetails = () => {
   });
 
   useEffect(() => {
-    dispatch(getSingleTrailThunk(trailId));
+    dispatch(getTrailsThunk())
+    // dispatch(getSingleTrailThunk(trailId));
 
   }, [dispatch, trailId]);
 
