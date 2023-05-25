@@ -5,6 +5,18 @@ from app.forms import ReviewForm
 
 trails_routes = Blueprint("trails", __name__)
 
+#-----------------------------helper function---------------------------------------#
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = {}
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages[f"{field}"] = f"{error}"
+    return errorMessages
+#------------------------------------------------------------------------------------#
+
 @trails_routes.route("")
 def get_all_trails():
     """"Get all trails"""
@@ -44,9 +56,7 @@ def create_a_review(trail_id):
     trail_dict = trail.to_dict(includeImages=True, includeReviews=True)
     for review in trail_dict["reviews"]:
         if int(review["user_id"]) == user["id"]:
-            error = make_response("User has already reviewed this trail")
-            error.status_code = 400
-            return error    
+            return {"errors": {"review":"You already have a review for this trail"}}, 400
     #--------------------------------------#  
            
     form = ReviewForm()
@@ -64,27 +74,4 @@ def create_a_review(trail_id):
         db.session.add(new_review)
         db.session.commit()
         return new_review.to_dict()
-    
-    else:
-        form_errors = {key: val[0] for (key, val) in form.errors.items()}
-        error = make_response(form_errors)
-        error.status_code = 400
-        return error
-
-# @trails_routes.route("/bookmarks", methods=["POST"])
-# @login_required
-# def create_a_bookmark(trail_id):
-#     print("👉👉👉👉👉👉👉👉👉 In ADD BOOK MARK")
-#     """ Add a bookmark  to a list """
-#     user = current_user.to_dict()
-#     data = request.get_json()
-    
-#     new_bookmark = Bookmark(
-#       trail_id=trail_id,
-#       bookmarks_list_id=data["bookmarks_list_id"]  
-#     )
-#     db.session.add(new_bookmark)
-#     db.session.commit()
-#     print(f"new_bookmark.to_dict() 👉 {new_bookmark.to_dict()}")
-    
-#     return new_bookmark.to_dict()
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400

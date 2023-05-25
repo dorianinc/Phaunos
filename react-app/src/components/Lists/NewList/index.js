@@ -15,7 +15,7 @@ function NewList({ trailId }) {
   const pathName = location.pathname;
 
   useEffect(() => {
-    if (title.length >= 5) {
+    if (title.length >= 5 && title.length <= 15) {
       setButtonClass("green-button");
     } else {
       setButtonClass("green-button disabled");
@@ -25,7 +25,7 @@ function NewList({ trailId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newList = { title };
-    dispatch(createListThunk(newList));
+   const data = await dispatch(createListThunk(newList));
   };
 
   return (

@@ -50,6 +50,12 @@ export const createListThunk = (list) => async (dispatch) => {
     const data = await res.json();
     await dispatch(getUserListsThunk());
     return data;
+  } else if (res.status < 500) {
+    const data = await res.json();
+    console.log("data 👉", data);
+    if (data.errors) {
+      return data;
+    }
   }
 };
 

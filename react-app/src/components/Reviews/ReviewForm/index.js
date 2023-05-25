@@ -8,8 +8,7 @@ import "./ReviewForm.css";
 function ReviewForm({ trail, review, method }) {
   const [description, setDescription] = useState("");
   const [rating, setRating] = useState(0);
-  // const [errorsObj, setErrorsObj] = useState({});
-  const [buttonClass, setButtonClass] = useState("green-button disabled");
+  const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
   const dispatch = useDispatch();
 
@@ -20,25 +19,26 @@ function ReviewForm({ trail, review, method }) {
     }
   }, [review]);
 
-  useEffect(() => {
-    if (description.length >= 10 && rating >= 1) {
-      setButtonClass("green-button");
-    } else {
-      setButtonClass("green-button disabled");
-    }
-  }, [description, rating]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (method === "create") {
       const newReview = { description, rating };
-      await dispatch(addReviewThunk(trail.id, newReview));
+      const data = await dispatch(addReviewThunk(trail.id, newReview));
+      if (data) {
+        setErrors(data); 
+      }else{
+        closeModal()
+      }
     } else {
       const reviewId = review.id;
       const updatedReview = { description, rating, reviewId };
-      await dispatch(updateReviewThunk(trail.id, updatedReview));
+      const data = await dispatch(updateReviewThunk(trail.id, updatedReview));
+      if (data) {
+        setErrors(data); 
+      }else{
+        closeModal()
+      }
     }
-    closeModal();
   };
 
   const onChange = (number) => {
@@ -52,8 +52,12 @@ function ReviewForm({ trail, review, method }) {
       <h2 className="new-review-trail-name">{trail.name}</h2>
       <hr className="item-divider" />
       <form className="loginForm" onSubmit={(e) => handleSubmit(e)}>
+        <div className="new-review-rating-container">
         <p className="new-review-rating">Rating</p>
         <StarsRatingInput onChange={onChange} stars={rating} />
+        <p className="errors">{errors.rating}</p>
+        </div>
+
         <p>Review</p>
         <textarea
           name="description"
@@ -62,10 +66,10 @@ function ReviewForm({ trail, review, method }) {
           placeholder="Give back to the community, Share your thoughts about the trail so others know what to expect."
           onChange={(e) => setDescription(e.target.value)}
         />
+        <p className="errors">{errors.description}</p>
+        <p className="errors">{errors.review}</p>
         <div className="buttons">
-          <button className={buttonClass} disabled={buttonClass.includes("disabled")}>
-            Post
-          </button>
+          <button className="green-button review">Post</button>
         </div>
       </form>
     </div>

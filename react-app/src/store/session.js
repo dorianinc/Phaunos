@@ -51,7 +51,7 @@ export const login = (email, password) => async (dispatch) => {
       return data.errors;
     }
   } else {
-    return { "login": "Login failed. Please check your email and password." };
+    return { login: "Login failed. Please check your email and password." };
   }
 };
 

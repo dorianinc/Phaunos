@@ -5,6 +5,18 @@ from app.forms import BookmarksListForm
 
 bookmarks_lists_routes = Blueprint("bookmarks_lists", __name__)
 
+#-----------------------------helper function---------------------------------------#
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = {}
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages[f"{field}"] = f"{error}"
+    return errorMessages
+#------------------------------------------------------------------------------------#
+
 @bookmarks_lists_routes.route("")
 def get_users_bookmarks_lists():
     """ Get all of users bookmarks lists """
@@ -52,11 +64,7 @@ def create_bookmarks_list():
         db.session.add(new_list)
         db.session.commit()
         return new_list.to_dict()
-    else:
-        form_errors = {key: val[0] for (key, val) in form.errors.items()}
-        error = make_response(form_errors)
-        error.status_code = 400
-        return error
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400  
 
 @bookmarks_lists_routes.route("", methods=["PUT"])
 def edit_bookmarks_list():
@@ -86,14 +94,9 @@ def edit_bookmarks_list():
         data = form.data
         list.title = data["title"]
         db.session.commit()
-        
         return list.to_dict()
     
-    else:
-        form_errors = {key: val[0] for (key, val) in form.errors.items()}
-        error = make_response(form_errors)
-        error.status_code = 400
-        return error
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401  
     
 @bookmarks_lists_routes.route("", methods=["DELETE"])
 def delete_review():

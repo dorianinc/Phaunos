@@ -5,6 +5,18 @@ from app.forms import ReviewForm
 
 reviews_routes = Blueprint("reviewss", __name__)
 
+#-----------------------------helper function---------------------------------------#
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = {}
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages[f"{field}"] = f"{error}"
+    return errorMessages
+#------------------------------------------------------------------------------------#
+
 @reviews_routes.route("/<int:review_id>")
 def get_review_by_id(review_id):
     """ Get single review by id """
@@ -45,14 +57,10 @@ def edit_review():
         review.description = data["description"]
         review.rating = data["rating"]
         db.session.commit()
-        
         return review.to_dict(includeImages=True)
     
-    else:
-        form_errors = {key: val[0] for (key, val) in form.errors.items()}
-        error = make_response(form_errors)
-        error.status_code = 400
-        return error
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401    
+
 
 @reviews_routes.route("", methods=["DELETE"])
 def delete_review():

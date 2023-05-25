@@ -20,16 +20,23 @@
     display: flex;
     align-content: center;
     gap: 5px;
-    margin-top: 15px;
-    margin-bottom: 30px;
+    margin-top: 8px;
+    margin-bottom: 8px;
   }
 
-  .text-area {
+  .new-review-rating-container{
+    margin-bottom: 20px;
+  }
+
+  .text-area.review {
     resize: none;
     height: 150px;
     padding: 10px;
     box-sizing: border-box;
     font-size: 1rem;
-    margin-bottom: 10px;
+  }
+
+  .green-button.review{
+    margin-top: 10px;
   }
   
