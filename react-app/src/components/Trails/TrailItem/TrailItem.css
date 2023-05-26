@@ -49,10 +49,9 @@
   display: flex;
   justify-content: flex-end;
   position: absolute;
-  top: 10%;
+  top: 5%;
   right: 5%;
-  height: 10px;
-  width: 40px;
+  height: 30px;
 }
 
 .trash-icon {

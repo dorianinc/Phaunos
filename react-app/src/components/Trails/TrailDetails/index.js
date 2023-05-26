@@ -49,7 +49,7 @@ const TrailDetails = () => {
           <p>{trail.park}</p>
         </div>
         <div className="bookmark-icon single">
-            <ModalButton type="trail" modalComponent={<List trail={trail} />} />
+            <ModalButton type="bookmark" modalComponent={<List trail={trail} />} />
           </div>
       </div>
       <div className="trail-details-info-container">
