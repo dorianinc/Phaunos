@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useHistory } from "react-router-dom";
 import { addBookmarkThunk, editListThunk, deleteBookmarkThunk } from "../../../store/lists";
+import { getUserBookmarksThunk } from "../../../store/bookmarks";
 import ModalButton from "../../ModalButton";
 import DeleteList from "../DeleteList";
 
@@ -40,7 +41,7 @@ function ListItem({ list, trailId }) {
 
   const handleClick = async (e, listId) => {
     e.preventDefault();
-    if (!focus && pathName.startsWith('/profile')) history.push(`lists/${listId}`);
+    if (!focus && pathName.startsWith("/profile")) history.push(`lists/${listId}`);
     setFocus(false);
   };
 
@@ -51,11 +52,13 @@ function ListItem({ list, trailId }) {
     e.stopPropagation();
     if (!isBookmarked) {
       const newBookmark = { trailId, listId };
-      dispatch(addBookmarkThunk(newBookmark));
+      await dispatch(addBookmarkThunk(newBookmark));
+      dispatch(getUserBookmarksThunk());
     } else {
       const bookmark = list.bookmarks.filter((bookmark) => bookmark.trail_id === trailId);
       const bookmarkId = bookmark[0].id;
-      dispatch(deleteBookmarkThunk({ bookmarkId }));
+      await dispatch(deleteBookmarkThunk({ bookmarkId }));
+      dispatch(getUserBookmarksThunk());
     }
   };
 

@@ -28,5 +28,6 @@ class Bookmark(db.Model):
         return {
             "id": self.id,
             "completed": self.completed,
+            "trail_id": self.trail_id,
             "bookmarks_list_id": self.bookmarks_list_id,
         }

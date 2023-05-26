@@ -32,3 +32,14 @@ class Bookmarks_List(db.Model):
             "bookmarks": [bookmark.to_dict() for bookmark in self.bookmark_rel],
             "user_id": self.user_id
         }
+        
+    def to_dict_bookmark_tabs(self, includeBookmarks=True):
+        """ This will return the list with bookmarks but no trails"""
+        return {
+            "id": self.id,
+            "title": self.title,
+            "cover": self.cover,
+            "bookmarks": [bookmark.to_dict_no_item() for bookmark in self.bookmark_rel] if includeBookmarks else "",
+            "len": len(self.bookmark_rel),
+            "user_id": self.user_id
+        }

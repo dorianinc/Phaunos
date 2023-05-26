@@ -5,6 +5,7 @@ import { getSingleTrailThunk, getTrailsThunk } from "../../../store/trails";
 import TrailItem from "../TrailItem";
 import List from "../../Lists";
 import ModalButton from "../../ModalButton";
+import BookmarkTab from "../../BookmarkTab";
 import ReviewItem from "../../Reviews/ReviewItem";
 import ReviewForm from "../../Reviews/ReviewForm";
 import "./TrailDetails.css";
@@ -13,17 +14,17 @@ const TrailDetails = () => {
   const { trailId } = useParams();
   const dispatch = useDispatch();
   const getTrails = useSelector((state) => state.trails);
-  console.log(" getTrails in trail details👉",  getTrails)
+  console.log(" getTrails in trail details👉", getTrails);
   const user = useSelector((state) => state.session.user);
 
   const trail = getTrails[`${trailId}`];
   const allTrails = Object.values(getTrails).filter((x) => x.id !== trail.id);
-  console.log("trail in trail details 👉", trail)
+  console.log("trail in trail details 👉", trail);
   console.log("allTrails in trail details👉", allTrails);
 
   useEffect(() => {
     document.body.style.backgroundColor = "#efefec";
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     return () => {
       document.body.style.backgroundColor = "#fff";
     };
@@ -48,9 +49,13 @@ const TrailDetails = () => {
           </p>
           <p>{trail.park}</p>
         </div>
-        {user && (          
-        <div className="bookmark-icon single">
-            <ModalButton type="bookmark" modalComponent={<List trail={trail} />} />
+        {user && (
+          <div className="bookmark-icon single">
+            <BookmarkTab
+              type="bookmark"
+              trailId={trail.id}
+              modalComponent={<List trail={trail} />}
+            />
           </div>
         )}
       </div>

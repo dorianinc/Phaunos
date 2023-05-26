@@ -2,6 +2,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBookmarkThunk } from "../../../store/lists";
 import ModalButton from "../../ModalButton";
+import BookmarkTab from "../../BookmarkTab";
 import List from "../../Lists";
 import "./TrailItem.css";
 
@@ -41,7 +42,7 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
         </div>
         {user && !pathName.startsWith('/list') ? (
           <div className="bookmark-icon cards">
-            <ModalButton type="bookmark" modalComponent={<List trail={trail} />} />
+            <BookmarkTab type="bookmark" trailId={trail.id} modalComponent={<List trail={trail} />} />
           </div>
         ) : editing ? (
           <>

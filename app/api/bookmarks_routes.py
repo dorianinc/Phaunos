@@ -4,6 +4,19 @@ from app.models import db, Bookmark, Bookmarks_List
 
 bookmarks_routes = Blueprint("bookmarks", __name__)
 
+@bookmarks_routes.route("")
+def get_users_bookmarks():
+    """ Get all of users bookmarks """
+    print("👉👉👉👉👉 getting users bookmarks")
+    user = current_user.to_dict()
+    lists = Bookmarks_List.query.filter(Bookmarks_List.user_id == user["id"]).all()
+    bookmarks = []
+    for list in lists:
+       for bookmark in list.to_dict_bookmark_tabs()["bookmarks"]:
+           bookmarks.append(bookmark)
+    return bookmarks
+    
+
 @bookmarks_routes.route("/<int:bookmark_id>")
 def get_bookmark_by_id(bookmark_id):
     """" Get single bookmark by id """
