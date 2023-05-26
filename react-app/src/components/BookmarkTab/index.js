@@ -10,11 +10,9 @@ function BookmarkTab({ trailId, bookmarkedTrailId, modalComponent }) {
   const bookmarks = Object.values(getBookmarks);
   const isBookmarked = () => {
     if (bookmarks) {
-      return !!(bookmarks.filter((bookmark) => bookmark.trail_id === trailId).length);
+      return !!bookmarks.filter((bookmark) => bookmark.trail_id === trailId).length;
     }
   };
-
-  console.log("===>>", isBookmarked())
 
   const dispatch = useDispatch();
 
@@ -27,14 +25,12 @@ function BookmarkTab({ trailId, bookmarkedTrailId, modalComponent }) {
     setModalContent(modalComponent);
   };
 
-  console.log("WERE ARE IN THE BOOKMARK TAB!!");
-
   return (
     <>
       {isBookmarked() ? (
-        <img src="/images/bookmarks/greenmark.png" onClick={(e) => handleClick(e)} />
+        <img alt="bookmarked" src="/images/bookmarks/greenmark.png" onClick={(e) => handleClick(e)} />
       ) : (
-        <img src="/images/bookmarks/bookmark.png" onClick={(e) => handleClick(e)} />
+        <img alt="not-bookmarked" src="/images/bookmarks/bookmark.png" onClick={(e) => handleClick(e)} />
       )}
     </>
   );

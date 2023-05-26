@@ -25,7 +25,7 @@ function NewList({ trail }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newList = { title };
-   const data = await dispatch(createListThunk(newList));
+    await dispatch(createListThunk(newList));
   };
 
   return (
@@ -52,14 +52,14 @@ function NewList({ trail }) {
               modalComponent={pathName === "/profile" ? null : <List trail={trail} />}
               buttonContent={
                 <>
-                <button className="white-button">Cancel</button>
-                <button
-                  className={buttonClass}
-                  onClick={handleSubmit}
-                  disabled={buttonClass.includes("disabled")}
-                >
-                  Create
-                </button>
+                  <button className="white-button">Cancel</button>
+                  <button
+                    className={buttonClass}
+                    onClick={handleSubmit}
+                    disabled={buttonClass.includes("disabled")}
+                  >
+                    Create
+                  </button>
                 </>
               }
             />

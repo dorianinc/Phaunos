@@ -1,27 +1,26 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleTrailThunk, getTrailsThunk } from "../../../store/trails";
+import { getTrailsThunk } from "../../../store/trails";
 import TrailItem from "../TrailItem";
 import List from "../../Lists";
 import ModalButton from "../../ModalButton";
 import BookmarkTab from "../../BookmarkTab";
 import ReviewItem from "../../Reviews/ReviewItem";
 import ReviewForm from "../../Reviews/ReviewForm";
+import WeatherForecast from "../../Weather";
 import "./TrailDetails.css";
 
 const TrailDetails = () => {
   const { trailId } = useParams();
   const dispatch = useDispatch();
-  const getTrails = useSelector((state) => state.trails);
-  console.log(" getTrails in trail details👉", getTrails);
+
   const user = useSelector((state) => state.session.user);
 
+  const getTrails = useSelector((state) => state.trails);
   const trail = getTrails[`${trailId}`];
   const allTrails = Object.values(getTrails).filter((x) => x.id !== trail.id);
-  console.log("trail in trail details 👉", trail);
-  console.log("allTrails in trail details👉", allTrails);
-
+  
   useEffect(() => {
     document.body.style.backgroundColor = "#efefec";
     window.scrollTo(0, 0);
@@ -29,14 +28,16 @@ const TrailDetails = () => {
       document.body.style.backgroundColor = "#fff";
     };
   });
-
+  
   useEffect(() => {
     dispatch(getTrailsThunk());
-    // dispatch(getSingleTrailThunk(trailId));
   }, [dispatch, trailId]);
-
+  
+  
+  
   if (!trail) return null;
   const reviews = [...trail.reviews].reverse();
+  console.log("trail in trail details👉", trail)
 
   return (
     <div className="trail-details-container">
@@ -87,7 +88,9 @@ const TrailDetails = () => {
             ))}
           </div>
           <hr className="item-divider" />
-          <div className="trail-details-weather">5 DAY WEATHER FORECAST GOES HERE</div>
+          <div className="trail-details-weather">
+            <WeatherForecast lat={trail.lat} lng={trail.long}/>
+            </div>
           <hr className="item-divider" />
           <div className="trail-details-reviews-summary">
             <div className="trail-details-review-graph">

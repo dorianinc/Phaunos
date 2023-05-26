@@ -4,12 +4,14 @@ import session from './session'
 import trailsReducer from './trails';
 import listsReducer from './lists';
 import bookmarksReducer from './bookmarks';
+import weatherReducer from './weather';
 
 const rootReducer = combineReducers({
   session,
   trails: trailsReducer,
   lists: listsReducer,
-  bookmarks: bookmarksReducer
+  bookmarks: bookmarksReducer,
+  weather: weatherReducer
 });
 
 let enhancer;

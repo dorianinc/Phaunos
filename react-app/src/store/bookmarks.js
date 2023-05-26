@@ -11,7 +11,6 @@ export const getBookmarks = (bookmarks) => ({
 /////////////////// Thunks ///////////////////
 // get all users bookmarks
 export const getUserBookmarksThunk = () => async (dispatch) => {
-    console.log("WE ARE IN THE BOOKMARKS THUNK")
   const res = await fetch("/api/bookmarks");
   if (res.ok) {
     const data = await res.json();

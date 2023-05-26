@@ -1,7 +1,6 @@
 import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBookmarkThunk } from "../../../store/lists";
-import ModalButton from "../../ModalButton";
 import BookmarkTab from "../../BookmarkTab";
 import List from "../../Lists";
 import "./TrailItem.css";

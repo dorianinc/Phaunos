@@ -1,4 +1,4 @@
-import { getSingleTrailThunk, getTrailsThunk } from "./trails";
+import { getTrailsThunk } from "./trails";
 
 // add review to a trail
 export const addReviewThunk = (trailId, review) => async (dispatch) => {

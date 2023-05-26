@@ -21,16 +21,9 @@ function ModalButton({
 
   return (
     <>
-      {type === "bookmark" ? (
-        <img
-          src="/images/bookmarks/bookmark.png"
-          onClick={(e) => handleClick(e)}
-        />
-      ) : (
-        <div className={nameOfClass} onClick={handleClick}>
-          {buttonContent}
-        </div>
-      )}
+      <div className={nameOfClass} onClick={handleClick}>
+        {buttonContent}
+      </div>
     </>
   );
 }

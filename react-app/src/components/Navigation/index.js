@@ -12,23 +12,12 @@ function Navigation({ isLoaded }) {
     <div className="nav-container">
       <div className="nav">
         <div className="nav-left">
-          <Link exact to="/">
+          <Link to="/">
             <LogoButton />
           </Link>
-          {/* <Link exact to="/explorer">
-          Explore
-        </Link>
-        <Link exact to="/">
-          Community
-        </Link> */}
-          {user && (
-            <Link exact to="/profile">
-              My Lists
-            </Link>
-          )}
-          {/* <Link exact to="/">
-          Shop
-        </Link> */}
+          {user && 
+          <Link to="/profile">My Lists</Link>
+          }
         </div>
         <div className="nav-right">{isLoaded && <ProfileButton user={user} />}</div>
       </div>

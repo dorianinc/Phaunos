@@ -10,6 +10,7 @@ import ProfilePage from "./components/ProfilePage";
 import TrailDetails from "./components/Trails/TrailDetails";
 import ListDetails from "./components/Lists/ListDetails";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import Weather from "./components/Weather";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
               <ListDetails/>
             </ProtectedRoute>
           </Route>
+          <Route path="/weather" component={Weather}/>
           <Route path="/" component={SplashPage} />
         </Switch>
       )}
