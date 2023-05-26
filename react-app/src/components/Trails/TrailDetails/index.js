@@ -48,9 +48,11 @@ const TrailDetails = () => {
           </p>
           <p>{trail.park}</p>
         </div>
+        {user && (          
         <div className="bookmark-icon single">
             <ModalButton type="bookmark" modalComponent={<List trail={trail} />} />
           </div>
+        )}
       </div>
       <div className="trail-details-info-container">
         <div className="trail-details-info">
