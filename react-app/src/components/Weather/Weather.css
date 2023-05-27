@@ -1,5 +1,4 @@
 .forecast-container {
-  margin: 20px;
   justify-content: center;
   gap: 30px;
   display: flex;
@@ -20,5 +19,6 @@
 .forecast-desc,.forecast-temp {
   color: #6d7667;
   font-weight: 500;;
+  font-size: .9rem;
 }
 

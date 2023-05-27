@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Banner.css";
 
 function Banner() {
@@ -14,18 +14,18 @@ function Banner() {
           <h1>Find your outdoors</h1>
           <span className="search-bar">
           <button id="search-button">
-          <i class="fa-solid fa-magnifying-glass fa-xl"/>
+          <i className="fa-solid fa-magnifying-glass fa-xl"/>
             <input
               id="search-input"
               type="search"
               name="trail-search"
               placeholder="Search by city, park, or trail name"
             />
-            <i class="fa-solid fa-circle-arrow-right fa-2xl"></i>
+            <i className="fa-solid fa-circle-arrow-right fa-2xl"></i>
           </button>
           </span>
           <p id="explorer-tag">
-          <Link>Explore nearby trails</Link>
+          {/* <Link>Explore nearby trails</Link> */}
           </p>
         </div>
       </div>

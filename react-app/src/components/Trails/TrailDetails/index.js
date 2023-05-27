@@ -63,6 +63,7 @@ const TrailDetails = () => {
       <div className="trail-details-info-container">
         <div className="trail-details-info">
           <table className="trail-details-table">
+            <tbody>
             <tr>
               <th id="length-th">Length</th>
               <th id="elevation-th">Elevation gain</th>
@@ -73,18 +74,19 @@ const TrailDetails = () => {
               <td id="elevation-td">{trail.elevation}</td>
               <td id="route-type-td">{trail.route_type}</td>
             </tr>
+            </tbody>
           </table>
           <div className="trail-details-desc">{trail.description}</div>
           <hr className="item-divider" />
           <div className="trail-details-tiles">
-            {trail.attractions.map((attraction) => (
-              <p id="tile">{attraction}</p>
+            {trail.attractions.map((attraction, i) => (
+              <p key={i} id="tile">{attraction}</p>
             ))}
-            {trail.activities.map((activity) => (
-              <p id="tile">{activity}</p>
+            {trail.activities.map((activity, i) => (
+              <p key={i} id="tile">{activity}</p>
             ))}
-            {trail.suitability.map((suitability) => (
-              <p id="tile">{suitability}</p>
+            {trail.suitability.map((suitability, i) => (
+              <p key={i} id="tile">{suitability}</p>
             ))}
           </div>
           <hr className="item-divider" />
@@ -103,7 +105,7 @@ const TrailDetails = () => {
                   {(() => {
                     let stars = [];
                     for (let i = 0; i < Math.round(Number(trail.avg_rating)); i++) {
-                      stars.push(<i class="fa-solid fa-star fa-xs" />);
+                      stars.push(<i className="fa-solid fa-star fa-xs" />);
                     }
                     return stars;
                   })()}
@@ -124,15 +126,15 @@ const TrailDetails = () => {
           </div>
           <hr className="item-divider" />
           <div className="trail-details-reviews-container">
-            {reviews.map((review) => (
-              <ReviewItem review={review} />
+            {reviews.map((review, i) => (
+              <ReviewItem key={i} review={review} />
             ))}
           </div>
         </div>
         <div className="trail-details-sidebar">
           <h2 id="sidebar-header">Nearby Trails</h2>
-          {allTrails.map((trail) => (
-            <TrailItem trail={trail} nameOfClass="bookmark" />
+          {allTrails.map((trail, i) => (
+            <TrailItem key={i} trail={trail} nameOfClass="bookmark" />
           ))}
         </div>
       </div>

@@ -35,7 +35,7 @@ function NewList({ trail }) {
           modalComponent={pathName === "/profile" ? null : <List trail={trail} />}
           buttonContent={
             <div className="back-arrow">
-              <i class="fa-solid fa-arrow-left fa-xl" />
+              <i className="fa-solid fa-arrow-left fa-xl" />
             </div>
           }
         />

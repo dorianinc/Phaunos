@@ -59,8 +59,8 @@ const ProfilePage = () => {
         />
         <hr className="header-divider" />
         <div className="list-container profile">
-          {lists.map((list) => (
-            <ListItem list={list} />
+          {lists.map((list, i) => (
+            <ListItem key={i} list={list} />
           ))}
         </div>
       </div>

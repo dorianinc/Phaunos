@@ -89,7 +89,7 @@ function ListItem({ list, trailId }) {
             {list.title === "My Favorites" && pathName === "/profile" ? null : pathName ===
                 "/profile" && list.id === hoveredList ? (
               <button onClick={(e) => handleEdit(e)} className="edit-button">
-                <i class="fa-regular fa-pen-to-square" />
+                <i className="fa-regular fa-pen-to-square" />
               </button>
             ) : null}
           </div>
@@ -105,7 +105,7 @@ function ListItem({ list, trailId }) {
             buttonContent={
               <div className="list-options">
                 <div className="trash-can">
-                  <i class="fa-regular fa-trash-can" />
+                  <i className="fa-regular fa-trash-can" />
                 </div>
               </div>
             }

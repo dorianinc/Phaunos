@@ -32,7 +32,7 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
         </div>
         <div className={`trail-text ${nameOfClass}`}>
           <p id="trail-diff-review">
-            {trail.difficulty} • <i class="fa-solid fa-star fa-xs" />{" "}
+            {trail.difficulty} • <i className="fa-solid fa-star fa-xs" />{" "}
             {Number(trail.avg_rating).toFixed(1)}({trail.num_reviews})
           </p>
           <p id={`trail-name`}>{trail.name}</p>
@@ -47,7 +47,7 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
           <>
           <div className="item-overlay"/>
           <div className="trash-icon" onClick={(e) => handleDelete(e, bookmarkId)}>
-            <i class="fa-regular fa-trash-can trail"/>
+            <i className="fa-regular fa-trash-can trail"/>
           </div>
           </>
         ) : null}

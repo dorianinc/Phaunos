@@ -49,11 +49,6 @@ function SignupFormPage() {
         <div className="signup-page-right">
           <h1 id="signup-page-header">Sign up</h1>
           <form onSubmit={handleSubmit}>
-            {/* <ul>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))}
-            </ul> */}
             <div className="inputs-container">
               <div className="flex-inputs">
                 <label>

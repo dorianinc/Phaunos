@@ -9,7 +9,7 @@ function ReviewItem({ review }) {
 
   if (!review) return null;
   return (
-    <>
+    <div key={review.id}>
       <div className="trail-details-review">
         <div className="trail-details-review-info">
           <img
@@ -29,7 +29,7 @@ function ReviewItem({ review }) {
         {(() => {
           let stars = [];
           for (let i = 0; i < review.rating; i++) {
-            stars.push(<i class="fa-solid fa-star fa-xs" />);
+            stars.push(<i className="fa-solid fa-star fa-xs" />);
           }
           return stars;
         })()}
@@ -56,7 +56,7 @@ function ReviewItem({ review }) {
         </div>
       ) : null}
       <hr className="item-divider" />
-    </>
+    </div>
   );
 }
 

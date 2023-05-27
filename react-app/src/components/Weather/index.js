@@ -9,7 +9,7 @@ const WeatherForecast = ({ lat, lng }) => {
 
   useEffect(() => {
     dispatch(getWeatherThunk(lat, lng));
-  }, [dispatch]);
+  }, [dispatch, lat, lng]);
 
   if (!getWeather.current) return null;
 
@@ -36,9 +36,8 @@ const WeatherForecast = ({ lat, lng }) => {
           <p className="forecast-day">{formattedDay(day.dt)}</p>
           <img
             alt={day.dt}
-            style={{height:"60px"}}
-            src={`\\images\\weather-icons\\${day.weather[0].icon}.png`}
-            // src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
+            style={{ height: "60px" }}
+            src={`\\images\\weather-icons\\logos-v2\\${day.weather[0].icon}.png`}
           />
           <p className="forecast-desc">{day.weather[0].description}</p>
           <p className="forecast-temp">

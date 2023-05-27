@@ -36,8 +36,8 @@ function List({ trail }) {
       />
       <hr className="item-divider" />
       <div className="list-container modal">
-        {lists.map((list) => (
-          <ListItem trailId={trail.id} list={list} />
+        {lists.map((list, i) => (
+          <ListItem key={i} trailId={trail.id} list={list} />
         ))}
       </div>
       <div className="buttons">

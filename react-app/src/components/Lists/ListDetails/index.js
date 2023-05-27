@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-// import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleListThunk } from "../../../store/lists";
-// import ModalButton from "../ModalButton";
 import { useParams } from "react-router-dom";
 import TrailItem from "../../Trails/TrailItem";
 import "./ListDetails.css";
@@ -39,8 +37,8 @@ function ListDetails() {
             </div>
           </div>
           <div className="list-details-bookmarks">
-            {bookmarks.map((bookmark) => (
-              <TrailItem trail={bookmark.trail} nameOfClass="bookmark" editing={edit} bookmarkId={bookmark.id} listId={listId} />
+            {bookmarks.map((bookmark, i) => (
+              <TrailItem key={i} trail={bookmark.trail} nameOfClass="bookmark" editing={edit} bookmarkId={bookmark.id} listId={listId} />
             ))}
           </div>
         </div>
