@@ -1,5 +1,5 @@
 .trail-details-container {
-  width: 1150px;
+  width: 1024px;
   margin: 1.5% auto;
   margin-bottom: 1.5%;
   border-radius: 15px;
@@ -30,8 +30,13 @@
 }
 
 .trail-details-name {
-  font-size: 2.5rem;
-  font-weight: 300;
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.trail-details-sub-header{
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .trail-details-info-container {
@@ -39,7 +44,7 @@
 }
 .trail-details-info {
   background-color: #fff;
-  width: 65%;
+  width: 70%;
   padding: 20px 25px;
   box-sizing: border-box;
 }
@@ -50,7 +55,7 @@
   position: absolute;
   bottom: 5%;
   right: 2%;
-  height: 50px;
+  height: 40px;
   cursor: pointer;
 }
 
@@ -61,7 +66,7 @@
 .trail-details-sidebar {
   background-color: #fff;
   border-left: 1px solid #dddcd5;
-  width: 35%;
+  width: 30%;
 }
 
 #sidebar-header{
@@ -79,8 +84,8 @@
 #elevation-th,
 #route-type-th {
   color: #6d7667;
-  font-weight: 200;
-  font-size: 0.9rem;
+  font-weight: 400;
+  font-size: 1.2rem;
   text-align: left;
 }
 
@@ -92,7 +97,7 @@
 }
 
 .trail-details-desc {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #464e37;
   font-weight: 200;
   line-height: 1.8rem;

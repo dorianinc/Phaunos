@@ -45,10 +45,12 @@ const TrailDetails = () => {
         <img alt="cover" className="cover-image" src={trail.cover.img_src} />
         <div className="trail-details-summary">
           <h1 className="trail-details-name">{trail.name}</h1>
-          <p>
+          <div className="trail-details-sub-header">
+          <p >
             {trail.difficulty} • {Number(trail.avg_rating).toFixed(1)}
           </p>
           <p>{trail.park}</p>
+          </div>
         </div>
         {user && (
           <div className="bookmark-icon single">
