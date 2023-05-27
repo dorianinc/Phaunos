@@ -4,8 +4,6 @@ import { getWeatherThunk } from "../../store/weather";
 import "./Weather.css";
 
 const WeatherForecast = ({ lat, lng }) => {
-  console.log("lng in weather forecast👉", lng);
-  console.log("lat in weather forecase👉", lat);
   const dispatch = useDispatch();
   const getWeather = useSelector((state) => state.weather);
 
@@ -24,7 +22,6 @@ const WeatherForecast = ({ lat, lng }) => {
   };
 
   const formattedForecast = formatForecast();
-  console.log("formattedForecast 👉", formattedForecast);
   const formattedDay = (timestamp) => {
     const day = new Date(timestamp * 1000).toLocaleString("en-US", {
       weekday: "long",
@@ -39,7 +36,9 @@ const WeatherForecast = ({ lat, lng }) => {
           <p className="forecast-day">{formattedDay(day.dt)}</p>
           <img
             alt={day.dt}
-            src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
+            style={{height:"60px"}}
+            src={`\\images\\weather-icons\\${day.weather[0].icon}.png`}
+            // src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
           />
           <p className="forecast-desc">{day.weather[0].description}</p>
           <p className="forecast-temp">
