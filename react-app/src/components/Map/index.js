@@ -21,3 +21,5 @@ const Map = ({ bookmarks }) => {
     </>
   );
 };
+
+export default Map;
