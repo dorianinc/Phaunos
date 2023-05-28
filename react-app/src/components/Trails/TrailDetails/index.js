@@ -136,7 +136,7 @@ const TrailDetails = () => {
         <div className="trail-details-sidebar">
           <h2 id="sidebar-header">Nearby Trails</h2>
           {allTrails.map((trail, i) => (
-            <TrailItem key={i} trail={trail} nameOfClass="bookmark" />
+            <TrailItem key={i} trail={trail} nameOfClass="trail" />
           ))}
         </div>
       </div>

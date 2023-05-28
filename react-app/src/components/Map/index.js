@@ -1,19 +1,23 @@
+import dotenv from "dotenv";
 import { useMemo } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-import dotenv from "dotenv";
-
+import "./Map.css";
 dotenv.config();
 
-const Map = () => {
-//   const {} = useLoadScript({
-//     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY
-//   });
+const Map = ({ bookmarks }) => {
+  const center = useMemo(() => ({ lat: 37.738762, lng: -119.572220 }), []);
 
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
+  });
+  if (!isLoaded) return <h1>Loading...</h1>;
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <GoogleMap zoom={14} center={center} mapContainerClassName="map-container">
+        {bookmarks.map((bookmark, i) => (
+        <Marker position={{ lat: bookmark.trail.lat, lng: bookmark.trail.long }} />
+            ))}
+      </GoogleMap>
+    </>
   );
 };
-
-export default Map;

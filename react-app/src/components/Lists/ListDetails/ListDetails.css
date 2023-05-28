@@ -1,14 +1,7 @@
 .list-details-container{
-    height: 84vh;
+    height: 95vh;
 }
 
-.list-details-query-bar{
-    display: flex;
-    align-items: center;
-    background-color: aquamarine;
-    height: 40px;
-    padding-left: 10px;
-}
 
 .list-details-content{
     display: flex;
@@ -18,7 +11,12 @@
 
 .list-details-content-left{
     border-right: 2px solid #dddcd5;
-    width: 12%;
+    width: 14%;
+}
+
+.list-details-content-right{
+    height: 100%;
+    width: 90%;
 }
 
 .list-details-list-title{
@@ -49,7 +47,7 @@
 
 .list-details-bookmarks{
     overflow-y: auto;
-    height: 100%;
+    height: 89vh;
 }
 .list-details-edit{
     cursor: pointer;

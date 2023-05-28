@@ -14,11 +14,25 @@
 .trail-item.bookmark {
   margin: 15px auto;
   position: relative;
-  width: 250px;
+  width: 300px;
   cursor: pointer;
 }
 
 .trail-image.bookmark {
+  height: 225px;
+  width: 100%;
+  border-radius: 25px;
+}
+
+/* ---- Trail Details Page CSS ----- */
+.trail-item.trail {
+  margin: 15px auto;
+  position: relative;
+  width: 250px;
+  cursor: pointer;
+}
+
+.trail-image.trail {
   height: 200px;
   width: 100%;
   border-radius: 25px;
@@ -26,22 +40,23 @@
 
 /* ---- General CSS ----- */
 .trail-text {
+  color: red;
   margin: 5px 0;
 }
 
 #trail-name {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: #2b381f;
 }
 
 #trail-diff-review {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #6d7667;
 }
 #trail-park,
 #trail-len {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #6d7667;
 }
 
@@ -71,7 +86,7 @@
   left: 0;
   bottom: 0;
   z-index: 1;
-  height: 200px;
+  height: 225px;
   width: 100%;
   border-radius: 25px;
   background-color: rgba(0, 0, 0, 0.6);

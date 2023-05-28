@@ -19,8 +19,8 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
   };
 
   const handleDelete = async (e, bookmarkId) => {
-    e.stopPropagation()
-    dispatch(deleteBookmarkThunk({bookmarkId}, listId))
+    e.stopPropagation();
+    dispatch(deleteBookmarkThunk({ bookmarkId }, listId));
   };
 
   if (!trail.id || !trail.cover) return null;
@@ -39,16 +39,20 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
           <p id={`trail-park`}>{trail.park}</p>
           <p id={`trail-len`}>{trail.len}</p>
         </div>
-        {user && !pathName.startsWith('/list') ? (
+        {user && !pathName.startsWith("/list") ? (
           <div className="bookmark-icon cards">
-            <BookmarkTab type="bookmark" trailId={trail.id} modalComponent={<List trail={trail} />} />
+            <BookmarkTab
+              type="bookmark"
+              trailId={trail.id}
+              modalComponent={<List trail={trail} />}
+            />
           </div>
         ) : editing ? (
           <>
-          <div className="item-overlay"/>
-          <div className="trash-icon" onClick={(e) => handleDelete(e, bookmarkId)}>
-            <i className="fa-regular fa-trash-can trail"/>
-          </div>
+            <div className="item-overlay" />
+            <div className="trash-icon" onClick={(e) => handleDelete(e, bookmarkId)}>
+              <i className="fa-regular fa-trash-can trail" />
+            </div>
           </>
         ) : null}
       </div>
