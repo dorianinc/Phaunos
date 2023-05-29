@@ -1,11 +1,13 @@
 import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBookmarkThunk } from "../../../store/lists";
+import { useMap } from "../../../context/MapContext";
 import BookmarkTab from "../../BookmarkTab";
 import List from "../../Lists";
 import "./TrailItem.css";
 
 function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
+  const { setCurrentZoom, setCurrentLat, setCurrentLng } = useMap();
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -13,9 +15,15 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
 
   const user = useSelector((state) => state.session.user);
 
-  const handleClick = (e, trailId) => {
+  const handleClick = (e, trail) => {
     e.preventDefault();
-    history.push(`/trails/${trailId}`);
+    if (pathName.startsWith("/list")) {
+      setCurrentLat(trail.lat);
+      setCurrentLng(trail.long);
+      setCurrentZoom(18);
+    } else {
+      history.push(`/trails/${trail.id}`);
+    }
   };
 
   const handleDelete = async (e, bookmarkId) => {
@@ -26,7 +34,7 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
   if (!trail.id || !trail.cover) return null;
   return (
     <>
-      <div className={`trail-item ${nameOfClass}`} onClick={(e) => handleClick(e, trail.id)}>
+      <div className={`trail-item ${nameOfClass}`} onClick={(e) => handleClick(e, trail)}>
         <div>
           <img className={`trail-image ${nameOfClass}`} alt="cover" src={trail.cover.img_src} />
         </div>
