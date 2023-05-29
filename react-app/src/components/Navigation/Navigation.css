@@ -14,12 +14,20 @@
 .nav-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 40px;
 }
 
 .nav-left > a {
+  cursor: pointer;
   color: #2c5e1a;
-  text-decoration: none;
+}
+
+.nav-links > a {
+  color: #2c5e1a;
+  font-size: 1.2rem;
+  font-family: 500;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .nav-right {

@@ -4,25 +4,102 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-    jane = User(
-        first_name='Jane',
-        last_name='Doe',
+    user1 = User(
+        first_name='Dorian',
+        last_name='Macias',
         username='user1',
         email='user1@aa.io',
         password='password'
         )
-    john = User(
+    user2 = User(
         first_name='John',
         last_name='Smith',
         username='user2',
         email='user2@aa.io',
         password='password'
         )
-    juan = User(
+    user3 = User(
         first_name='Juan',
         last_name='Smith-o',
         username='user3',
         email='user3@aa.io',
+        password='password'
+        )
+    user4 = User(
+        first_name='John',
+        last_name='Doe',
+        username='user4',
+        email='user4@aa.io',
+        password='password'
+        )
+    user5 = User(
+        first_name='Alice',
+        last_name='Johnson',
+        username='user5',
+        email='user5@aa.io',
+        password='password'
+        )
+    user6 = User(
+        first_name='Michael',
+        last_name='Smith',
+        username='user6',
+        email='user6@aa.io',
+        password='password'
+        )
+    user7 = User(
+        first_name='Emma',
+        last_name='Williams',
+        username='user7',
+        email='user7@aa.io',
+        password='password'
+        )
+    user8 = User(
+        first_name='Sophia',
+        last_name='Brown',
+        username='user8',
+        email='user8@aa.io',
+        password='password'
+        )
+    user9 = User(
+        first_name='Matthew',
+        last_name='Jones',
+        username='user9',
+        email='user9@aa.io',
+        password='password'
+        )
+    user10 = User(
+        first_name='Olivia',
+        last_name='Miller',
+        username='user10',
+        email='user10@aa.io',
+        password='password'
+        )
+    user11 = User(
+        first_name='Daniel',
+        last_name='Wilson',
+        username='user11',
+        email='user11@aa.io',
+        password='password'
+        )
+    user12 = User(
+        first_name='Emily',
+        last_name='Anderson',
+        username='user12',
+        email='user12@aa.io',
+        password='password'
+        )
+    user13 = User(
+        first_name='James',
+        last_name='Taylor',
+        username='user13',
+        email='user13@aa.io',
+        password='password'
+    )
+    user14 = User(
+        first_name='Maria',
+        last_name='Garcia',
+        username='user14',
+        email='user14@aa.io',
         password='password'
         )
     demo = User(
@@ -33,9 +110,20 @@ def seed_users():
         password='password'
         )
 
-    db.session.add(jane)
-    db.session.add(john)
-    db.session.add(juan)
+    db.session.add(user1)
+    db.session.add(user2)
+    db.session.add(user3)
+    db.session.add(user4)
+    db.session.add(user5)
+    db.session.add(user6)
+    db.session.add(user7)
+    db.session.add(user8)
+    db.session.add(user9)
+    db.session.add(user10)
+    db.session.add(user11)
+    db.session.add(user12)
+    db.session.add(user13)
+    db.session.add(user14)
     db.session.add(demo)
     db.session.commit()
 

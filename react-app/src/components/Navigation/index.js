@@ -15,9 +15,11 @@ function Navigation({ isLoaded }) {
           <Link to="/">
             <LogoButton />
           </Link>
-          {user && 
-          <Link to="/profile">My Lists</Link>
-          }
+          {user && (
+            <div className="nav-links">
+              <Link to="/profile">My Lists</Link>
+            </div>
+          )}
         </div>
         <div className="nav-right">{isLoaded && <ProfileButton user={user} />}</div>
       </div>
