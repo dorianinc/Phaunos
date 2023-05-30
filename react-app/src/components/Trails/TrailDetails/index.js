@@ -23,7 +23,7 @@ const TrailDetails = () => {
 
   useEffect(() => {
     document.body.style.backgroundColor = "#efefec";
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     return () => {
       document.body.style.backgroundColor = "#fff";
     };

@@ -24,6 +24,7 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
       setCurrentZoom(18);
     } else {
       history.push(`/trails/${trail.id}`);
+      window.scrollTo(0, 0);
     }
   };
 
