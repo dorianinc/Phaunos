@@ -2,31 +2,82 @@ from app.models import db, Bookmarks_List, environment, SCHEMA
 from sqlalchemy.sql import text
 
 seed_data = [
-   ## user 1
     {
         "title": "My Favorites",
         "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
-        "user_id": 1
+        "user_id": 1,
     },
-   ## user 2
     {
         "title": "My Favorites",
         "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
-        "user_id": 2
+        "user_id": 2,
     },
-   ## user 3
     {
         "title": "My Favorites",
         "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
-        "user_id": 3
+        "user_id": 3,
     },
-   ## demo user
     {
         "title": "My Favorites",
         "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
-        "user_id": 4
+        "user_id": 4,
     },
-    ]
+    {
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "user_id": 5,
+    },
+    {
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "user_id": 6,
+    },
+    {
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "user_id": 7,
+    },
+    {
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "user_id": 8,
+    },
+    {
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "user_id": 9,
+    },
+    {
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "user_id": 10,
+    },
+    {
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "user_id": 11,
+    },
+    {
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "user_id": 12,
+    },
+    {
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "user_id": 13,
+    },
+    {
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "user_id": 14,
+    },
+    {
+        "title": "My Favorites",
+        "cover": "https://static.vecteezy.com/system/resources/previews/000/596/318/original/deer-vector-icon-illustration-design.jpg",
+        "user_id": 15,
+    },
+]
 
 
 # @with_appcontext
@@ -50,6 +101,3 @@ def undo_bookmarks_list(app):
             db.session.execute(text("DELETE FROM bookmarks_lists"))
 
         db.session.commit()
-
-
-

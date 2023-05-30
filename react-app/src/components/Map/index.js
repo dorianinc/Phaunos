@@ -6,18 +6,19 @@ import "./Map.css";
 dotenv.config();
 
 const Map = ({ bookmarks }) => {
-  const { currentZoom, setCurrentZoom, currentLat, setCurrentLat, currentLng, setCurrentLng } = useMap();
+  const { currentZoom, setCurrentZoom, currentLat, setCurrentLat, currentLng, setCurrentLng } =
+    useMap();
   const center = useMemo(() => ({ lat: currentLat, lng: currentLng }), [currentLat, currentLng]);
   const mapOptions = {
     zoom: currentZoom,
     center,
-    mapTypeId: 'terrain',
+    mapTypeId: "terrain",
   };
-  
+
   useEffect(() => {
-    setCurrentZoom(5);
-    setCurrentLat(39.809879)
-    setCurrentLng(-98.556732)
+    setCurrentZoom(8);
+    setCurrentLat(40.112206);
+    setCurrentLng(-120.90653);
   }, []);
 
   const { isLoaded } = useLoadScript({
@@ -26,10 +27,7 @@ const Map = ({ bookmarks }) => {
   if (!isLoaded) return <h1>Loading...</h1>;
   return (
     <>
-      <GoogleMap
-        options={mapOptions}
-        mapContainerClassName="map-container"
-      >
+      <GoogleMap options={mapOptions} mapContainerClassName="map-container">
         {bookmarks.map((bookmark, i) => (
           <Marker position={{ lat: bookmark.trail.lat, lng: bookmark.trail.long }} />
         ))}

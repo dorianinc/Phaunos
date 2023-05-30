@@ -21,6 +21,7 @@ def validation_errors_to_error_messages(validation_errors):
 def get_all_trails():
     """"Get all trails"""
     trails = Trail.query.all()
+    print(f"trails 👉 {trails}")
     return [trail.to_dict(includeImages=True, includeReviews=True) for trail in trails]
 
 @trails_routes.route("/<int:trail_id>")

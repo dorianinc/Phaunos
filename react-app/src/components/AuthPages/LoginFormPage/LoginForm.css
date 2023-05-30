@@ -46,6 +46,8 @@
 
 .green-button.demo{
     margin-top: 10px;
+    width:auto;
+    padding: 10px;
     background-color:#5E2A1A;
 }
 

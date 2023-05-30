@@ -65,7 +65,8 @@ function ListItem({ list, trailId }) {
   return (
     <>
       <div
-        className="bookmark-item"
+        className={`bookmark-item`}
+        style={pathName.startsWith("/profile") ? { cursor: "pointer" } : null}
         onClick={(e) => handleClick(e, list.id)}
         onMouseEnter={() => setHoveredList(list.id)}
         onMouseLeave={() => setHoveredList("")}
@@ -100,10 +101,10 @@ function ListItem({ list, trailId }) {
         {list.title === "My Favorites" && pathName === "/profile" ? null : pathName ===
           "/profile" ? (
           <ModalButton
-            nameOfClass={"list-options"}
+            nameOfClass={"postion-end"}
             modalComponent={<DeleteList listId={list.id} />}
             buttonContent={
-              <div className="list-options">
+              <div className="postion-end">
                 <div className="trash-can">
                   <i className="fa-regular fa-trash-can" />
                 </div>
@@ -111,7 +112,7 @@ function ListItem({ list, trailId }) {
             }
           />
         ) : (
-          <div className="list-options">
+          <div className="postion-end">
             <input
               onClick={(e) => handleBookmark(e, list.id)}
               type="checkbox"

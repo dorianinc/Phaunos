@@ -1,10 +1,50 @@
-.content-trails{
-    width: 42%;
-    overflow-x: auto;
-    margin: 0 auto;
+.content-trails {
+  width: 41.9%;
+  overflow: auto;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
 
-.trail-item-container{
-    display: flex;
-    gap: 19px;
+.local-favorites{
+    position: absolute;
+    z-index: 4;
+}
+
+.trail-item-container {
+  display: flex;
+  gap: 19px;
+  padding: 0 75px;
+  padding-top: 50px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.trail-item-container::-webkit-scrollbar {
+  display: none;
+}
+
+.prev-button,
+.next-button {
+  color: #6d7667;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  width: 2vw;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), 0%, #fff 100%);
+  z-index: 3;
+}
+
+.prev-button {
+  left: 0;
+}
+
+.next-button {
+  right: 0;
 }

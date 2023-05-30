@@ -39,25 +39,26 @@ function ProfileButton({ user }) {
   return (
     <>
       {user ? (
-        <button onClick={openMenu}>
-          <i className="fas fa-user-circle" />
+        <button className="profile-button" onClick={openMenu}>
+          <img className="profile-pic review" alt="profile-pic" src={user.profile_pic} />
         </button>
       ) : (
         <button id="login-button">
           <Link to="/login">Log in</Link>
         </button>
       )}
-      <ul className={ulClassName} ref={ulRef}>
+      <div className={`${ulClassName} primary-color`} ref={ulRef}>
         {user && (
-          <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
-          </>
+          <div className="dropdown-options">
+            <div className="dropdown-username">Hello, {user.first_name}</div>
+            <div className="dropdown-email">{user.email}</div>
+            <hr className="item-divider"/>
+            <div className="dropdown-button" onClick={handleLogout}>
+              Log Out
+            </div>
+          </div>
         )}
-      </ul>
+      </div>
     </>
   );
 }

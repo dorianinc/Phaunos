@@ -26,15 +26,15 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-container">
-      <div className="user-info">
+      <div className="profile-info">
         <div>
-          <img className="profile-pic profile" alt="profile-pic" src="https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684768954/Phaunos/animal-icons/wolf.png" />
+          <img className="profile-pic profile" alt="profile-pic" src={user.profile_pic} />
         </div>
-        <h2 id="user-name">
+        <h1 id="profile-user-name">
           {user.first_name} {user.last_name}
-        </h2>
-        <p id="user-location">City, State</p>
-        <p id="user-member">Member since May 2023</p>
+        </h1>
+        <p id="profile-user-location">City, State</p>
+        <p id="profile-user-member">Member since May 2023</p>
         <div className="follows">
           <div>
             <p>0</p>
@@ -46,8 +46,8 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <div className="user-lists">
-        <h1 id="list-header">Lists</h1>
+      <div className="profile-user-lists">
+        <h1 id="profile-list-header">Lists</h1>
         <ModalButton
           modalComponent={<NewList />}
           buttonContent={

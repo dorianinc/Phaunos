@@ -2,11 +2,12 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBookmarkThunk } from "../../../store/lists";
 import { useMap } from "../../../context/MapContext";
-import BookmarkTab from "../../BookmarkTab";
-import List from "../../Lists";
+import BookmarkTab from "../../Bookmark/BookmarkTab";
+import BookmarkList from "../../Bookmark";
 import "./TrailItem.css";
 
 function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
+
   const { setCurrentZoom, setCurrentLat, setCurrentLng } = useMap();
   const history = useHistory();
   const location = useLocation();
@@ -52,7 +53,7 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
             <BookmarkTab
               type="bookmark"
               trailId={trail.id}
-              modalComponent={<List trail={trail} />}
+              modalComponent={<BookmarkList trail={trail} />}
             />
           </div>
         ) : editing ? (

@@ -23,10 +23,12 @@ class Trail(db.Model):
     activities = db.Column(db.String(255), nullable=False)
     suitability = db.Column(db.String(255), nullable=False)
 
-    trail_images_rel = db.relationship("Trail_Image", back_populates="trail_rel", cascade="all, delete-orphan")
+    trail_images_rel = db.relationship(
+        "Trail_Image", back_populates="trail_rel", cascade="all, delete-orphan"
+    )
     review_rel = db.relationship("Review", back_populates="trail_rel")
     bookmark_rel = db.relationship("Bookmark", back_populates="trail_rel")
-    
+
     def to_dict(self, includeImages=False, includeReviews=False):
         return {
             "id": self.id,
@@ -45,10 +47,17 @@ class Trail(db.Model):
             "activities": self.activities.split(","),
             "suitability": self.suitability.split(","),
             "cover": (self.trail_images_rel[0]).to_dict(),
-            "images": [image.to_dict() for image in self.trail_images_rel] if includeImages else "",
-            "avg_rating": sum([review.to_dict()["rating"] for review in self.review_rel]) / len([review.to_dict()["rating"] for review in self.review_rel]),
-            "reviews": [review.to_dict() for review in self.review_rel] if includeReviews else "",
-            "num_reviews": len(self.review_rel)
+            "images": [image.to_dict() for image in self.trail_images_rel]
+            if includeImages
+            else "",
+            "avg_rating": sum(
+                [review.to_dict()["rating"] for review in self.review_rel]
+            )
+            / len([review.to_dict()["rating"] for review in self.review_rel]),
+            "reviews": [review.to_dict() for review in self.review_rel]
+            if includeReviews
+            else "",
+            "num_reviews": len(self.review_rel),
         }
 
     def to_dict_no_item(self):
@@ -67,5 +76,5 @@ class Trail(db.Model):
             "description": self.description,
             "attractions": self.attractions.split(","),
             "activities": self.activities.split(","),
-            "suitability": self.suitability.split(",")
+            "suitability": self.suitability.split(","),
         }

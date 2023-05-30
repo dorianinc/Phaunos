@@ -4,9 +4,9 @@ export const MapContext = createContext();
 export const useMap = () => useContext(MapContext);
 
 export default function MapProvider({ children }) {
-  const [currentZoom, setCurrentZoom] = useState(15);
-  const [currentLat, setCurrentLat] = useState(39.809879);
-  const [currentLng, setCurrentLng] = useState(-98.556732);
+  const [currentZoom, setCurrentZoom] = useState();
+  const [currentLat, setCurrentLat] = useState();
+  const [currentLng, setCurrentLng] = useState();
 
 
   return (

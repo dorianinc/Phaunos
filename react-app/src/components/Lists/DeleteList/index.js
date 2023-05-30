@@ -19,13 +19,13 @@ function DeleteList({ listId }) {
       <p id="delete-text"> Are you sure you want to delete this list?</p>
       <div className="buttons delete">
         <div>
-          <button className="green-button delete" onClick={closeModal}>
-            Cancel
+          <button className="green-button delete" onClick={(e) => handleDelete(e)}>
+            Yes, delete this list
           </button>
         </div>
         <div>
-          <button className="white-button delete" onClick={(e) => handleDelete(e)}>
-            Yes, delete this list
+          <button className="white-button delete" onClick={closeModal}>
+            Cancel
           </button>
         </div>
       </div>

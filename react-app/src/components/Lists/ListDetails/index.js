@@ -18,7 +18,6 @@ function ListDetails() {
 
   if (!list.id) return null;
   const bookmarks = list.bookmarks;
-  console.log("bookmarks from list details 👉", bookmarks);
 
   return (
     <div className="list-details-container">

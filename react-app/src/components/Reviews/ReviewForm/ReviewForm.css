@@ -8,13 +8,6 @@
     background-color: #fff;
 }
 
-.new-review-header{
-    color:  #2B381F
-}
-
-.new-review-trail-name{
-    color:   #6D7667
-}
 
 .new-review-rating-input {
     display: flex;

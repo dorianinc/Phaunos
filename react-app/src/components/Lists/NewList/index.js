@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { createListThunk } from "../../../store/lists";
-import List from "..";
+import BookmarkList from "../../Bookmark";
 import ModalButton from "../../ModalButton";
 import "./NewList.css";
 
@@ -32,7 +32,7 @@ function NewList({ trail }) {
     <>
       <div className="new-list-container">
         <ModalButton
-          modalComponent={pathName === "/profile" ? null : <List trail={trail} />}
+          modalComponent={pathName === "/profile" ? null : <BookmarkList trail={trail} />}
           buttonContent={
             <div className="back-arrow">
               <i className="fa-solid fa-arrow-left fa-xl" />
@@ -49,13 +49,13 @@ function NewList({ trail }) {
           <hr className="header-divider" />
           <div className="buttons">
             <ModalButton
-              modalComponent={pathName === "/profile" ? null : <List trail={trail} />}
+              modalComponent={pathName === "/profile" ? null : <BookmarkList trail={trail} />}
               buttonContent={
                 <>
                   <button className="white-button">Cancel</button>
                   <button
                     className={buttonClass}
-                    onClick={handleSubmit}
+                    onClick={(e) => handleSubmit(e)}
                     disabled={buttonClass.includes("disabled")}
                   >
                     Create

@@ -48,8 +48,8 @@ function ReviewForm({ trail, review, method }) {
   return (
     <div className="new-review-modal">
       <img className="x-mark" alt="close" onClick={closeModal} src="/images/icons/mark.png" />
-      <h1 className="new-review-header"> Leave a Review</h1>
-      <h2 className="new-review-trail-name">{trail.name}</h2>
+      <h1 className="primary-color">Leave a Review</h1>
+      <h2 className="secondary-color">{trail.name}</h2>
       <hr className="item-divider" />
       <form className="loginForm" onSubmit={(e) => handleSubmit(e)}>
         <div className="new-review-rating-container">

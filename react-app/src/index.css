@@ -1,11 +1,24 @@
-html, body{
-  font-family: 'Manrope', sans-serif;
-  width: 100%;
-  height: 100%;
+/*------ General CSS ------*/
+
+html{
+  scroll-behavior: smooth;
 }
 
-textarea,input{
-  font-family: 'Manrope', sans-serif;
+html,
+body {
+  font-family: "Manrope", sans-serif;
+  width: 100%;
+  height: 100%;
+  color: #2b381f;
+}
+
+.secondary-color {
+  color: #6d7667;
+}
+
+textarea,
+input {
+  font-family: "Manrope", sans-serif;
   font-size: 1.1rem;
   width: 100%;
 }
@@ -14,12 +27,21 @@ body {
   margin: 0px;
 }
 
-h1,
 h2,
 h3,
-h4,
-p {
+h4 {
+  color: #6d7667;
   margin: 0px;
+}
+
+h1 {
+  color: #2b381f;
+  margin: 0px;
+}
+
+p{
+  margin: 0;
+  color: #2b381f;
 }
 
 .header-divider {
@@ -30,6 +52,8 @@ p {
   margin: 17px 0;
   border: 1px solid #e2e1db;
 }
+
+/*------ nuttons ------*/
 
 .white-button {
   height: 50px;
@@ -57,6 +81,17 @@ p {
   cursor: pointer;
 }
 
+.grey-button{
+  height: 50px;
+  width: 100px;
+  border: 1px solid #faf9f6;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: hsl(0, 0%, 61%);
+  cursor: pointer;
+}
+
 .green-button.disabled {
   height: 50px;
   width: 100px;
@@ -67,8 +102,23 @@ p {
   background-color: #fafaf9;
 }
 
+/*------ modals ------*/
+.modal-header {
+  color: #2b381f;
+}
+
+.modal-subheader {
+}
+
+/*------ stars ------*/
 
 .fa-star {
   color: #5de372;
 }
 
+/* things that need to fit at the far right of a container */
+
+.postion-end {
+  align-self: center;
+  margin-left: auto;
+}

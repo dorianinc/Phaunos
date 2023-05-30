@@ -1,5 +1,5 @@
 .nav-container {
-  height: 5vh;
+  height: 75px;
   background-color: #fff;
   border-bottom: 1px solid #deddd6;
 }
@@ -46,19 +46,49 @@
   color: #000;
 }
 
+.profile-button {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
 .profile-dropdown {
   position: absolute;
+  z-index: 2;
   list-style-type: none;
-  top: 35px;
-  right: 10px;
+  top: 65px;
+  right: 25px;
   width: auto;
+  min-width: 200px;
   height: auto;
-  padding: 10px;
-  background-color: white;
+  min-height: 100px;
+  font-size: 1.2rem;
+  background-color: #fff;
+  overflow: hidden;
+  box-sizing: border-box;
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.2);
   border-radius: 24px 24px 24px 24px;
-  z-index: 2;
+}
+
+.dropdown-options{
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.dropdown-username,
+.dropdown-email,
+.dropdown-button {
+  width: 100%;
+}
+
+.dropdown-button {
   cursor: pointer;
+  font-weight: 800px;
+  text-align: center;
+}
+
+.dropdown-button:hover {
+  background-color: #efefec;
 }
 
 .hidden {

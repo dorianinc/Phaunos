@@ -15,7 +15,7 @@ function ReviewItem({ review }) {
           <img
             className="profile-pic review"
             alt="profile-pic"
-            src="https://res.cloudinary.com/dkuhmdf7w/image/upload/v1684768954/Phaunos/animal-icons/wolf.png"
+            src={review.user.profile_pic}
           />
           <div>
             <p id="review-user-name">
