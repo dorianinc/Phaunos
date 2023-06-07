@@ -50,15 +50,19 @@ function ListItem({ list, trailId }) {
 
   const handleBookmark = async (e, listId) => {
     e.stopPropagation();
+    
     if (!isBookmarked) {
       const newBookmark = { trailId, listId };
       await dispatch(addBookmarkThunk(newBookmark));
       dispatch(getUserBookmarksThunk());
+
     } else {
+
       const bookmark = list.bookmarks.filter((bookmark) => bookmark.trail_id === trailId);
       const bookmarkId = bookmark[0].id;
       await dispatch(deleteBookmarkThunk({ bookmarkId }));
       dispatch(getUserBookmarksThunk());
+
     }
   };
 
