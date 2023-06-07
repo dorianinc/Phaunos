@@ -61,7 +61,7 @@ Phaunos is a fullstack single-page AllTrails clone where a user can find hiking 
 7. In the 'react-app' folder create a '.env' file
 8. Copy over all the content from the 'example.env' to the '.env'
 9. From here you will need to get a key from [openweatherapi](https://openweathermap.org/api) and [googlemaps](https://console.cloud.google.com/google/maps-apis)
-10. Take those keys and add them tto the .env file
+10. Take those keys and add them to the .env file
 
 
 ## Landing Page
