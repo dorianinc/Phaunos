@@ -24,6 +24,8 @@ const TrailDetails = () => {
   );
   const getReviews = useSelector((state) => state.reviews);
   const reviews = Object.values(getReviews).reverse();
+  console.log("getReviews in trail details 👉", getReviews)
+  console.log("reviewsin trail details 👉", reviews)
 
   useEffect(() => {
     document.body.style.backgroundColor = "#efefec";
