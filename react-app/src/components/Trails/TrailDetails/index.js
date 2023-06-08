@@ -17,15 +17,15 @@ const TrailDetails = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
+  const getReviews = useSelector((state) => state.reviews);
+  const reviews = Object.values(getReviews).reverse();
+  console.log("getReviews in trail details 👉", getReviews);
+  console.log("reviews in trail details 👉", reviews);
   const getTrails = useSelector((state) => state.trails);
   const currentTrail = getTrails[`${trailId}`];
   const allTrails = Object.values(getTrails).filter(
     (trail) => trail.id !== currentTrail.id && trail.park === currentTrail.park
   );
-  const getReviews = useSelector((state) => state.reviews);
-  const reviews = Object.values(getReviews).reverse();
-  console.log("getReviews in trail details 👉", getReviews);
-  console.log("reviews in trail details 👉", reviews);
 
   useEffect(() => {
     document.body.style.backgroundColor = "#efefec";
