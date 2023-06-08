@@ -23,6 +23,7 @@ const WeatherForecast = ({ lat, lng }) => {
 
   const formattedForecast = formatForecast();
   const formattedDay = (timestamp) => {
+    // sets day of the week
     const day = new Date(timestamp * 1000).toLocaleString("en-US", {
       weekday: "long",
     });
