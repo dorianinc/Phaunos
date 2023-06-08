@@ -143,7 +143,7 @@ const TrailDetails = () => {
           </div>
           <hr className="item-divider" />
           <div className="trail-details-reviews-container">
-            {reviews.length && reviews &&
+            {reviews.length &&
               reviews.map((review, i) => (
                 <ReviewItem key={i} review={review} trail={currentTrail} />
               ))}
