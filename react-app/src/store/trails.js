@@ -1,7 +1,7 @@
 ////////////// Action Creators ///////////////
 export const GET_TRAILS = "trails/GET_TRAILS";
 export const GET_SINGLE_TRAIL = "trails/GET_SINGLE_TRAIL";
-// export const UPDATE_TRAIL = "trails/UPDATE_TRAIL";
+export const UPDATE_TRAIL = "trails/UPDATE_TRAIL";
 // export const DELETE_TRAIL = "trails/DELETE_TRAIL";
 // export const CLEAR_TRAILS = "trails/CLEAR_TRAILS";
 
@@ -18,6 +18,12 @@ export const getSingleTrail = (trail) => ({
   trail,
 });
 
+// update single trail
+export const updateTrail = (trail) => ({
+  type: UPDATE_TRAIL,
+  trail,
+});
+
 
 /////////////////// Thunks ///////////////////
 
@@ -31,7 +37,6 @@ export const getTrailsThunk = () => async (dispatch) => {
   }
 };
 
-
 // get trail details of single trail
 export const getSingleTrailThunk = (trailId) => async (dispatch) => {
   const res = await fetch(`/api/trails/${trailId}`);
@@ -42,6 +47,14 @@ export const getSingleTrailThunk = (trailId) => async (dispatch) => {
   }
 };
 
+export const updateTrailThunk = (trailId) => async (dispatch) => {
+  const res = await fetch(`/api/trails/${trailId}`);
+  if (res.ok) {
+    const data = await res.json();
+    await dispatch(updateTrail(data));
+    return data;
+  }
+};
 
 const trailsReducer = (state = {}, action) => {
   let newState;
@@ -56,6 +69,14 @@ const trailsReducer = (state = {}, action) => {
       newState = {};
       newState = { ...action.trail };
       return newState;
+    case UPDATE_TRAIL: {
+      newState = {};
+      newState = {
+        ...state,
+        [action.trail.id]: action.trail,
+      };
+      return newState
+    }
     default:
       return state;
   }

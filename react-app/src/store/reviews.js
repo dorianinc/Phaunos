@@ -1,20 +1,13 @@
-////////////// Action Creators ///////////////
-export const GET_REVIEWS = "reviewss/GET_REVIEWS";
-export const GET_SINGLE_REVIEW = "reviews/GET_SINGLE_REVIEW";
-export const UPDATE_REVIEW = "reviews/UPDATE_REVIEW";
-export const DELETE_REVIEW = "reviews/DELETE_REVIEW";
+import { updateTrailThunk, getTrailsThunk } from "./trails";
 
+////////////// Action Creators ///////////////
+export const GET_REVIEWS = "reviews/GET_REVIEWS";
 ///////////// Action Creators ///////////////
 
 // get all reviews
 export const getReviews = (reviews) => ({
   type: GET_REVIEWS,
   reviews,
-});
-// get single review
-export const getSingleReview = (review) => ({
-  type: GET_SINGLE_REVIEW,
-  review,
 });
 
 /////////////////// Thunks ///////////////////
@@ -40,6 +33,7 @@ export const addReviewThunk = (trailId, review) => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json();
+    await dispatch(updateTrailThunk(trailId));
     dispatch(getReviewsThunk(trailId));
     return data;
   } else if (res.status < 500) {
@@ -61,6 +55,7 @@ export const updateReviewThunk = (trailId, review) => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json();
+    await dispatch(updateTrailThunk(trailId));
     dispatch(getReviewsThunk(trailId));
     return data;
   } else if (res.status < 500) {
@@ -82,6 +77,7 @@ export const deleteReviewThunk = (reviewId, trailId) => async (dispatch) => {
   });
   if (res.ok) {
     const data = await res.json();
+    await dispatch(updateTrailThunk(trailId));
     dispatch(getReviewsThunk(trailId));
     return data;
   }
@@ -95,10 +91,6 @@ const reviewsReducer = (state = {}, action) => {
       action.reviews.forEach((review) => {
         newState[review.id] = review;
       });
-      return newState;
-    case GET_SINGLE_REVIEW:
-      newState = {};
-      newState = { ...action.review };
       return newState;
     default:
       return state;

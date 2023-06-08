@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useTrail } from "../../../context/TrailContext";
-import { getTrailsThunk, getSingleTrailThunk } from "../../../store/trails";
+import { getTrailsThunk } from "../../../store/trails";
 import { getReviewsThunk } from "../../../store/reviews";
 import TrailItem from "../TrailItem";
 import BookmarkList from "../../Bookmark";
@@ -16,10 +15,10 @@ import "./TrailDetails.css";
 const TrailDetails = () => {
   const { trailId } = useParams();
   const dispatch = useDispatch();
-  const { currentTrail, setCurrentTrail } = useTrail();
 
   const user = useSelector((state) => state.session.user);
   const getTrails = useSelector((state) => state.trails);
+  const currentTrail = getTrails[`${trailId}`];
   const allTrails = Object.values(getTrails).filter(
     (trail) => trail.id !== currentTrail.id && trail.park === currentTrail.park
   );
@@ -34,12 +33,9 @@ const TrailDetails = () => {
   });
 
   useEffect(() => {
-    dispatch(getSingleTrailThunk(trailId)).then((trail) => {
-      setCurrentTrail(trail);
-    });
     dispatch(getReviewsThunk(trailId));
     dispatch(getTrailsThunk());
-  }, [dispatch, trailId]);
+  }, [trailId, dispatch]);
 
   if (!currentTrail) return null;
 
