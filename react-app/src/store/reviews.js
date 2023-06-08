@@ -1,4 +1,4 @@
-import { updateTrailThunk, getTrailsThunk } from "./trails";
+import { updateTrailThunk } from "./trails";
 
 ////////////// Action Creators ///////////////
 export const GET_REVIEWS = "reviews/GET_REVIEWS";
