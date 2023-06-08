@@ -7,8 +7,8 @@ Phaunos is a fullstack single-page AllTrails clone where a user can find hiking 
 #### Please see below links to project Wiki:
 * [Feature List](https://github.com/dorianinc/Phaunos/wiki/Features-List)
 * [Database Schema](https://github.com/dorianinc/01-AirBnB/wiki/Database-Schema)
-* [Frontend Routes](https://github.com/dorianinc/Xenios/wiki/Front-End-Routes)
-* [Backend Routes](https://github.com/dorianinc/01-AirBnB/wiki/Back-End-Routes)
+* [Frontend Routes & Components](https://github.com/dorianinc/Phaunos/wiki/Front-End-Routes-&-Components)
+* [Backend Routes](https://github.com/dorianinc/Phaunos/wiki/Back-End-Routes)
 * [Redux Store State Shape](https://github.com/dorianinc/01-AirBnB/wiki/Redux-Store-Shape)
 
 ## 💻 Tech Stack
