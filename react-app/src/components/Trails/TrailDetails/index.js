@@ -25,7 +25,7 @@ const TrailDetails = () => {
   const getReviews = useSelector((state) => state.reviews);
   const reviews = Object.values(getReviews).reverse();
   console.log("getReviews in trail details 👉", getReviews)
-  console.log("reviewsin trail details 👉", reviews)
+  console.log("reviews in trail details 👉", reviews)
 
   useEffect(() => {
     document.body.style.backgroundColor = "#efefec";
@@ -39,7 +39,7 @@ const TrailDetails = () => {
     dispatch(getTrailsThunk());
   }, [trailId, dispatch]);
 
-  if (!currentTrail) return null;
+  if (!currentTrail || !reviews.length) return null;
 
   return (
     <div className="trail-details-container">
@@ -142,7 +142,7 @@ const TrailDetails = () => {
           </div>
           <hr className="item-divider" />
           <div className="trail-details-reviews-container">
-            {reviews.map((review, i) => (
+            {reviews && reviews.map((review, i) => (
               <ReviewItem key={i} review={review} trail={currentTrail} />
             ))}
           </div>
