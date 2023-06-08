@@ -40,7 +40,7 @@ const TrailDetails = () => {
     });
   }, [trailId, dispatch]);
 
-  if (!currentTrail || !reviews.length) return null;
+  if (!currentTrail) return null;
 
   return (
     <div className="trail-details-container">
@@ -143,7 +143,7 @@ const TrailDetails = () => {
           </div>
           <hr className="item-divider" />
           <div className="trail-details-reviews-container">
-            {reviews &&
+            {reviews.length && reviews &&
               reviews.map((review, i) => (
                 <ReviewItem key={i} review={review} trail={currentTrail} />
               ))}
