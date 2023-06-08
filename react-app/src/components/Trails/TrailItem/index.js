@@ -7,7 +7,6 @@ import BookmarkList from "../../Bookmark";
 import "./TrailItem.css";
 
 function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
-
   const { setCurrentZoom, setCurrentLat, setCurrentLng } = useMap();
   const history = useHistory();
   const location = useLocation();

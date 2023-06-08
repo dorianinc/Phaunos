@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import trailsReducer from './trails';
+import reviewsReducer from './reviews';
 import listsReducer from './lists';
 import bookmarksReducer from './bookmarks';
 import weatherReducer from './weather';
@@ -9,6 +10,7 @@ import weatherReducer from './weather';
 const rootReducer = combineReducers({
   session,
   trails: trailsReducer,
+  reviews: reviewsReducer, 
   lists: listsReducer,
   bookmarks: bookmarksReducer,
   weather: weatherReducer

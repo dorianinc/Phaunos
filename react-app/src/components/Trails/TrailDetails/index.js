@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrailsThunk } from "../../../store/trails";
+import { useTrail } from "../../../context/TrailContext";
+import { getTrailsThunk, getSingleTrailThunk } from "../../../store/trails";
+import { getReviewsThunk } from "../../../store/reviews";
 import TrailItem from "../TrailItem";
 import BookmarkList from "../../Bookmark";
 import BookmarkTab from "../../Bookmark/BookmarkTab";
@@ -14,49 +16,53 @@ import "./TrailDetails.css";
 const TrailDetails = () => {
   const { trailId } = useParams();
   const dispatch = useDispatch();
+  const { currentTrail, setCurrentTrail } = useTrail();
 
   const user = useSelector((state) => state.session.user);
-
   const getTrails = useSelector((state) => state.trails);
-  const trail = getTrails[`${trailId}`];
-  const allTrails = Object.values(getTrails).filter((x) => (x.id !== trail.id) && (x.park === trail.park));
+  const allTrails = Object.values(getTrails).filter(
+    (trail) => trail.id !== currentTrail.id && trail.park === currentTrail.park
+  );
+  const getReviews = useSelector((state) => state.reviews);
+  const reviews = Object.values(getReviews).reverse();
 
   useEffect(() => {
     document.body.style.backgroundColor = "#efefec";
-    // window.scrollTo(0, 0);
     return () => {
       document.body.style.backgroundColor = "#fff";
     };
   });
 
   useEffect(() => {
+    dispatch(getSingleTrailThunk(trailId)).then((trail) => {
+      setCurrentTrail(trail);
+    });
+    dispatch(getReviewsThunk(trailId));
     dispatch(getTrailsThunk());
   }, [dispatch, trailId]);
 
-  if (!trail) return null;
-  const reviews = [...trail.reviews].reverse();
-  console.log("trail in trail details👉", trail);
+  if (!currentTrail) return null;
 
   return (
     <div className="trail-details-container">
       <div className="trail-details-card">
-        <img alt="cover" className="cover-image" src={trail.cover.img_src} />
+        <img alt="cover" className="cover-image" src={currentTrail.cover.img_src} />
         <div className="trail-details-summary">
-          <h1 className="trail-details-name">{trail.name}</h1>
+          <h1 className="trail-details-name">{currentTrail.name}</h1>
           <div className="trail-details-sub-header">
             <p>
-              {trail.difficulty} • <i className="fa-solid fa-star fa-xs" />{" "}
-              {Number(trail.avg_rating).toFixed(1)}({trail.num_reviews})
+              {currentTrail.difficulty} • <i className="fa-solid fa-star fa-xs" />{" "}
+              {Number(currentTrail.avg_rating).toFixed(1)}({currentTrail.num_reviews})
             </p>
-            <p>{trail.park}</p>
+            <p>{currentTrail.park}</p>
           </div>
         </div>
         {user && (
           <div className="bookmark-icon single">
             <BookmarkTab
               type="bookmark"
-              trailId={trail.id}
-              modalComponent={<BookmarkList trail={trail} />}
+              trailId={currentTrail.id}
+              modalComponent={<BookmarkList trail={currentTrail} />}
             />
           </div>
         )}
@@ -71,26 +77,26 @@ const TrailDetails = () => {
                 <th id="route-type-th">Route type</th>
               </tr>
               <tr>
-                <td id="length-td">{trail.len}</td>
-                <td id="elevation-td">{trail.elevation}</td>
-                <td id="route-type-td">{trail.route_type}</td>
+                <td id="length-td">{currentTrail.len}</td>
+                <td id="elevation-td">{currentTrail.elevation}</td>
+                <td id="route-type-td">{currentTrail.route_type}</td>
               </tr>
             </tbody>
           </table>
-          <div className="trail-details-desc">{trail.description}</div>
+          <div className="trail-details-desc">{currentTrail.description}</div>
           <hr className="item-divider" />
           <div className="trail-details-tiles">
-            {trail.attractions.map((attraction, i) => (
+            {currentTrail.attractions.map((attraction, i) => (
               <p key={i} id="tile">
                 {attraction}
               </p>
             ))}
-            {trail.activities.map((activity, i) => (
+            {currentTrail.activities.map((activity, i) => (
               <p key={i} id="tile">
                 {activity}
               </p>
             ))}
-            {trail.suitability.map((suitability, i) => (
+            {currentTrail.suitability.map((suitability, i) => (
               <p key={i} id="tile">
                 {suitability}
               </p>
@@ -98,34 +104,34 @@ const TrailDetails = () => {
           </div>
           <hr className="item-divider" />
           <div className="trail-details-weather">
-            <WeatherForecast lat={trail.lat} lng={trail.long} />
+            <WeatherForecast lat={currentTrail.lat} lng={currentTrail.long} />
           </div>
           <hr className="item-divider" />
           <div className="trail-details-reviews-summary">
             <div className="trail-details-review-graph">
-              <img id="dummy-graph" alt="dummy" src="/images/dummy-graph.png"/>
+              <img id="dummy-graph" alt="dummy" src="/images/dummy-graph.png" />
             </div>
             <div className="trail-details-review-avg">
-              <p id="avg-rating">{Number(trail.avg_rating).toFixed(1)}</p>
+              <p id="avg-rating">{Number(currentTrail.avg_rating).toFixed(1)}</p>
               <div>
                 <div id="stars">
                   {(() => {
                     let stars = [];
-                    for (let i = 0; i < Math.round(Number(trail.avg_rating)); i++) {
+                    for (let i = 0; i < Math.round(Number(currentTrail.avg_rating)); i++) {
                       stars.push(<i className="fa-solid fa-star fa-xs" />);
                     }
                     return stars;
                   })()}
                 </div>
                 <p id="num-reviews">
-                  {trail.num_reviews} {trail.num_reviews === 1 ? "review" : "reviews"}
+                  {currentTrail.num_reviews} {currentTrail.num_reviews === 1 ? "review" : "reviews"}
                 </p>
               </div>
             </div>
             {user ? (
               <div className="trail-details-review-add">
                 <ModalButton
-                  modalComponent={<ReviewForm trail={trail} method="create" />}
+                  modalComponent={<ReviewForm trail={currentTrail} method="create" />}
                   buttonContent={<button className="green-button review">Write review</button>}
                 />
               </div>
@@ -139,7 +145,7 @@ const TrailDetails = () => {
           <hr className="item-divider" />
           <div className="trail-details-reviews-container">
             {reviews.map((review, i) => (
-              <ReviewItem key={i} review={review} />
+              <ReviewItem key={i} review={review} trail={currentTrail} />
             ))}
           </div>
         </div>

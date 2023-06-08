@@ -30,7 +30,6 @@ def get_review_by_id(review_id):
 @reviews_routes.route("", methods=["PUT"])
 def edit_review():
     """ Edit a single review """
-    print("🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠🤠")
     user = current_user.to_dict()
     data = request.get_json()
     print(f"data 👉 {data}")
