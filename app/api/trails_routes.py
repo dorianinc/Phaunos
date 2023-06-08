@@ -22,7 +22,7 @@ def get_all_trails():
     """"Get all trails"""
     trails = Trail.query.all()
     print(f"trails 👉 {trails}")
-    return [trail.to_dict(includeImages=True, includeReviews=True) for trail in trails]
+    return [trail.to_dict(includeImages=True) for trail in trails]
 
 @trails_routes.route("/<int:trail_id>")
 def get_trail_by_id(trail_id):

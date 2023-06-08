@@ -11,7 +11,6 @@ export const getWeather = (weather) => ({
 });
 
 export const getWeatherThunk = (lat, lng) => async (dispatch) => {
-  console.log("we are in the weather thunk");
   const res = await fetch(
     `${baseUrl}/onecall?lat=${lat}&lon=${lng}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=imperial`
   );

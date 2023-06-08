@@ -4,7 +4,7 @@ import ReviewForm from "../ReviewForm";
 import DeleteReview from "../DeleteReview";
 import "./ReviewItem.css";
 
-function ReviewItem({ review }) {
+function ReviewItem({ review, trail }) {
   const user = useSelector((state) => state.session.user);
 
   if (!review) return null;
@@ -44,13 +44,13 @@ function ReviewItem({ review }) {
         <div className="review-item-options">
           <ModalButton
             nameOfClass=""
-            modalComponent={<DeleteReview reviewId={review.id} trailId={review.trail.id} />}
+            modalComponent={<DeleteReview reviewId={review.id} trailId={trail.id} />}
             buttonContent={<p id="delete-option">Delete</p>}
           />
           <p>|</p>
           <ModalButton
             nameOfClass=""
-            modalComponent={<ReviewForm review={review} trail={review.trail} method="update" />}
+            modalComponent={<ReviewForm review={review} trail={trail} method="update" />}
             buttonContent={<p id="edit-option">Edit</p>}
           />
         </div>

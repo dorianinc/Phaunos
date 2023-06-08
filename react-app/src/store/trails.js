@@ -1,7 +1,7 @@
 ////////////// Action Creators ///////////////
 export const GET_TRAILS = "trails/GET_TRAILS";
 export const GET_SINGLE_TRAIL = "trails/GET_SINGLE_TRAIL";
-// export const UPDATE_TRAIL = "trails/UPDATE_TRAIL";
+export const UPDATE_TRAIL = "trails/UPDATE_TRAIL";
 // export const DELETE_TRAIL = "trails/DELETE_TRAIL";
 // export const CLEAR_TRAILS = "trails/CLEAR_TRAILS";
 
@@ -18,22 +18,12 @@ export const getSingleTrail = (trail) => ({
   trail,
 });
 
-// // update single trail
-// export const updateTrail = (trail) => ({
-//   type: UPDATE_TRAIL,
-//   trail,
-// });
+// update single trail
+export const updateTrail = (trail) => ({
+  type: UPDATE_TRAIL,
+  trail,
+});
 
-// //// delete single trail
-// export const deleteTrail = (trailId) => ({
-//   type: DELETE_TRAIL,
-//   trailId,
-// });
-
-// // clear trails state
-// export const clearTrails = () => ({
-//   type: CLEAR_TRAILS,
-// });
 
 /////////////////// Thunks ///////////////////
 
@@ -47,16 +37,6 @@ export const getTrailsThunk = () => async (dispatch) => {
   }
 };
 
-// // get user's trails
-// export const getUserTrailsThunk = () => async (dispatch) => {
-//   const res = await fetch("/api/trails/current");
-//   if (res.ok) {
-//     const data = await res.json();
-//     dispatch(getTrails(data));
-//     return data
-//   }
-// };
-
 // get trail details of single trail
 export const getSingleTrailThunk = (trailId) => async (dispatch) => {
   const res = await fetch(`/api/trails/${trailId}`);
@@ -67,21 +47,15 @@ export const getSingleTrailThunk = (trailId) => async (dispatch) => {
   }
 };
 
+export const updateTrailThunk = (trailId) => async (dispatch) => {
+  const res = await fetch(`/api/trails/${trailId}`);
+  if (res.ok) {
+    const data = await res.json();
+    await dispatch(updateTrail(data));
+    return data;
+  }
+};
 
-
-// export const addSongTrail = (trail) => async(dispatch) => {
-//   const trailId = trail.trail_id
-//   // const history = useHistory()
-//   const response = await fetch(`/api/trails/${trailId}/song`,{
-//       method:"POST",
-//       headers: {
-//         "Content-Type": 'application/json'
-//       },
-//     body: JSON.stringify(trail)
-//   })
-//   if (response.ok){
-//   }
-// }
 const trailsReducer = (state = {}, action) => {
   let newState;
   switch (action.type) {
@@ -95,8 +69,14 @@ const trailsReducer = (state = {}, action) => {
       newState = {};
       newState = { ...action.trail };
       return newState;
-    // case CLEAR_TRAILS:
-    //   return {};
+    case UPDATE_TRAIL: {
+      newState = {};
+      newState = {
+        ...state,
+        [action.trail.id]: action.trail,
+      };
+      return newState
+    }
     default:
       return state;
   }
