@@ -1,4 +1,4 @@
-from flask import Blueprint, request, make_response
+from flask import Blueprint, request, make_response, jsonify
 from flask_login import login_required, current_user
 from app.models import db, Trail, Review, Bookmark
 from app.forms import ReviewForm
@@ -39,7 +39,7 @@ def get_reviews_by_trail_id(trail_id):
     """ Get all reviews of specific trail """
     reviews = Review.query.filter(Review.trail_id == trail_id).all()
     reviews_dict = [review.to_dict(includeImages=True) for review in reviews]
-    return reviews_dict
+    return jsonify(reviews_dict)
 
 @trails_routes.route("/<int:trail_id>/reviews", methods=["POST"])
 @login_required
