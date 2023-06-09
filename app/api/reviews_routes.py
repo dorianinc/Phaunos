@@ -32,7 +32,6 @@ def edit_review():
     """ Edit a single review """
     user = current_user.to_dict()
     data = request.get_json()
-    print(f"data 👉 {data}")
 
     #------------ validation -------------#    
     review = Review.query.get(data["reviewId"])
@@ -50,7 +49,6 @@ def edit_review():
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
-        print("🥳🥳🥳🥳 FORM IS VALID")
         
         data = form.data
         review.description = data["description"]
@@ -66,7 +64,6 @@ def delete_review():
     """ Delete a single review """
     user = current_user.to_dict()
     data = request.get_json()
-    print(f"data 👉 {data}")
     #------------ validation -------------#    
     review = Review.query.get(data["reviewId"])
     if not review:

@@ -60,7 +60,6 @@ def create_bookmarks_list():
     form = BookmarksListForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
-        print("🥳🥳🥳🥳 BOOKMARKS LIST FORM IS VALID")
 
         data = form.data
         new_list = Bookmarks_List(title=data["title"], user_id=user["id"])
@@ -75,7 +74,6 @@ def edit_bookmarks_list():
     """Edit a single bookmarks list"""
     user = current_user.to_dict()
     data = request.get_json()
-    print(f"data 👉 {data}")
 
     # ------------ validation -------------#
     list = Bookmarks_List.query.get(data["listId"])
@@ -93,7 +91,6 @@ def edit_bookmarks_list():
     form = BookmarksListForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
-        print("🥳🥳🥳🥳 BOOKMARKS LIST IS VALID")
 
         data = form.data
         list.title = data["title"]
@@ -108,7 +105,6 @@ def delete_review():
     """Delete a single bookmarks list"""
     user = current_user.to_dict()
     data = request.get_json()
-    print(f"data 👉👉👉👉👉 {data}")
     # ------------ validation -------------#
     list = Bookmarks_List.query.get(data["listId"])
     if not list:
@@ -133,15 +129,11 @@ def delete_review():
 @bookmarks_lists_routes.route("/bookmark", methods=["POST"])
 @login_required
 def create_a_bookmark():
-    print("👉👉👉👉👉👉👉👉👉 IN ADD BOOKMARK")
     """ Add a bookmark  to a list """
     user = current_user.to_dict()
-    print(f"user 👉 {user}")
     data = request.get_json()
-    print(f"data 👉 {data}")
     list = Bookmarks_List.query.get(data["listId"])
     bookmarks = list.to_dict(includeBookmarks=True)["bookmarks"]
-    print(f"bookmarks 👉 {bookmarks}")
     for bookmark in bookmarks:
         if int(bookmark["trail_id"]) == int(data["trailId"]):
             error = make_response("Trail is already bookmarked in this list")
@@ -151,6 +143,5 @@ def create_a_bookmark():
     new_bookmark = Bookmark(trail_id=data["trailId"], bookmarks_list_id=data["listId"])
     db.session.add(new_bookmark)
     db.session.commit()
-    print(f"new_bookmark.to_dict() 👉 {new_bookmark.to_dict()}")
 
     return new_bookmark.to_dict()

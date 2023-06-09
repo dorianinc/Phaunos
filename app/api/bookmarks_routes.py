@@ -7,7 +7,6 @@ bookmarks_routes = Blueprint("bookmarks", __name__)
 @bookmarks_routes.route("")
 def get_users_bookmarks():
     """ Get all of users bookmarks """
-    print("👉👉👉👉👉 getting users bookmarks")
     user = current_user.to_dict()
     lists = Bookmarks_List.query.filter(Bookmarks_List.user_id == user["id"]).all()
     bookmarks = []
@@ -64,7 +63,6 @@ def edit_review(bookmark_id):
 
 @bookmarks_routes.route("", methods=["DELETE"])
 def delete_bookmark():
-    print("👉👉👉👉👉 in delete bookmark")
     """ Delete a single bookmark """
     user = current_user.to_dict()
     data = request.get_json()

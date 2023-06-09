@@ -36,7 +36,6 @@ def get_trail_by_id(trail_id):
 @trails_routes.route("/<int:trail_id>/reviews")
 def get_reviews_by_trail_id(trail_id):
     """ Get all reviews of specific trail """
-    print("👉👉👉👉👉 GETTING REVIEW IN BACKENED *********")
     reviews = Review.query.filter(Review.trail_id == trail_id).all()
     return [review.to_dict(includeImages=True) for review in reviews]
 
@@ -62,7 +61,6 @@ def create_a_review(trail_id):
     form = ReviewForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
-        print("🥳🥳🥳🥳 REVIEW FORM IS VALID")
         
         data = form.data
         new_review = Review(
