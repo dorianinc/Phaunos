@@ -14,6 +14,7 @@ export const getReviews = (reviews) => ({
 
 // get reviews of single trail
 export const getReviewsThunk = (trailId) => async (dispatch) => {
+  console.log("👉 GETTING REVIEWS!!!!")
   const res = await fetch(`/api//trails/${trailId}/reviews`);
   if (res.ok) {
     const data = await res.json();
