@@ -16,11 +16,14 @@ export const getReviews = (reviews) => ({
 export const getReviewsThunk = (trailId) => async (dispatch) => {
   console.log("👉 GETTING REVIEWS IN THUNK!!!!")
   const res = await fetch(`/api//trails/${trailId}/reviews`);
+  console.log("$$$$$ BEFORE RES OKAY CHECK $$$$$$$$")
   if (res.ok) {
     const data = await res.json();
     console.log("data in reviews thunk 👉", data)
     dispatch(getReviews(data));
     return data;
+  }else{
+    console.log("---was in thunk but something went wrong-----")
   }
 };
 
