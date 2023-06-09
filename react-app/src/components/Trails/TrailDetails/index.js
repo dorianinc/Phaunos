@@ -18,7 +18,6 @@ const TrailDetails = () => {
 
   const user = useSelector((state) => state.session.user);
   const getTrails = useSelector((state) => state.trails);
-  console.log("getTrails  👉", getTrails )
   const currentTrail = getTrails[`${trailId}`];
   const allTrails = Object.values(getTrails).filter(
     (trail) => trail.id !== currentTrail.id && trail.park === currentTrail.park
@@ -35,11 +34,9 @@ const TrailDetails = () => {
     dispatch(getReviewsThunk(trailId));
     dispatch(getTrailsThunk());
   }, [trailId, dispatch]);
-  
+
   const getReviews = useSelector((state) => state.reviews);
   const reviews = Object.values(getReviews).reverse();
-  console.log("getReviews in trail details 👉", getReviews);
-  console.log("reviews in trail details 👉", reviews);
 
   if (!currentTrail) return null;
   return (
@@ -143,7 +140,6 @@ const TrailDetails = () => {
           </div>
           <hr className="item-divider" />
           <div className="trail-details-reviews-container">
-            {console.log("GETREVIEWS within the RETURN!!!!", getReviews)}
             {console.log("REVIEWS within the RETURN!!!!", reviews)}
             {!!reviews.length
               ? reviews.map((review, i) => (

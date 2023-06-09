@@ -14,18 +14,11 @@ export const getReviews = (reviews) => ({
 
 // get reviews of single trail
 export const getReviewsThunk = (trailId) => async (dispatch) => {
-  console.log("👉 GETTING REVIEWS IN THUNK!!!!")
   const res = await fetch(`/api/trails/${trailId}/reviews`);
-  console.log("$$$$$ BEFORE RES OKAY CHECK $$$$$$$$")
   if (res.ok) {
-    console.log("@@@@ RES WAS OKAY @@@@@")
     const data = await res.json();
-    console.log("data 👉", data)
-    console.log("data in reviews thunk 👉", data)
     dispatch(getReviews(data));
     return data;
-  }else{
-    console.log("---was in thunk but something went wrong-----")
   }
 };
 
@@ -98,7 +91,6 @@ const reviewsReducer = (state = {}, action) => {
       action.reviews.forEach((review) => {
         newState[review.id] = review;
       });
-      console.log("newState  in reviews reducer 👉", newState)
       return newState;
     default:
       return state;
