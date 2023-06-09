@@ -37,8 +37,10 @@ def get_trail_by_id(trail_id):
 @trails_routes.route("/<int:trail_id>/reviews")
 def get_reviews_by_trail_id(trail_id):
     """ Get all reviews of specific trail """
+    console.log("**** GETTING REVIEW IN BACKENED *********")
     reviews = Review.query.filter(Review.trail_id == trail_id).all()
     reviews_dict = [review.to_dict(includeImages=True) for review in reviews]
+    console.log("reviews_dict 👉", reviews_dict)
     return {"this is": "a test"}
 
 @trails_routes.route("/<int:trail_id>/reviews", methods=["POST"])

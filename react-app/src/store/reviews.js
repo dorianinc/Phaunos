@@ -18,6 +18,7 @@ export const getReviewsThunk = (trailId) => async (dispatch) => {
   const res = await fetch(`/api//trails/${trailId}/reviews`);
   console.log("$$$$$ BEFORE RES OKAY CHECK $$$$$$$$")
   if (res.ok) {
+    console.log("@@@@ RES WAS OKAY @@@@@")
     const data = await res.json();
     console.log("data in reviews thunk 👉", data)
     dispatch(getReviews(data));
