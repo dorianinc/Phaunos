@@ -33,8 +33,9 @@ const TrailDetails = () => {
   });
 
   useEffect(() => {
-    dispatch(getReviewsThunk(trailId));
+    console.log("^^^^^^^^ DEPLOYING THUNKS ^^^^^^^")
     dispatch(getTrailsThunk());
+    dispatch(getReviewsThunk(trailId));
   }, [trailId, dispatch]);
   
   const getReviews = useSelector((state) => state.reviews);
