@@ -17,10 +17,6 @@ const TrailDetails = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
-  const getReviews = useSelector((state) => state.reviews);
-  const reviews = Object.values(getReviews).reverse();
-  console.log("getReviews in trail details 👉", getReviews);
-  console.log("reviews in trail details 👉", reviews);
   const getTrails = useSelector((state) => state.trails);
   const currentTrail = getTrails[`${trailId}`];
   const allTrails = Object.values(getTrails).filter(
@@ -35,13 +31,16 @@ const TrailDetails = () => {
   });
 
   useEffect(() => {
-    dispatch(getReviewsThunk(trailId)).then(() => {
-      dispatch(getTrailsThunk());
-    });
+    dispatch(getReviewsThunk(trailId));
+    dispatch(getTrailsThunk());
   }, [trailId, dispatch]);
+  
+  const getReviews = useSelector((state) => state.reviews);
+  const reviews = Object.values(getReviews).reverse();
+  console.log("getReviews in trail details 👉", getReviews);
+  console.log("reviews in trail details 👉", reviews);
 
   if (!currentTrail) return null;
-
   return (
     <div className="trail-details-container">
       <div className="trail-details-card">
@@ -143,19 +142,13 @@ const TrailDetails = () => {
           </div>
           <hr className="item-divider" />
           <div className="trail-details-reviews-container">
-          {
-            console.log("GETREVIEWS within the RETURN!!!!", getReviews)
-            
-              }
-                        {
-            console.log("REVIEWS within the RETURN!!!!", reviews)
-            
-              }
-            {!!reviews.length &&
-              reviews.map((review, i) => (
-                <ReviewItem key={i} review={review} trail={currentTrail} />
+            {console.log("GETREVIEWS within the RETURN!!!!", getReviews)}
+            {console.log("REVIEWS within the RETURN!!!!", reviews)}
+            {!!reviews.length
+              ? reviews.map((review, i) => (
+                  <ReviewItem key={i} review={review} trail={currentTrail} />
                 ))
-              }
+              : null}
           </div>
         </div>
         <div className="trail-details-sidebar">
