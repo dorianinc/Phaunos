@@ -7,10 +7,9 @@ import TrailItem from "../TrailItem";
 import BookmarkList from "../../Bookmark";
 import BookmarkTab from "../../Bookmark/BookmarkTab";
 import ModalButton from "../../ModalButton";
-// import ReviewItem from "../../Reviews/ReviewItem";
+import ReviewItem from "../../Reviews/ReviewItem";
 import ReviewForm from "../../Reviews/ReviewForm";
 import WeatherForecast from "../../Weather";
-import DeleteReview from "../../Reviews/DeleteReview";
 import "./TrailDetails.css";
 
 const TrailDetails = () => {
@@ -33,9 +32,8 @@ const TrailDetails = () => {
   });
 
   useEffect(() => {
-    console.log("^^^^^^^^ DEPLOYING THUNKS ^^^^^^^")
-    dispatch(getTrailsThunk());
     dispatch(getReviewsThunk(trailId));
+    dispatch(getTrailsThunk());
   }, [trailId, dispatch]);
   
   const getReviews = useSelector((state) => state.reviews);
@@ -144,59 +142,15 @@ const TrailDetails = () => {
             )}
           </div>
           <hr className="item-divider" />
-          {/* <div className="trail-details-reviews-container">
+          <div className="trail-details-reviews-container">
             {console.log("GETREVIEWS within the RETURN!!!!", getReviews)}
             {console.log("REVIEWS within the RETURN!!!!", reviews)}
             {!!reviews.length
               ? reviews.map((review, i) => (
-                <div key={review.id}>
-                <div className="trail-details-review">
-                  <div className="trail-details-review-info">
-                    <img
-                      className="profile-pic review"
-                      alt="profile-pic"
-                      src={review.user.profile_pic}
-                    />
-                    <div>
-                      <p id="review-user-name">
-                        {review.user.first_name} {review.user.last_name}
-                      </p>
-                      <p id="review-date">{review.date_submitted.split("00")[0]}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="trail-details-review-rating">
-                  {(() => {
-                    let stars = [];
-                    for (let i = 0; i < review.rating; i++) {
-                      stars.push(<i className="fa-solid fa-star fa-xs" />);
-                    }
-                    return stars;
-                  })()}
-                </div>
-                <div className="trail-details-review-desc">
-                  <p>{review.description}</p>
-                </div>
-                {user && user.id === review.user_id ? (
-                  <div className="review-item-options">
-                    <ModalButton
-                      nameOfClass=""
-                      modalComponent={<DeleteReview reviewId={review.id} trailId={currentTrail.id} />}
-                      buttonContent={<p id="delete-option">Delete</p>}
-                    />
-                    <p>|</p>
-                    <ModalButton
-                      nameOfClass=""
-                      modalComponent={<ReviewForm review={review} trail={currentTrail} method="update" />}
-                      buttonContent={<p id="edit-option">Edit</p>}
-                    />
-                  </div>
-                ) : null}
-                <hr className="item-divider" />
-              </div>
+                  <ReviewItem key={i} review={review} trail={currentTrail} />
                 ))
               : null}
-          </div> */}
+          </div>
         </div>
         <div className="trail-details-sidebar">
           <h2 id="sidebar-header">Nearby Trails</h2>
