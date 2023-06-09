@@ -17,6 +17,7 @@ export const getReviewsThunk = (trailId) => async (dispatch) => {
   const res = await fetch(`/api//trails/${trailId}/reviews`);
   if (res.ok) {
     const data = await res.json();
+    console.log("data in reviews thunk 👉", data)
     dispatch(getReviews(data));
     return data;
   }
@@ -87,10 +88,11 @@ const reviewsReducer = (state = {}, action) => {
   let newState;
   switch (action.type) {
     case GET_REVIEWS:
-      newState = {};
+      newState = { ...state };
       action.reviews.forEach((review) => {
         newState[review.id] = review;
       });
+      console.log("newState  in reviews reducer 👉", newState)
       return newState;
     default:
       return state;

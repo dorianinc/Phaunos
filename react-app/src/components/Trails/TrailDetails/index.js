@@ -7,9 +7,10 @@ import TrailItem from "../TrailItem";
 import BookmarkList from "../../Bookmark";
 import BookmarkTab from "../../Bookmark/BookmarkTab";
 import ModalButton from "../../ModalButton";
-import ReviewItem from "../../Reviews/ReviewItem";
+// import ReviewItem from "../../Reviews/ReviewItem";
 import ReviewForm from "../../Reviews/ReviewForm";
 import WeatherForecast from "../../Weather";
+import DeleteReview from "../../Reviews/DeleteReview";
 import "./TrailDetails.css";
 
 const TrailDetails = () => {
@@ -18,6 +19,7 @@ const TrailDetails = () => {
 
   const user = useSelector((state) => state.session.user);
   const getTrails = useSelector((state) => state.trails);
+  console.log("getTrails  👉", getTrails )
   const currentTrail = getTrails[`${trailId}`];
   const allTrails = Object.values(getTrails).filter(
     (trail) => trail.id !== currentTrail.id && trail.park === currentTrail.park
@@ -146,7 +148,51 @@ const TrailDetails = () => {
             {console.log("REVIEWS within the RETURN!!!!", reviews)}
             {!!reviews.length
               ? reviews.map((review, i) => (
-                  <ReviewItem key={i} review={review} trail={currentTrail} />
+                <div key={review.id}>
+                <div className="trail-details-review">
+                  <div className="trail-details-review-info">
+                    <img
+                      className="profile-pic review"
+                      alt="profile-pic"
+                      src={review.user.profile_pic}
+                    />
+                    <div>
+                      <p id="review-user-name">
+                        {review.user.first_name} {review.user.last_name}
+                      </p>
+                      <p id="review-date">{review.date_submitted.split("00")[0]}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="trail-details-review-rating">
+                  {(() => {
+                    let stars = [];
+                    for (let i = 0; i < review.rating; i++) {
+                      stars.push(<i className="fa-solid fa-star fa-xs" />);
+                    }
+                    return stars;
+                  })()}
+                </div>
+                <div className="trail-details-review-desc">
+                  <p>{review.description}</p>
+                </div>
+                {user && user.id === review.user_id ? (
+                  <div className="review-item-options">
+                    <ModalButton
+                      nameOfClass=""
+                      modalComponent={<DeleteReview reviewId={review.id} trailId={currentTrail.id} />}
+                      buttonContent={<p id="delete-option">Delete</p>}
+                    />
+                    <p>|</p>
+                    <ModalButton
+                      nameOfClass=""
+                      modalComponent={<ReviewForm review={review} trail={currentTrail} method="update" />}
+                      buttonContent={<p id="edit-option">Edit</p>}
+                    />
+                  </div>
+                ) : null}
+                <hr className="item-divider" />
+              </div>
                 ))
               : null}
           </div>
@@ -154,7 +200,7 @@ const TrailDetails = () => {
         <div className="trail-details-sidebar">
           <h2 id="sidebar-header">Nearby Trails</h2>
           {allTrails.map((trail, i) => (
-            <TrailItem key={i} trail={trail} nameOfClass="trail" />
+            <TrailItem key={trail.id} trail={trail} nameOfClass="trail" />
           ))}
         </div>
       </div>
