@@ -15,7 +15,7 @@ export const getReviews = (reviews) => ({
 // get reviews of single trail
 export const getReviewsThunk = (trailId) => async (dispatch) => {
   console.log("👉 GETTING REVIEWS IN THUNK!!!!")
-  const res = await fetch(`/api//trails/${trailId}/reviews`);
+  const res = await fetch(`/api/trails/${trailId}/reviews`);
   console.log("$$$$$ BEFORE RES OKAY CHECK $$$$$$$$")
   if (res.ok) {
     console.log("@@@@ RES WAS OKAY @@@@@")
