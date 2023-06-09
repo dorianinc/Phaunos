@@ -39,7 +39,7 @@ def get_reviews_by_trail_id(trail_id):
     """ Get all reviews of specific trail """
     reviews = Review.query.filter(Review.trail_id == trail_id).all()
     reviews_dict = [review.to_dict(includeImages=True) for review in reviews]
-    return jsonify(reviews_dict)
+    return {"this is": "a test"}
 
 @trails_routes.route("/<int:trail_id>/reviews", methods=["POST"])
 @login_required
