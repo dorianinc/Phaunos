@@ -35,7 +35,7 @@ const TrailDetails = () => {
   useEffect(() => {
     console.log("^^^^^^^^ DEPLOYING THUNKS ^^^^^^^")
     dispatch(getTrailsThunk());
-    // dispatch(getReviewsThunk(trailId));
+    dispatch(getReviewsThunk(trailId));
   }, [trailId, dispatch]);
   
   const getReviews = useSelector((state) => state.reviews);
@@ -144,7 +144,7 @@ const TrailDetails = () => {
             )}
           </div>
           <hr className="item-divider" />
-          <div className="trail-details-reviews-container">
+          {/* <div className="trail-details-reviews-container">
             {console.log("GETREVIEWS within the RETURN!!!!", getReviews)}
             {console.log("REVIEWS within the RETURN!!!!", reviews)}
             {!!reviews.length
@@ -196,7 +196,7 @@ const TrailDetails = () => {
               </div>
                 ))
               : null}
-          </div>
+          </div> */}
         </div>
         <div className="trail-details-sidebar">
           <h2 id="sidebar-header">Nearby Trails</h2>
