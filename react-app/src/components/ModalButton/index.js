@@ -29,3 +29,31 @@ function ModalButton({
 }
 
 export default ModalButton;
+
+
+
+<>
+{isButton ? (
+  <button onClick={handleClick} className="playlistButton">
+    {isPlaying ? (
+      <>
+        <i className="fa fa-pause" aria-hidden="true" />
+        Pause
+      </>
+    ) : (
+      <>
+        <i class="fa fa-play" aria-hidden="true" />
+        Play
+      </>
+    )}
+  </button>
+) : (
+  <p onClick={handleClick} className="play-pause-btn">
+    {isPlaying && songId === queue[queueIndex].id ? (
+      <i className="fa fa-pause" aria-hidden="true"></i>
+    ) : (
+      <i class="fa fa-play" aria-hidden="true"></i>
+    )}
+  </p>
+)}
+</>
