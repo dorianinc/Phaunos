@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserListsThunk } from "../../store/lists";
 import ModalButton from "../ModalButton";
@@ -7,7 +7,9 @@ import ListItem from "../Lists/ListItem";
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
+  const [hidden, setHidden] = useState("hidden");
   const user = useSelector((state) => state.session.user);
+  console.log("user 👉", user)
   const getLists = useSelector((state) => state.lists);
   const lists = Object.values(getLists);
 
@@ -27,8 +29,17 @@ const ProfilePage = () => {
   return (
     <div className="profile-container">
       <div className="profile-info">
-        <div>
-          <img className="profile-pic profile" alt="profile-pic" src={user.profile_pic} />
+        <div className="profile-pic-container">
+          <img
+            className="profile-pic profile"
+            alt="profile-pic"
+            src={user.profile_pic ? user.profile_pic : user.default_pic}
+            onMouseEnter={() => setHidden("")}
+          />
+          <div className={`image-overlay ${hidden}`} onMouseLeave={() => setHidden("hidden")}>
+          edit
+          </div>
+          
         </div>
         <h1 id="profile-user-name">
           {user.first_name} {user.last_name}

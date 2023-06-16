@@ -32,7 +32,7 @@ function ProfileButton({ user }) {
     await dispatch(logout());
     closeMenu();
   };
-
+  console.log("user in profile button", user)
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
@@ -40,7 +40,11 @@ function ProfileButton({ user }) {
     <>
       {user ? (
         <button className="profile-button" onClick={openMenu}>
-          <img className="profile-pic review" alt="profile-pic" src={user.profile_pic} />
+          <img
+            className="profile-pic review"
+            alt="profile-pic"
+            src={user.profile_pic ? user.profile_pic : user.default_pic}
+          />
         </button>
       ) : (
         <button id="login-button">
@@ -52,7 +56,7 @@ function ProfileButton({ user }) {
           <div className="dropdown-options">
             <div className="dropdown-username">Hello, {user.first_name}</div>
             <div className="dropdown-email">{user.email}</div>
-            <hr className="item-divider"/>
+            <hr className="item-divider" />
             <div className="dropdown-button" onClick={handleLogout}>
               Log Out
             </div>
