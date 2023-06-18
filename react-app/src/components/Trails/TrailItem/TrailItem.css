@@ -40,8 +40,16 @@
 
 /* ---- General CSS ----- */
 .trail-text {
-  color: red;
   margin: 5px 0;
+}
+
+.trail-card-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+#trail-link:hover {
+ text-decoration: underline;
 }
 
 #trail-name {
@@ -60,15 +68,6 @@
   color: #6d7667;
 }
 
-.bookmark-icon.cards{
-  display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  height: 30px;
-}
-
 .trash-icon {
   display: flex;
   justify-content: flex-end;
@@ -79,7 +78,7 @@
   width: 40px;
 }
 
-.item-overlay{
+.item-overlay {
   position: absolute;
   top: 0;
   right: 0;
@@ -92,10 +91,11 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.fa-trash-can.trail{
+.fa-trash-can.trail {
   color: white;
 }
 
-.fa-bookmark,.fa-trash-can {
+.fa-bookmark,
+.fa-trash-can {
   z-index: 2;
 }

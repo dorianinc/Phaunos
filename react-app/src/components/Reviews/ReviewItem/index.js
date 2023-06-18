@@ -12,11 +12,14 @@ function ReviewItem({ review, trail }) {
     <div key={review.id}>
       <div className="trail-details-review">
         <div className="trail-details-review-info">
-          <img
-            className="profile-pic review"
-            alt="profile-pic"
-            src={review.user.profile_pic}
-          />
+          <div className="profile-pic-container review">
+            <img
+              className="profile-pic review"
+              alt="profile-pic"
+              src={review.user.profile_pic ? review.user.profile_pic : review.user.default_pic}
+            />
+          </div>
+
           <div>
             <p id="review-user-name">
               {review.user.first_name} {review.user.last_name}

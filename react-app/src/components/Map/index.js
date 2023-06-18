@@ -28,8 +28,8 @@ const Map = ({ bookmarks }) => {
   return (
     <>
       <GoogleMap options={mapOptions} mapContainerClassName="map-container">
-        {bookmarks.map((bookmark, i) => (
-          <Marker position={{ lat: bookmark.trail.lat, lng: bookmark.trail.long }} />
+        {bookmarks.map((bookmark) => (
+          <Marker position={{ lat: bookmark.trail.lat, lng: bookmark.trail.lng }} />
         ))}
       </GoogleMap>
     </>

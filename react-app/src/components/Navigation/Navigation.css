@@ -52,6 +52,20 @@
   cursor: pointer;
 }
 
+.profile-pic-container.navi {
+  position: relative;
+  width: fit-content;
+  border-radius: 60px;
+  height: 55px;
+  overflow: hidden;
+}
+
+
+.profile-pic.navi {
+  height: 55px;
+  width: 55px;
+}
+
 .profile-dropdown {
   position: absolute;
   z-index: 2;
@@ -84,7 +98,6 @@
 .dropdown-button {
   cursor: pointer;
   font-weight: 800px;
-  text-align: center;
 }
 
 .dropdown-button:hover {

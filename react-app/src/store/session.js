@@ -29,6 +29,29 @@ export const authenticate = () => async (dispatch) => {
   }
 };
 
+export const updateUserThunk = (user) => async (dispatch) => {
+  const response = await fetch("api/users", {
+    method: "PUT",
+    body: user,
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data));
+    return data;
+  }
+};
+
+export const deleteProfilePicThunk = () => async (dispatch) => {
+  const response = await fetch("/api/users", {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data));
+    return data;
+  }
+};
+
 export const login = (email, password) => async (dispatch) => {
   const response = await fetch("/api/auth/login", {
     method: "POST",

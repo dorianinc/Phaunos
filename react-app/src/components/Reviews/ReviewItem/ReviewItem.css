@@ -4,9 +4,48 @@
     gap: 10px;
 }
 
+.profile-pic.review {
+    height: 55px;
+    width: 55px;
+  }
+  
+  .profile-pic-container.review {
+    position: relative;
+    width: fit-content;
+    border-radius: 60px;
+    height: 55px;
+    overflow: hidden;
+  }
+  
+  
+  .trail-details-reviews-container {
+    color: #464e37;
+  }
+  
+  .trail-details-review-rating {
+    margin-bottom: 5px;
+  }
+  
+  .trail-details-review-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  #review-user-name {
+    font-family: 600;
+  }
+  
+  #review-date {
+    color: #6d7667;
+    font-weight: 200;
+    font-size: 0.8rem;
+  }
+  
+
 #delete-option,#edit-option{
     color: #2B381F;
     font-size: 1.1rem;
     text-decoration: underline;
     cursor: pointer;
 }
+

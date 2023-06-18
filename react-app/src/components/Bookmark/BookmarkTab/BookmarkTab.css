@@ -1,0 +1,19 @@
+.bookmark-icon.cards{
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    height: 30px;
+  }
+
+
+.bookmark-icon.single {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 5%;
+  right: 2%;
+  height: 40px;
+  cursor: pointer;
+}

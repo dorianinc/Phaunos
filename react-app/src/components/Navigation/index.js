@@ -17,7 +17,7 @@ function Navigation({ isLoaded }) {
           </Link>
           {user && (
             <div className="nav-links">
-              <Link to="/profile">My Lists</Link>
+              <Link to="/profile/lists">My Lists</Link>
             </div>
           )}
         </div>

@@ -103,7 +103,7 @@ function ListItem({ list, trailId }) {
           </p>
         </div>
         {list.title === "My Favorites" && pathName === "/profile" ? null : pathName ===
-          "/profile" ? (
+          "/profile/lists" ? (
           <ModalButton
             nameOfClass={"postion-end"}
             modalComponent={<DeleteList listId={list.id} />}
