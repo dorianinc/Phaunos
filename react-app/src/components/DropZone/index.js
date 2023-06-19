@@ -20,7 +20,10 @@ const DropZone = ({ selected }) => {
         ...acceptedFiles.map((file) => Object.assign(file, { preview: URL.createObjectURL(file) })),
       ]);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
     if (rejectedFiles[0].errors) {
       const dropzoneErrors = rejectedFiles[0].errors;
       const err = {};
