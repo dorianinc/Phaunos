@@ -19,6 +19,20 @@ export const getUserBookmarksThunk = () => async (dispatch) => {
   }
 };
 
+// update bookmark status
+export const updateBookmarksThunk = (bookmarkId) => async (dispatch) => {
+  const res = await fetch(`/api/bookmarks`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(bookmarkId),
+  });
+  if (res.ok) {
+    dispatch(getUserBookmarksThunk());
+  }
+};
+
 const bookmarksReducer = (state = {}, action) => {
   let newState;
   switch (action.type) {

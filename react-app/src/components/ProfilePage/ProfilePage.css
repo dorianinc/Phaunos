@@ -1,79 +1,137 @@
-.profile-container{
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    width: 60%;
-    margin: 4rem auto;
+.profile-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  width: 60%;
+  margin: 4rem auto;
 }
 
-.profile-info,.profile-user-lists{
-    background-color: #fff;
-    box-sizing: border-box;
-    border-radius: 20px;
-
+.profile-info,
+.profile-user-tabs-container {
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 20px;
 }
 
-.profile-info{
-    height: 400px;
-    width: 315px;
-    padding: 30px 20px;
-    color: #2b381f;
-    padding: 30px 20px;
-    box-shadow: 0px 10px 10px #b8b8b5;
+.profile-info {
+  height: 400px;
+  width: 315px;
+  padding: 30px 20px;
+  color: #2b381f;
+  padding: 30px 20px;
+  box-shadow: 0px 10px 10px #b8b8b5;
 }
 
-.profile-pic.profile{
-    height: 70px;
-    width: 70px;
+.profile-pic.profile {
+  height: 70px;
+  width: 70px;
 }
 
-#profile-user-name, #profile-list-header{
-    font-size: 2.5rem;
-    font-weight: 200;
-    margin: 5px;
+#profile-user-name,
+#profile-list-header {
+  font-size: 2.5rem;
+  font-weight: 200;
+  margin: 5px;
 }
 
-#profile-user-location{
-    font-size: 1rem;
+#profile-user-location {
+  font-size: 1rem;
 }
 
-#profile-user-member, #followers,#following{
-    font-size: 1rem;
-    color: #6d7667;
+#profile-user-member,
+#followers,
+#following {
+  font-size: 1rem;
+  color: #6d7667;
 }
 
-.follows{
-    display: flex;
-    gap: 15px;
-    margin-top: 25px;
-  }
-
-.profile-user-lists{
-    height: 800px;
-    width: 700px;
-    padding: 30px 20px;
+.follows {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
 }
 
-.list-container.profile{
-    overflow-y: auto;
-    padding: 10px;
-    margin-bottom: 5px;
-    max-height: 775px;
-  }
+.profile-pic-container.profile {
+  position: relative;
+  height: 69px;
+  width: fit-content;
+}
 
-  .trash-can{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 20px;
-    width: 20px;
-    padding: 12px;
-    border-radius: 30px;
-    color: #000;
-    cursor: pointer;
-  }
+.profile-pic.profile {
+  border-radius: 60px;
+}
 
-  .trash-can:hover{
-    background-color: #efefec;
-  }
-  
+.profile-pic.profile:hover {
+  box-shadow: 0px 0px 10px #8a8a8a;
+}
+
+.image-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 60px;
+}
+
+.image-options {
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.image-options:hover {
+  text-decoration: underline;
+}
+
+.tooltip-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  top: 25%;
+  left: 120%;
+  z-index: 1;
+  height: 20px;
+  width: auto;
+  padding: 8px;
+  background-color: black;
+  border-radius: 6px;
+}
+
+.tooltip .tooltip-content::after {
+  content: "";
+  position: absolute;
+  top: 39%;
+  right: 100%;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+
+.hidden {
+  display: none;
+}
+
+.profile-user-tabs-container {
+  height: 800px;
+  width: 700px;
+  padding: 30px 20px;
+}
+
+.profile-user-tabs-options {
+  display: flex;
+  gap: 20px;
+  font-weight: 500;
+}
+
+.tab-option:hover{
+  cursor: pointer;
+}

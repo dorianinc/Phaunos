@@ -10,7 +10,6 @@ import ProfilePage from "./components/ProfilePage";
 import TrailDetails from "./components/Trails/TrailDetails";
 import ListDetails from "./components/Lists/ListDetails";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import Map from "./components/Map";
 
 
 function App() {
@@ -27,18 +26,17 @@ function App() {
         <Switch>
           <Route path="/login" component={LoginFormPage} />
           <Route path="/signup" component={SignupFormPage} />
+          <Route path="/trails/:trailId" component={TrailDetails} />
+          <Route path="/profile/lists/:listId">
+            <ProtectedRoute>
+              <ListDetails/>
+            </ProtectedRoute>
+          </Route>
           <Route path="/profile">
             <ProtectedRoute>
               <ProfilePage/>
             </ProtectedRoute>
           </Route>
-          <Route path="/trails/:trailId" component={TrailDetails} />
-          <Route path="/lists/:listId">
-            <ProtectedRoute>
-              <ListDetails/>
-            </ProtectedRoute>
-          </Route>
-          <Route path="/map" component={Map} />
           <Route path="/" component={SplashPage} />
         </Switch>
       )}

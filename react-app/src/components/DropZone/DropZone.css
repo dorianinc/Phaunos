@@ -1,0 +1,38 @@
+.drop-zone-modal{
+    color: #2B381F;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.drop-zone{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 350px;
+    margin-bottom: 10px;
+    border: 2px dotted #2B381F;
+}
+
+.drop-zone-text{
+    font-weight: 500;
+}
+
+.drop-zone-sub-text{
+    font-size: .8rem;
+    font-weight: 500;
+}
+
+.drop-zone-preview-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#drop-zone-preview-image{
+    width: 350px;
+}
+

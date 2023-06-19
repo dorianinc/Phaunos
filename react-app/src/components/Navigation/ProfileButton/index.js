@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { logout } from "../../../store/session";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -27,6 +28,12 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  const goToProfile = (e) => {
+      e.preventDefault()
+      setShowMenu(false)
+      history.push("/profile/feed")
+  }
+
   const handleLogout = async (e) => {
     e.preventDefault();
     await dispatch(logout());
@@ -40,7 +47,13 @@ function ProfileButton({ user }) {
     <>
       {user ? (
         <button className="profile-button" onClick={openMenu}>
-          <img className="profile-pic review" alt="profile-pic" src={user.profile_pic} />
+          <div className="profile-pic-container navi">
+            <img
+              className="profile-pic navi"
+              alt="profile-pic"
+              src={user.profile_pic ? user.profile_pic : user.default_pic}
+            />
+          </div>
         </button>
       ) : (
         <button id="login-button">
@@ -52,7 +65,10 @@ function ProfileButton({ user }) {
           <div className="dropdown-options">
             <div className="dropdown-username">Hello, {user.first_name}</div>
             <div className="dropdown-email">{user.email}</div>
-            <hr className="item-divider"/>
+            <hr className="item-divider" />
+            <div className="dropdown-button" onClick={(e) => goToProfile(e)}>
+              Profile
+            </div>
             <div className="dropdown-button" onClick={handleLogout}>
               Log Out
             </div>

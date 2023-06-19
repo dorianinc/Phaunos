@@ -100,7 +100,7 @@ const TrailDetails = () => {
           </div>
           <hr className="item-divider" />
           <div className="trail-details-weather">
-            <WeatherForecast lat={currentTrail.lat} lng={currentTrail.long} />
+            <WeatherForecast lat={currentTrail.lat} lng={currentTrail.lng} />
           </div>
           <hr className="item-divider" />
           <div className="trail-details-reviews-summary">

@@ -37,26 +37,21 @@ def get_bookmark_by_id(bookmark_id):
     return bookmark.to_dict()
 
 
-@bookmarks_routes.route("/<int:bookmark_id>", methods=["PUT"])
-def edit_review(bookmark_id):
-    """ Edit a bookmark's completion status """
+@bookmarks_routes.route("", methods=["PUT"])
+def update_bookmark_status():
+    """ update a bookmark's completion status """
     user = current_user.to_dict()
-    data = request.get_json()
 
+    bookmark_id = request.get_json()
     bookmark = Bookmark.query.get(bookmark_id)
+    
     #------------ validation -------------#    
     if not bookmark:
         error = make_response("Bookmark does not exist")
         error.status_code = 404
         return error
-    
-    list = Bookmarks_List.query.get(bookmark.bookmarks_list_id)
-    if list.user_id != user["id"]:
-        error = make_response("Only the creator of a Bookmark can delete a bookmark")
-        error.status_code = 401
-        return error 
     #--------------------------------------#   
-    bookmark.completed = data["completed"]
+    bookmark.completed = not bookmark.completed
     db.session.commit()     
     return bookmark.to_dict()
 

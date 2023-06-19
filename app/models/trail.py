@@ -13,7 +13,7 @@ class Trail(db.Model):
     city = db.Column(db.String(50), nullable=True)
     state = db.Column(db.String(50), nullable=True)
     lat = db.Column(db.Float, nullable=False)
-    long = db.Column(db.Float, nullable=False)
+    lng = db.Column(db.Float, nullable=False)
     difficulty = db.Column(db.String(50), nullable=False)
     length = db.Column(db.String(50), nullable=False)
     elevation = db.Column(db.String(50), nullable=True)
@@ -37,7 +37,7 @@ class Trail(db.Model):
             "city": self.city,
             "state": self.state,
             "lat": self.lat,
-            "long": self.long,
+            "lng": self.lng,
             "difficulty": self.difficulty,
             "len": self.length,
             "elevation": self.elevation,
@@ -68,7 +68,7 @@ class Trail(db.Model):
             "city": self.city,
             "state": self.state,
             "lat": self.lat,
-            "long": self.long,
+            "lng": self.lng,
             "difficulty": self.difficulty,
             "length": self.length,
             "elevation": self.elevation,

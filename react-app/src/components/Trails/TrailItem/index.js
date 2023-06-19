@@ -1,9 +1,10 @@
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBookmarkThunk } from "../../../store/lists";
 import { useMap } from "../../../context/MapContext";
 import BookmarkTab from "../../Bookmark/BookmarkTab";
 import BookmarkList from "../../Bookmark";
+import CompletedTab from "../../CompletedTab";
 import "./TrailItem.css";
 
 function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
@@ -17,9 +18,9 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
 
   const handleClick = (e, trail) => {
     e.preventDefault();
-    if (pathName.startsWith("/list")) {
+    if (pathName.startsWith("/profile")) {
       setCurrentLat(trail.lat);
-      setCurrentLng(trail.long);
+      setCurrentLng(trail.lng);
       setCurrentZoom(18);
     } else {
       history.push(`/trails/${trail.id}`);
@@ -40,15 +41,26 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
           <img className={`trail-image ${nameOfClass}`} alt="cover" src={trail.cover.img_src} />
         </div>
         <div className={`trail-text ${nameOfClass}`}>
-          <p id="trail-diff-review">
-            {trail.difficulty} • <i className="fa-solid fa-star fa-xs" />{" "}
-            {Number(trail.avg_rating).toFixed(1)}({trail.num_reviews})
-          </p>
-          <p id={`trail-name`}>{trail.name}</p>
-          <p id={`trail-park`}>{trail.park}</p>
-          <p id={`trail-len`}>{trail.len}</p>
+          <div className="trail-card-top">
+            <p id="trail-diff-review">
+              {trail.difficulty} • <i className="fa-solid fa-star fa-xs" />{" "}
+              {Number(trail.avg_rating).toFixed(1)}({trail.num_reviews})
+            </p>
+            <p>
+              <Link to={`/trails/${trail.id}`}>
+                <p className="secondary-color" id="trail-link">
+                  View Trail
+                </p>
+              </Link>
+            </p>
+          </div>
+          <div className="trail-card-bottom">
+            <p id={`trail-name`}>{trail.name}</p>
+            <p id={`trail-park`}>{trail.park}</p>
+            <p id={`trail-len`}>{trail.len}</p>
+          </div>
         </div>
-        {user && !pathName.startsWith("/list") ? (
+        {user && !pathName.startsWith("/profile") ? (
           <div className="bookmark-icon cards">
             <BookmarkTab
               type="bookmark"
@@ -56,6 +68,12 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
               modalComponent={<BookmarkList trail={trail} />}
             />
           </div>
+        ) : user && pathName.startsWith("/profile") && !editing ? (
+          <CompletedTab
+            type="bookmark"
+            trailId={trail.id}
+            modalComponent={<BookmarkList trail={trail} />}
+          />
         ) : editing ? (
           <>
             <div className="item-overlay" />

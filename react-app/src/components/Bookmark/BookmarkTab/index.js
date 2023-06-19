@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import { getUserBookmarksThunk } from "../../../store/bookmarks";
+import "./BookmarkTab.css";
 
 function BookmarkTab({ trailId, bookmarkedTrailId, modalComponent }) {
   const { setModalContent } = useModal();
@@ -28,9 +29,17 @@ function BookmarkTab({ trailId, bookmarkedTrailId, modalComponent }) {
   return (
     <>
       {isBookmarked() ? (
-        <img alt="bookmarked" src="/images/bookmarks/greenmark.png" onClick={(e) => handleClick(e)} />
+        <img
+          alt="bookmarked"
+          src="/images/bookmarks/greenmark.png"
+          onClick={(e) => handleClick(e)}
+        />
       ) : (
-        <img alt="not-bookmarked" src="/images/bookmarks/bookmark.png" onClick={(e) => handleClick(e)} />
+        <img
+          alt="not-bookmarked"
+          src="/images/bookmarks/bookmark.png"
+          onClick={(e) => handleClick(e)}
+        />
       )}
     </>
   );

@@ -1,0 +1,20 @@
+.checkmark-icon-container {
+  display: flex;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  height: 30px;
+  width: auto;
+  gap: 4px;
+  border-radius: 20px;
+  padding: 1px;
+  background-color: #fff;
+}
+
+#checkmark-status-text {
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: 800;
+  align-self: center;
+  padding-right: 6px;
+}

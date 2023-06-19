@@ -52,16 +52,6 @@
   box-sizing: border-box;
 }
 
-.bookmark-icon.single {
-  display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  bottom: 5%;
-  right: 2%;
-  height: 40px;
-  cursor: pointer;
-}
-
 .fa-bookmark.white {
   color: #fff;
 }
@@ -158,34 +148,4 @@
 .green-button.review,
 .grey-button.review {
   width: 150px;
-}
-
-/* review container css*/
-
-.profile-pic.review {
-  height: 55px;
-  width: 55px;
-}
-
-.trail-details-reviews-container {
-  color: #464e37;
-}
-
-.trail-details-review-rating {
-  margin-bottom: 5px;
-}
-
-.trail-details-review-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-#review-user-name {
-  font-family: 600;
-}
-
-#review-date {
-  color: #6d7667;
-  font-weight: 200;
-  font-size: 0.8rem;
 }
