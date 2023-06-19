@@ -16,7 +16,6 @@ function CompletedTab({ trailId }) {
 
   const handleClick = (e, bookmarkId) => {
     e.stopPropagation();
-    console.log("bookmarkId 👉", bookmarkId);
     dispatch(updateBookmarksThunk(bookmarkId));
   };
 
