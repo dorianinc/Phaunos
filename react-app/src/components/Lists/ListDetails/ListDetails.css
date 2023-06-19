@@ -49,6 +49,18 @@
     overflow-y: auto;
     height: 89vh;
 }
+
+.no-bookmarks{
+    margin-top: 200px;
+    text-align: center;
+}
+
+#explorer-trails-button{
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 150px;
+}
 .list-details-edit{
     cursor: pointer;
 }

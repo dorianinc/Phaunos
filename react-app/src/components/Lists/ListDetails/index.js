@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleListThunk, editListThunk } from "../../../store/lists";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import TrailItem from "../../Trails/TrailItem";
 import Map from "../../Map";
 import "./ListDetails.css";
@@ -9,9 +9,9 @@ import "./ListDetails.css";
 function ListDetails() {
   const { listId } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const [title, setTitle] = useState("");
   const [edit, setEdit] = useState(false);
-  const [focus, setFocus] = useState(false);
 
   const list = useSelector((state) => state.lists);
 
@@ -23,7 +23,6 @@ function ListDetails() {
         dispatch(getSingleListThunk(listId));
       }
       setEdit(false);
-      setFocus(false);
     }
   };
 
@@ -35,13 +34,15 @@ function ListDetails() {
         dispatch(getSingleListThunk(listId));
       }
       setEdit(false);
-      setFocus(false);
     } else {
       setTitle(list.title);
       setEdit(true);
-      setFocus(true);
     }
   };
+
+  const handleClick = (e) => {
+    history.push("/")
+  }
 
   useEffect(() => {
     dispatch(getSingleListThunk(listId));
@@ -78,16 +79,27 @@ function ListDetails() {
             </div>
           </div>
           <div className="list-details-bookmarks">
-            {bookmarks.map((bookmark, i) => (
-              <TrailItem
-                key={i}
-                trail={bookmark.trail}
-                nameOfClass="bookmark"
-                editing={edit}
-                bookmarkId={bookmark.id}
-                listId={listId}
-              />
-            ))}
+            {bookmarks.length
+              ? bookmarks.map((bookmark, i) => (
+                  <TrailItem
+                    key={i}
+                    trail={bookmark.trail}
+                    nameOfClass="bookmark"
+                    editing={edit}
+                    bookmarkId={bookmark.id}
+                    listId={listId}
+                  />
+                ))
+              : <div className="no-bookmarks">
+                <img alt="backpack-icon" id="backpack" src="/images/icons/backpack.png"/>
+                  <h2 className="primary-color">Start Saving Trails</h2>
+                  <p className="secondary-color" style={{fontWeight: "500"}}>Tap the bookmark icon on any trail to turn this into your adventure wishlist</p>
+                  <button 
+                  className="green-button" 
+                  id="explorer-trails-button"
+                  onClick={(e) => handleClick(e)}
+                  >Explorer Trails</button>
+                </div>}
           </div>
         </div>
         <div className="list-details-content-right">
