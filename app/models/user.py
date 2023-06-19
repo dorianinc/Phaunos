@@ -6,8 +6,8 @@ from flask_login import UserMixin
 
 follows = db.Table(
     "follows",
-    db.Column("follower", db.Integer, db.ForeignKey("users.id"), primary_key=True),
-    db.Column("followed", db.Integer, db.ForeignKey("users.id"), primary_key=True),
+    db.Column("follower", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
+    db.Column("followed", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
 )
 
 class User(db.Model, UserMixin):
