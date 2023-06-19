@@ -46,13 +46,13 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
               {trail.difficulty} • <i className="fa-solid fa-star fa-xs" />{" "}
               {Number(trail.avg_rating).toFixed(1)}({trail.num_reviews})
             </p>
-            <p>
+            {pathName.startsWith("/profile/lists") && (
               <Link to={`/trails/${trail.id}`}>
                 <p className="secondary-color" id="trail-link">
                   View Trail
                 </p>
               </Link>
-            </p>
+            )}
           </div>
           <div className="trail-card-bottom">
             <p id={`trail-name`}>{trail.name}</p>

@@ -30,7 +30,6 @@ export const authenticate = () => async (dispatch) => {
 };
 
 export const updateUserThunk = (user) => async (dispatch) => {
-  console.log("in the thunk")
   const response = await fetch("/api/users", {
     method: "PUT",
     body: user,
@@ -45,6 +44,36 @@ export const updateUserThunk = (user) => async (dispatch) => {
 export const deleteProfilePicThunk = () => async (dispatch) => {
   const response = await fetch("/api/users", {
     method: "DELETE",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data));
+    return data;
+  }
+};
+
+export const addFollowerThunk = (userId) => async (dispatch) => {
+  const response = await fetch("/api/users/follows", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userId),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data));
+    return data;
+  }
+};
+
+export const removeFollowerThunk = (userId) => async (dispatch) => {
+  const response = await fetch("/api/users/follows", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userId),
   });
   if (response.ok) {
     const data = await response.json();

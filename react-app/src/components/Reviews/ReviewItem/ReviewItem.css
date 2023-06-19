@@ -17,9 +17,29 @@
     overflow: hidden;
   }
   
-  
   .trail-details-reviews-container {
     color: #464e37;
+  }
+
+  .trail-details-review-info{
+   display: flex;
+   justify-content: space-between;
+  }
+  
+  .user-follow-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    height: 35px;
+    width: 35px;
+    border: none;
+    border-radius: 20px;
+    background-color: transparent;
+  }
+
+  .user-follow-button:hover{
+    background-color: #efefec;
   }
   
   .trail-details-review-rating {

@@ -78,11 +78,11 @@ const ProfilePage = () => {
         <p id="profile-user-member">Member since May 2023</p>
         <div className="follows">
           <div>
-            <p>0</p>
+            <p>{user.followers.length}</p>
             <p id="followers">Followers</p>
           </div>
           <div>
-            <p>0</p>
+            <p>{user.following.length}</p>
             <p id="following">Following</p>
           </div>
         </div>

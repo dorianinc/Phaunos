@@ -40,7 +40,6 @@ def add_user_image():
         upload = upload_file_to_s3(image)
         
         if "url" not in upload:
-            print("errors 👉👉👉👉", upload["errors"])
             return upload["errors"]
         
         current_user.profile_pic = upload["url"]
@@ -49,7 +48,6 @@ def add_user_image():
         
         
     else:
-        print(f"errors 👉👉👉👉 {form.errors}")
         return form.errors
     
 @user_routes.route('', methods=["DELETE"])
@@ -64,3 +62,23 @@ def remove_user_image():
     
     db.session.commit()
     return jsonify(current_user.to_dict())
+
+@user_routes.route('/follows', methods=["POST"])
+@login_required
+def follow_user():
+    """follow a user"""
+    other_user = User.query.get(request.get_json())
+    other_user.followers.append(current_user)
+    
+    db.session.commit()
+    return current_user.to_dict()
+
+@user_routes.route('/follows', methods=["DELETE"])
+@login_required
+def unfollow_user():
+    """unfollow a user"""
+    other_user = User.query.get(request.get_json())
+    current_user.following.remove(other_user)
+    
+    db.session.commit()
+    return current_user.to_dict()

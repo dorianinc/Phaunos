@@ -59,6 +59,18 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
         
+    
+    op.create_table('follows',
+    sa.Column('follower', sa.Integer(), nullable=False),
+    sa.Column('followed', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['followed'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['follower'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('follower', 'followed')
+    )
+    if environment == "production":
+        op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")    
+
+        
     op.create_table('bookmarks_lists',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=50), nullable=False),
@@ -125,6 +137,7 @@ def downgrade():
     op.drop_table('trail_images')
     op.drop_table('reviews')
     op.drop_table('bookmarks_lists')
+    op.drop_table('follows')
     op.drop_table('users')
     op.drop_table('trails')
     # ### end Alembic commands ###

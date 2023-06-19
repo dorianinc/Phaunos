@@ -12,6 +12,10 @@ body {
   color: #2b381f;
 }
 
+.primary-color{
+  color: #2b381f;
+}
+
 .secondary-color {
   color: #6d7667;
 }
@@ -111,8 +115,8 @@ p {
   color: #2b381f;
 }
 
-.modal-subheader {
-}
+/* .modal-subheader {
+} */
 
 /*------ stars ------*/
 
