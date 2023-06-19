@@ -18,9 +18,9 @@ def password_matches(form, field):
     email = form.data["email"]
     user = User.query.filter(User.email == email).first()
     if not user:
-        raise ValidationError("No such user exists.")
+        raise ValidationError("Login failed. Please check your email and password.")
     if not user.check_password(password):
-        raise ValidationError("Password was incorrect.")
+        raise ValidationError("Login failed. Please check your email and password.")
 
 
 class LoginForm(FlaskForm):
@@ -40,5 +40,6 @@ class LoginForm(FlaskForm):
                 max=16,
                 message="Password must be between 8 and 16 characters long.",
             ),
+            password_matches
         ],
     )

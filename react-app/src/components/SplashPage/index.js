@@ -10,9 +10,6 @@ function SplashPage() {
   const getTrails = useSelector((state) => state.trails);
   const trails = Object.values(getTrails);
   const topTrails = trails.sort((a, b) => b.avg_rating - a.avg_rating);
-  console.log("topTrails 👉", topTrails)
-
-
 
   useEffect(() => {
     dispatch(getTrailsThunk());

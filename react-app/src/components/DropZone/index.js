@@ -6,7 +6,6 @@ import { updateUserThunk, authenticate } from "../../store/session";
 import "./DropZone.css";
 
 const DropZone = ({ selected }) => {
-  console.log("selected 👉", selected)
   const [errors, setErrors] = useState({});
   const [files, setFiles] = useState([]);
   const { closeModal } = useModal();
@@ -21,8 +20,7 @@ const DropZone = ({ selected }) => {
         ...acceptedFiles.map((file) => Object.assign(file, { preview: URL.createObjectURL(file) })),
       ]);
     }
-    console.log("accepted:", acceptedFiles);
-    console.log(files);
+
     if (rejectedFiles[0].errors) {
       const dropzoneErrors = rejectedFiles[0].errors;
       const err = {};
@@ -53,7 +51,6 @@ const DropZone = ({ selected }) => {
     const image = files[0];
     const formData = new FormData();
     formData.append("profile_pic", image);
-    console.log("deploying")
     const profilePic = await dispatch(updateUserThunk(formData));
     if (profilePic) closeModal();
   };

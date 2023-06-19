@@ -18,7 +18,13 @@ function LoginFormPage() {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      if (data.password.startsWith("Login failed")) {
+        let err = {};
+        err.login = data.password;
+        setErrors(err);
+      } else {
+        setErrors(data);
+      }
     }
   };
 
@@ -44,7 +50,7 @@ function LoginFormPage() {
             <label>
               Email
               <input
-                className={`auth-input ${errors.email && "input-error"}`}
+                className={`auth-input ${errors.email || errors.login && "input-error"}`}
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -54,12 +60,13 @@ function LoginFormPage() {
             <label>
               Password
               <input
-                className={`auth-input ${errors.password && "input-error"}`}
+                className={`auth-input ${errors.password || errors.login && "input-error"}`}
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <p className="errors">{errors.password}</p>
+              <p className="errors">{errors.login}</p>
             </label>
           </div>
           <div className="buttons">
