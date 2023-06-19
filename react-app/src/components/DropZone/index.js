@@ -53,6 +53,7 @@ const DropZone = ({ selected }) => {
     const image = files[0];
     const formData = new FormData();
     formData.append("profile_pic", image);
+    console.log("deploying")
     const profilePic = await dispatch(updateUserThunk(formData));
     if (profilePic) closeModal();
   };

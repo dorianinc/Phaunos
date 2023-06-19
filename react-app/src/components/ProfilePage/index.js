@@ -58,14 +58,16 @@ const ProfilePage = () => {
               onMouseLeave={() => setHovered(false)}
             />
             <div className={`tooltip-content ${hovered || selected ? "" : "hidden"}`}>
-              <ModalButton
-                modalComponent={<DropZone selected={setSelected} />}
-                buttonContent={<p className="image-options">Edit</p>}
-              />
-              <p style={{ color: "#fff" }}>|</p>
-              <p className="image-options" onClick={(e) => handleDelete(e)}>
-                Delete
-              </p>
+              {!user.profile_pic ? (
+                <ModalButton
+                  modalComponent={<DropZone selected={setSelected} />}
+                  buttonContent={<p className="image-options">Edit</p>}
+                />
+              ) : (
+                <p className="image-options" onClick={(e) => handleDelete(e)}>
+                  Delete
+                </p>
+              )}
             </div>
           </div>
         </div>

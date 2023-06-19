@@ -49,7 +49,7 @@ function NewList({ trail }) {
           <hr className="header-divider" />
           <div className="buttons">
             <ModalButton
-              modalComponent={pathName === "/profile" ? null : <BookmarkList trail={trail} />}
+              modalComponent={pathName === "/profile/lists" ? null : <BookmarkList trail={trail} />}
               buttonContent={
                 <>
                   <button className="white-button">Cancel</button>

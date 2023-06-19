@@ -7,9 +7,10 @@ const Feed = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
+    <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
       <h1 id="profile-list-header">Feed</h1>
-    </>
+      <h3>Feature Coming Soon!</h3>
+    </div>
   );
 };
 

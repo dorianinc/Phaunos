@@ -1,16 +1,47 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleListThunk } from "../../../store/lists";
+import { getSingleListThunk, editListThunk } from "../../../store/lists";
 import { useParams } from "react-router-dom";
 import TrailItem from "../../Trails/TrailItem";
 import Map from "../../Map";
 import "./ListDetails.css";
 
 function ListDetails() {
-  const [edit, setEdit] = useState(false);
   const { listId } = useParams();
   const dispatch = useDispatch();
+  const [title, setTitle] = useState("");
+  const [edit, setEdit] = useState(false);
+  const [focus, setFocus] = useState(false);
+
   const list = useSelector((state) => state.lists);
+
+  const handleKeyDown = async (e, listId) => {
+    e.stopPropagation();
+    if (e.key === "Enter") {
+      if (title !== list.title) {
+        await dispatch(editListThunk({ title, listId }));
+        dispatch(getSingleListThunk(listId));
+      }
+      setEdit(false);
+      setFocus(false);
+    }
+  };
+
+  const handleEdit = async (e, listId) => {
+    e.stopPropagation();
+    if (edit === true) {
+      if (title !== list.title) {
+        await dispatch(editListThunk({ title, listId }));
+        dispatch(getSingleListThunk(listId));
+      }
+      setEdit(false);
+      setFocus(false);
+    } else {
+      setTitle(list.title);
+      setEdit(true);
+      setFocus(true);
+    }
+  };
 
   useEffect(() => {
     dispatch(getSingleListThunk(listId));
@@ -24,12 +55,24 @@ function ListDetails() {
       <div className="list-details-content">
         <div className="list-details-content-left">
           <div className="list-details-list-title">
-            <h1 id="list-details-title">{list.title}</h1>
+            <h1 id="list-details-title">
+              {edit === true && list.title !== "My Favorites" ? (
+                <input
+                  style={{ width: "auto" }}
+                  value={title}
+                  onClick={(e) => e.stopPropagation()}
+                  onKeyDown={(e) => handleKeyDown(e, list.id)}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              ) : (
+                <>{list.title}</>
+              )}
+            </h1>
             <div className="list-details-ptags">
               <p id="list-details-len">
                 {list.len} {list.len === 1 ? "bookmark" : "bookmarks"}
               </p>
-              <p className="list-details-edit" value={edit} onClick={() => setEdit(!edit)}>
+              <p className="list-details-edit" onClick={(e) => handleEdit(e, list.id)}>
                 edit list
               </p>
             </div>

@@ -30,7 +30,8 @@ export const authenticate = () => async (dispatch) => {
 };
 
 export const updateUserThunk = (user) => async (dispatch) => {
-  const response = await fetch("api/users", {
+  console.log("in the thunk")
+  const response = await fetch("/api/users", {
     method: "PUT",
     body: user,
   });
