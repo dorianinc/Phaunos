@@ -10,7 +10,7 @@ follows = db.Table(
 )
 
 if environment == "production":
-    playlist_videos.schema = SCHEMA
+    follows.schema = SCHEMA
 
 class User(db.Model, UserMixin):
     __tablename__ = "users"
