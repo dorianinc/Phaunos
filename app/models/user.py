@@ -9,6 +9,9 @@ follows = db.Table(
     db.Column("followed", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), primary_key=True),
 )
 
+if environment == "production":
+    playlist_videos.schema = SCHEMA
+
 class User(db.Model, UserMixin):
     __tablename__ = "users"
 
