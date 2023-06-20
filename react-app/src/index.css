@@ -60,29 +60,31 @@ p {
 /*------ nuttons ------*/
 
 .white-button {
+  cursor: pointer;
   height: 50px;
   width: 100px;
   border: 1px solid #faf9f6;
   border-radius: 25px;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
   background-color: #fff;
 }
 
 .white-button:hover {
   border: none;
   background-color: #efefec;
-  cursor: pointer;
 }
 
 .green-button {
+  cursor: pointer;
   height: 50px;
   width: 100px;
   border: 1px solid #faf9f6;
   border-radius: 25px;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: #fff;
   background-color: #2c5e1a;
-  cursor: pointer;
 }
 
 .green-button:hover {
@@ -94,18 +96,14 @@ p {
   width: 100px;
   border: 1px solid #faf9f6;
   border-radius: 25px;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: #fff;
   background-color: hsl(0, 0%, 61%);
   cursor: pointer;
 }
 
 .green-button.disabled {
-  height: 50px;
-  width: 100px;
-  border: 1px solid #faf9f6;
-  border-radius: 25px;
-  font-size: 1.2rem;
   color: #efefeb;
   background-color: #fafaf9;
 }

@@ -48,7 +48,11 @@
     margin-top: 10px;
     width:auto;
     padding: 10px;
-    background-color:#5E2A1A;
+    background-color:#805c4c;
+}
+
+.green-button.demo:hover{
+    background-color:#5d3c2d;
 }
 
 .signup-option{
