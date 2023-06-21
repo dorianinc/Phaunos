@@ -43,7 +43,7 @@ function SignupFormPage() {
           <div className="douglas">
           <img className="pine-tree" alt="kawaii-tree" src="/images/kawaii-tree.png" />
           <h1 id="signup-greeting">Your journey begins here</h1>
-          <h2 id="signup-greeting">- Douglas the Fern</h2>
+          <h2 id="signup-greeting">- Douglas the Fir</h2>
           </div>
         </div>
         <div className="signup-page-right">
