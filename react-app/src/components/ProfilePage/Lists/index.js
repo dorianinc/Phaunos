@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserListsThunk } from "../../../store/lists";
 import ModalButton from "../../ModalButton";
@@ -7,6 +8,9 @@ import ListItem from "../../Lists/ListItem";
 import "./ProfileLists.css";
 
 const Lists = () => {
+  const { username } = useParams();
+  console.log("username  👉", username )
+  console.log("username  👉", username )
   const getLists = useSelector((state) => state.lists);
   const lists = Object.values(getLists);
 

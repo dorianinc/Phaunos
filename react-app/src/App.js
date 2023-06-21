@@ -27,12 +27,12 @@ function App() {
           <Route path="/login" component={LoginFormPage} />
           <Route path="/signup" component={SignupFormPage} />
           <Route path="/trails/:trailId" component={TrailDetails} />
-          <Route path="/profile/lists/:listId">
+          <Route path="/member/:username/lists/:listId">
             <ProtectedRoute>
               <ListDetails/>
             </ProtectedRoute>
           </Route>
-          <Route path="/profile">
+          <Route path="/member/:username">
             <ProtectedRoute>
               <ProfilePage/>
             </ProtectedRoute>

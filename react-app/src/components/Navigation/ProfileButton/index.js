@@ -31,7 +31,7 @@ function ProfileButton({ user }) {
   const goToProfile = (e) => {
       e.preventDefault()
       setShowMenu(false)
-      history.push("/profile/feed")
+      history.push("/member/feed")
   }
 
   const handleLogout = async (e) => {

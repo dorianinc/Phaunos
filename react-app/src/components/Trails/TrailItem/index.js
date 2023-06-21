@@ -18,7 +18,7 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
 
   const handleClick = (e, trail) => {
     e.preventDefault();
-    if (pathName.startsWith("/profile")) {
+    if (pathName.startsWith("/member")) {
       setCurrentLat(trail.lat);
       setCurrentLng(trail.lng);
       setCurrentZoom(18);
@@ -46,7 +46,7 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
               {trail.difficulty} • <i className="fa-solid fa-star fa-xs" />{" "}
               {Number(trail.avg_rating).toFixed(1)}({trail.num_reviews})
             </p>
-            {pathName.startsWith("/profile/lists") && (
+            {pathName.startsWith("/member") && (
               <Link to={`/trails/${trail.id}`}>
                 <p className="secondary-color" id="trail-link">
                   View Trail
@@ -60,7 +60,7 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
             <p id={`trail-len`}>{trail.len}</p>
           </div>
         </div>
-        {user && !pathName.startsWith("/profile") ? (
+        {user && !pathName.startsWith("/member") ? (
           <div className="bookmark-icon cards">
             <BookmarkTab
               type="bookmark"
@@ -68,7 +68,7 @@ function TrailItem({ trail, bookmarkId, listId, nameOfClass, editing }) {
               modalComponent={<BookmarkList trail={trail} />}
             />
           </div>
-        ) : user && pathName.startsWith("/profile") && !editing ? (
+        ) : user && pathName.startsWith("/member") && !editing ? (
           <CompletedTab
             type="bookmark"
             trailId={trail.id}

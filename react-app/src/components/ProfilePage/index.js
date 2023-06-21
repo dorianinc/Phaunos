@@ -5,7 +5,7 @@ import { deleteProfilePicThunk } from "../../store/session";
 import ModalButton from "../ModalButton";
 import DropZone from "../DropZone";
 import "./ProfilePage.css";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory, useParams } from "react-router-dom";
 import Feed from "./Feed";
 import Lists from "./Lists";
 
@@ -13,10 +13,12 @@ const ProfilePage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
+  const { username } = useParams();
+  console.log("username in profile 👉", username);
   const [hovered, setHovered] = useState(false);
   const [selected, setSelected] = useState(false);
   const user = useSelector((state) => state.session.user);
-  const tab = location.pathname.split("/")[2];
+  const tab = location.pathname.split("/")[3];
 
   useEffect(() => {
     document.body.style.backgroundColor = "#efefec";
@@ -26,7 +28,7 @@ const ProfilePage = () => {
   });
 
   useEffect(() => {
-    dispatch(getUserListsThunk());
+    dispatch(getUserListsThunk(username));
   }, [dispatch]);
 
   const handleDelete = (e) => {
@@ -41,7 +43,7 @@ const ProfilePage = () => {
 
   const goToTab = (e, tab) => {
     e.preventDefault();
-    history.push(`/profile/${tab}`);
+    history.push(`/member/${user.username}/${tab}`);
   };
 
   return (

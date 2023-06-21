@@ -18,8 +18,8 @@ export const getSingleList = (list) => ({
 /////////////////// Thunks ///////////////////
 
 // get all users lists
-export const getUserListsThunk = () => async (dispatch) => {
-  const res = await fetch("/api/bookmarksLists");
+export const getUserListsThunk = (username) => async (dispatch) => {
+  const res = await fetch(`/api/bookmarksLists/${username}`);
   if (res.ok) {
     const data = await res.json();
     dispatch(getLists(data));

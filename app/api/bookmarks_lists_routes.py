@@ -1,6 +1,6 @@
 from flask import Blueprint, request, make_response
 from flask_login import login_required, current_user
-from app.models import db, Bookmarks_List, Bookmark
+from app.models import db, User, Bookmarks_List, Bookmark
 from app.forms import BookmarksListForm
 
 bookmarks_lists_routes = Blueprint("bookmarks_lists", __name__)
@@ -21,11 +21,11 @@ def validation_errors_to_error_messages(validation_errors):
 # ------------------------------------------------------------------------------------#
 
 
-@bookmarks_lists_routes.route("")
-def get_users_bookmarks_lists():
+@bookmarks_lists_routes.route("<username>")
+def get_users_bookmarks_lists(username):
     """Get all of users bookmarks lists"""
-    user = current_user.to_dict()
-    lists = Bookmarks_List.query.filter(Bookmarks_List.user_id == user["id"]).all()
+    user = User.query.filter(User.username == username).first()
+    lists = Bookmarks_List.query.filter(Bookmarks_List.user_id == user.id).all()
     return [list.to_dict(includeBookmarks=True) for list in lists]
 
 
@@ -85,7 +85,7 @@ def edit_bookmarks_list():
 
     list_dict = list.to_dict(includeBookmarks=True)
     if int(list_dict["user_id"]) != user["id"]:
-        error = make_response("Only the creator of a booksmark list can edit a list")
+        error = make_response("Only the creator of a bookmark list can edit a list")
         error.status_code = 401
         return error
     # --------------------------------------#

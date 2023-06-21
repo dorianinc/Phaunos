@@ -32,7 +32,7 @@ function NewList({ trail }) {
     <>
       <div className="new-list-container">
         <ModalButton
-          modalComponent={pathName === "/profile" ? null : <BookmarkList trail={trail} />}
+          modalComponent={pathName.startsWith("/member")  ? null : <BookmarkList trail={trail} />}
           buttonContent={
             <div className="back-arrow">
               <i className="fa-solid fa-arrow-left fa-xl" />
@@ -49,7 +49,7 @@ function NewList({ trail }) {
           <hr className="header-divider" />
           <div className="buttons">
             <ModalButton
-              modalComponent={pathName === "/profile/lists" ? null : <BookmarkList trail={trail} />}
+              modalComponent={pathName.startsWith("/member")  ? null : <BookmarkList trail={trail} />}
               buttonContent={
                 <>
                   <button className="white-button">Cancel</button>

@@ -7,6 +7,7 @@ import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const user = useSelector((state) => state.session.user);
+  console.log("user 👉", user)
 
   return (
     <div className="nav-container">
@@ -17,7 +18,7 @@ function Navigation({ isLoaded }) {
           </Link>
           {user && (
             <div className="nav-links">
-              <Link to="/profile/lists">My Lists</Link>
+              <Link to={`/member/${user.username}/lists`}>My Lists</Link>
             </div>
           )}
         </div>

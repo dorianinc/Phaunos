@@ -45,7 +45,7 @@ function ListItem({ list, trailId }) {
 
   const handleClick = async (e, listId) => {
     e.preventDefault();
-    if (!focus && pathName.startsWith("/profile")) history.push(`lists/${listId}`);
+    if (!focus && pathName.startsWith("/member")) history.push(`lists/${listId}`);
     setFocus(false);
   };
 
@@ -71,7 +71,7 @@ function ListItem({ list, trailId }) {
     <>
       <div
         className={`bookmark-item`}
-        style={pathName.startsWith("/profile") ? { cursor: "pointer" } : null}
+        style={pathName.startsWith("/member") ? { cursor: "pointer" } : null}
         onClick={(e) => handleClick(e, list.id)}
         onMouseEnter={() => setHoveredList(list.id)}
         onMouseLeave={() => setHoveredList("")}
@@ -92,8 +92,9 @@ function ListItem({ list, trailId }) {
             ) : (
               <p>{list.title}</p>
             )}
-            {list.title === "My Favorites" && pathName === "/profile/lists" ? null : pathName ===
-                "/profile/lists" && list.id === hoveredList ? (
+            {list.title === "My Favorites" &&
+            pathName.startsWith("/member") ? null : pathName.startsWith("/member") &&
+              list.id === hoveredList ? (
               <button onClick={(e) => handleEdit(e)} className="edit-button">
                 <i className="fa-regular fa-pen-to-square" />
               </button>
@@ -103,8 +104,8 @@ function ListItem({ list, trailId }) {
             {list.len} {list.len === 1 ? "item" : "items"}
           </p>
         </div>
-        {list.title === "My Favorites" && pathName === "/profile/lists" ? null : pathName ===
-          "/profile/lists" ? (
+        {list.title === "My Favorites" &&
+        pathName.startsWith("/member") ? null : pathName.startsWith("/member") ? (
           <ModalButton
             nameOfClass={"postion-end"}
             modalComponent={<DeleteList listId={list.id} />}
