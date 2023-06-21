@@ -69,6 +69,7 @@ def create_a_review(trail_id):
             trail_id=trail_dict["id"],
             user_id=user["id"]
         )
+        
         db.session.add(new_review)
         db.session.commit()
         return new_review.to_dict()

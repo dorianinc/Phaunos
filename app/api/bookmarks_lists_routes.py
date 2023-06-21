@@ -63,6 +63,7 @@ def create_bookmarks_list():
 
         data = form.data
         new_list = Bookmarks_List(title=data["title"], user_id=user["id"])
+        print(f"new_list 👉 {new_list.to_dict()}")
         db.session.add(new_list)
         db.session.commit()
         return new_list.to_dict()
